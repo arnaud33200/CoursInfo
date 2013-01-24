@@ -1,0 +1,191 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+
+select RESERVATION.NUMERO_SEANCE, RESERVATION.NUMERO_PLACE, RESERVATION.NOM_SPECTATEUR 
+FROM RESERVATION 
+JOIN PLACE on RESERVATION.NUMERO_PLACE = PLACE.NUMERO_PLACE 
+WHERE PLACE.CATEGORIE_DE_LA_PLACE = 'A'; 
+
+
+NUMERO_SEANCE NUMERO_PLACE NOM_SPECTATEUR
+------------- ------------ --------------------
+           10            2 SUZANNE
+           10            4 OLIVIER
+           15            8 JEAN
+           12            8 THIBAUT
+           10            8 MATTHIEU
+            1            8 LAURENCE
+           20           16 THEODORE
+           17           16 STEPHANE
+           15           16 SANDRINE
+           10           16 PIERRE
+            2           16 SERGE
+
+NUMERO_SEANCE NUMERO_PLACE NOM_SPECTATEUR
+------------- ------------ --------------------
+           15           17 VLADIMIR
+           17           32 HUGUES
+           12           32 FRANCOISE
+           10           32 SEBASTIEN
+            5           32 CLAUDE
+            2           32 CHRISTOPHE
+            2           33 DANIELLE
+           20           64 GREGORY
+           17           64 VINCENT
+           12           64 XAVIER
+           10           64 ERIC
+
+NUMERO_SEANCE NUMERO_PLACE NOM_SPECTATEUR
+------------- ------------ --------------------
+            5           64 DELPHINE
+            2           64 LUC
+            1           64 DENIS
+           20          128 ROLANDE
+           16          128 ISABELLE
+           15          128 FRANCK
+           12          128 SAMUEL
+           10          128 BENOIT
+            2          128 NICOLAS
+            1          128 DAVID
+           10          129 CELINE
+
+NUMERO_SEANCE NUMERO_PLACE NOM_SPECTATEUR
+------------- ------------ --------------------
+           20          256 PHILIPPE
+           15          256 JEROME
+           10          256 YOHANN
+            8          256 CYRIL
+            2          256 PATRICK
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+
+select VIEW_NAME from ALL_VIEWS where OWNER = 'ADMIN';
+
+
+VIEW_NAME
+------------------------------
+LIMITROPHESTOUT
+RESERVATION_CATEGORIE_A
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+
+select TEXT 
+from ALL_VIEWS 
+where OWNER = 'ADMIN' and VIEW_NAME = 'RESERVATION_CATEGORIE_A' ; 
+
+TEXT
+-----------------------------------------------------------------------------
+
+select NUMERO_SEANCE , RESERVATION.NUMERO_PLACE , NOM_SPECTATEUR
+from RESERVATION
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+
+select *
+from RESERVATION_CATEGORIE_A; 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+
+select NOM_SPECTATEUR 
+from RESERVATION_CATEGORIE_A 
+join SEANCE on (RESERVATION_CATEGORIE_A.NUMERO_SEANCE = SEANCE.NUMERO_SEANCE)  
+where SEANCE.NUMERO_FILM = '19' 
+order by NOM_SPECTATEUR;   
+
+NOM_SPECTATEUR
+--------------------
+FRANCK
+JEAN
+JEROME
+SANDRINE
+VLADIMIR
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+
+select NUMERO_SEANCE, count(*) 
+from RESERVATION_CATEGORIE_A 
+group by NUMERO_SEANCE; 
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+desc ALL_CONSTRAINTS
+
+ Nom                                       NULL ?   Type
+ ----------------------------------------- -------- ----------------------------
+ OWNER                                              VARCHAR2(30)
+ CONSTRAINT_NAME                           NOT NULL VARCHAR2(30)
+ CONSTRAINT_TYPE                                    VARCHAR2(1)
+ TABLE_NAME                                NOT NULL VARCHAR2(30)
+ SEARCH_CONDITION                                   LONG
+ R_OWNER                                            VARCHAR2(30)
+ R_CONSTRAINT_NAME                                  VARCHAR2(30)
+ DELETE_RULE                                        VARCHAR2(9)
+ STATUS                                             VARCHAR2(8)
+ DEFERRABLE                                         VARCHAR2(14)
+ DEFERRED                                           VARCHAR2(9)
+ VALIDATED                                          VARCHAR2(13)
+ GENERATED                                          VARCHAR2(14)
+ BAD                                                VARCHAR2(3)
+ RELY                                               VARCHAR2(4)
+ LAST_CHANGE                                        DATE
+ INDEX_OWNER                                        VARCHAR2(30)
+ INDEX_NAME                                         VARCHAR2(30)
+ INVALID                                            VARCHAR2(7)
+ VIEW_RELATED                                       VARCHAR2(14)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+
+
+SQL> select TEXT from ALL_VIEWS where VIEW_NAME = 'ALL_CONSTRAINTS';
+
+TEXT
+--------------------------------------------------------------------------------
+select ou.name, oc.name,
+       decode(c.type#, 1, 'C', 2, 'P', 3, 'U',
+
+	   
+	   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+
+select c.type# , decode(c.type#, 1, 'C', 2, 'P', 3, 'U', 4, 'R', 7, 'C', '?'), 
+	c.condition SEARCH, o.name TABLE_NAME, oc.name CONSTRAINT_NAME 
+from sys.con$ oc
+join sys.user$ ou on oc.owner# = ou.user#
+join sys.cdef$ c on oc.con# = c.con#
+join sys.obj$ o on c.obj# = o.obj#
+where c.type# in ( 1, 2, 3, 4, 7 )
+	and ou.name = 'ADMIN'
+	and o.name in ( 'PLACE', 'SEANCE', 'RESERVATION' )
+order by c.type#, o.name, oc.name ;
+
+select c.type# as B , decode(c.type#, 1, 'C', 2, 'P', 3, 'U', 4, 'R', 7, 'C', '?') as A 
+from sys.con$ oc
+join sys.user$ ou on oc.owner# = ou.user#
+join sys.cdef$ c on oc.con# = c.con#
+join sys.obj$ o on c.obj# = o.obj#
+where c.type# in ( 1, 2, 3, 4, 7 )
+	and ou.name = 'ADMIN'
+	and o.name in ( 'PLACE', 'SEANCE', 'RESERVATION' )
+order by c.type#, o.name, oc.name ;
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~
+ select case when ( exists ( select * from ALL_TABLES where 0=1 ) ) 
+ then 'vrai' else 'faux' end AucunLigne, 
+ case when ( exists ( select count(*) from ALL_TABLES ) ) 
+ then 'vrai' else 'faux' end UneLigneNonVide, 
+ case when ( exists ( select null from DUAL ) ) 
+ then 'vrai' else 'faux' end UneLigneVide 
+ from DUAL;
+ 

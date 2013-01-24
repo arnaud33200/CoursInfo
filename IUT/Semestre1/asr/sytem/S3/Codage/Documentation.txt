@@ -1,0 +1,22 @@
+//
+// CONTRÔLE DE PARITÉ (PAIRE)
+//
+
+/*
+   Ce programme lit (sur l'entrée standard) des lignes qui comportent
+   des 'données', sous forme  de suites de 0 et de 1 (les autres
+   caractères sont ignorés).
+
+   En sortie il affiche ces données en y ajoutant un bit de contrôle de
+   parité (paire).
+
+   Exemple, si en entrée on a les 3 lignes
+         100 11
+         01
+         10 0001
+   en sortie on trouvera
+         10011 1
+         01 1
+         100001 0
+*/
+

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+case "$1" in
+    *.tar | *.tgz | *.tar.bz2)
+	echo "c'est bon"
+	tar -tf $1
+	;;
+    *.zip | *.ZIP)
+	echo "c'est un fichier zip"
+	unzip -l $1
+	;;
+    *.jp*)
+	echo "c'est une image jpeg"
+	file $1
+	;;
+    *.pdf)
+	echo "c'est un fichier PDF"
+	evince $1
+	;;
+    *)
+	echo "c'est pas bon"
+	;;
+esac

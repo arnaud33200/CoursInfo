@@ -1,0 +1,12 @@
+; ~~~~~~~~~~ EXCERCICE 1 ~~~~~~~~~~~~
+
+(defun alea-histo (m n)
+  (let ((tab (make-array n :initial-element 0)))
+    (loop for i from 0 to (- m 1) collect
+	 (incf (aref tab (random n))))
+    (dotimes ( i (- n 1) tab)
+      (format t "~2A - [~A~3A " i (aref tab i) '])
+      (loop for j from 0 to (- (aref tab i) 1)
+	 collect (format t "*"))
+      collect (format t "~%"))))
+

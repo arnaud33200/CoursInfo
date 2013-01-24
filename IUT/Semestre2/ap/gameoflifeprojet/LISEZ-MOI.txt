@@ -1,0 +1,72 @@
+##################################################
+#                                                #
+#   ~~~~~~~~~~~~~ JEU DE LA VIE ~~~~~~~~~~~~~    #
+#                                                #
+##################################################
+
+
+Instruction d'installation du jeu :
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Comment installer le jeu ?
+------------------------
+
+a la racine du dossier "JeuDeLaVie" il y a deux script bash qui facilite l'installation:
+
+- install : en entrant "./install" dans la console et permet de creer le fichier executif "jeuDeLaVie"
+
+- reinstall : en cas de souci de version de la librairie SFML. en entrant "./reinstall" dans la console, cela permet de recreer l'executif avec la bonne librairie
+
+- autre moyen : en allant dans le dossier "source/", vous pourrez lancer directement les commande make (pour compiler) et make clean (pour effacer les fichier objets).
+
+Lancer le Jeu ;
+------------
+
+toujours a la racine du dossier, entrez "./jeuDeLaVie" dans la console, et le jeu s'executera
+une fois l'introduction passer, charger la sauvegarde, vous trouvez une simulation deja faite
+
+En cas de problème :
+-------------------
+
+si vous entendez pas la musique en introduction du jeu et que l'execution se termine, cela vient de la variable "Music" contenu dans la classe Intro qui fait planté. Ainsi, pour pouvoir profité du jeu vous avez deux solution :
+- redemarré l'ordinateur et ne pas lancé des processus qui utilise la carte son
+- commenté l'introduction dans "main.cc" et recompiler ( la partie a commenter sera précisé )
+
+
+liste des fichiers et dossier :
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+liste des fichiers et dossier obligatoire pour le bon fonctionnement et la bonne compilation du jeu :
+---------------------------------------------------------------------------------------------------
+
+images/ :
+
+	antique.ttf  bg_bar.png   bg.png   button.png  file_dialog.png  meduse.png  slider_bg.png  txtanim.png
+	auteur.png   bg_cell.png  bg_virus.png  cell.png    iut.png   rect.png    slider_fg.png  virus.png
+
+musics/ :
+
+	intro.ogg
+
+source/ :
+
+	Element.cc  event.h       GameView.cc       GroupeVirus.h  main.cc      Slider.h  Virus.cc
+	Button.cc   Element.h   GameModel.cc  GameView.h        image.cc       Makefile     Unite.cc  Virus.h
+	Button.h    enum.cc     GameModel.h   GrilleCellule.cc  image.h        MenuView.cc  Unite.h
+	Cellule.cc  enum.h      GameSave.cc   GrilleCellule.h   Intro.cc       MenuView.h   util.cc
+	Cellule.h   event.cc    GameSave.h    GroupeVirus.cc    Intro.h        Slider.cc    util.h
+
+--------------------
+
+si il manque des elements de cette liste, retelecharger le dossier
+
+autre dossier et fichier :
+------------------------
+
+le dossier save : contient le fichier de sauvegarde du jeu, "game.sav". mais aussi un fichier "kill.sav" qui contient une autre sauvegarde, car le jeu ne gère qu'une seule sauvegarde
+
+le dossier doc : contient la documentation du jeu

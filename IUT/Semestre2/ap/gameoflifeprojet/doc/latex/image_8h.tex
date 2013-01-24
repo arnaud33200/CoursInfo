@@ -1,0 +1,453 @@
+\hypertarget{image_8h}{
+\section{Référence du fichier image.h}
+\label{image_8h}\index{image.h@{image.h}}
+}
+
+
+chargement et affichage d'images  
+
+
+{\ttfamily \#include $<$SFML/Graphics.hpp$>$}\par
+{\ttfamily \#include $<$string$>$}\par
+{\ttfamily \#include \char`\"{}GameModel.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Button.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Slider.h\char`\"{}}\par
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{image_8h_a5d9a3033db67b84e0648ea2d8aa787bb}{loadimage} (Image \&img, Sprite \&spt, string file)
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\# CHARGEMENT IMAGES / TEXTES \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+void \hyperlink{image_8h_afd14cd7aa23aa260499a2d006b390cfe}{loadimage} (Image \&img, Sprite \&spt, string file, const float \&x, const float \&y, const float \&w, const float \&h)
+\begin{DoxyCompactList}\small\item\em Fonction qui simplifie le chargement d'une image dans un sprite et de ça forme. \end{DoxyCompactList}\item 
+void \hyperlink{image_8h_a72d38eb4a484157fb56c46384589ee5b}{loadtextefont} (String \&t, Font $\ast$f, const float \&size, const float \&x, const float \&y, const string \&texte)
+\begin{DoxyCompactList}\small\item\em Fonction qui simplifie le chargement d'un texte String. \end{DoxyCompactList}\item 
+void \hyperlink{image_8h_aecc57699d416e79ab8cf532ec27a7f3a}{sizepositionimg} (Sprite \&spt, const float \&x, const float \&y, const float \&w, const float \&h)
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\# MODIFICATION SPRITES \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+void \hyperlink{image_8h_aea710e3bc8656f8bb4141a397228948e}{setSprite} (Sprite \&spt, const float \&x, const float \&y, const float \&w, const float \&h)
+\begin{DoxyCompactList}\small\item\em Fonction qui définit rectangle de lecture de l'image. \end{DoxyCompactList}\item 
+void \hyperlink{image_8h_a1f46ed96401b10df193cf0ad424a321c}{afficherCellules} (\hyperlink{classGameModel}{GameModel} $\ast$model, RenderWindow $\ast$\&window, Sprite $\ast$celluleSprite)
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\# AFFICHAGE OBJETS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+void \hyperlink{image_8h_a09283dd26c8f48b1b7eccecba8abac92}{afficherVirus} (\hyperlink{classGameModel}{GameModel} $\ast$model, RenderWindow $\ast$\&window, Sprite $\ast$virusSprite)
+\item 
+void \hyperlink{image_8h_ac7e333c7e00d9589a3bd517e406da686}{afficherButton} (RenderWindow $\ast$\&window, \hyperlink{classButton}{Button} $\ast$button)
+\begin{DoxyCompactList}\small\item\em Fonction qui affiche les objet \hyperlink{classButton}{Button}. \end{DoxyCompactList}\item 
+void \hyperlink{image_8h_a0c767ab3726e38a0b7ced5ec0464257a}{afficherSlider} (RenderWindow $\ast$\&window, \hyperlink{classSlider}{Slider} $\ast$slider)
+\begin{DoxyCompactList}\small\item\em Fonction qui affiche les objet \hyperlink{classSlider}{Slider}. \end{DoxyCompactList}\item 
+void \hyperlink{image_8h_a76e7c3f341c5282279a1cde0f9d9e124}{afficherselect} (RenderWindow $\ast$\&window, Sprite $\ast$select, const int \&i, const int \&j, const float \&w, const float \&h)
+\begin{DoxyCompactList}\small\item\em Fonction qui affiche le cadre de selection des cellules. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+chargement et affichage d'images \begin{DoxyAuthor}{Auteur}
+Mayira.Y Arnaud.L 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+avril/mai 2011 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{image_8h_ac7e333c7e00d9589a3bd517e406da686}{
+\index{image.h@{image.h}!afficherButton@{afficherButton}}
+\index{afficherButton@{afficherButton}!image.h@{image.h}}
+\subsubsection[{afficherButton}]{\setlength{\rightskip}{0pt plus 5cm}void afficherButton (
+\begin{DoxyParamCaption}
+\item[{RenderWindow $\ast$\&}]{window, }
+\item[{{\bf Button} $\ast$}]{button}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_ac7e333c7e00d9589a3bd517e406da686}
+
+
+Fonction qui affiche les objet \hyperlink{classButton}{Button}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em window} & Renderwindow fenetre de jeu qui affichera les sprites \\
+\hline
+{\em button} & \hyperlink{classButton}{Button} que l'on doit afficher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if( button->getHover() ) button->changeSprite(0,192,166,96);
+        else if ( button->getPress() ) button->changeSprite(0,96,166,96);
+        else button->changeSprite(0,0,166,96);
+
+        window->Draw( button->getSprite() );
+        window->Draw( button->getTxt() );
+}
+\end{DoxyCode}
+\hypertarget{image_8h_a1f46ed96401b10df193cf0ad424a321c}{
+\index{image.h@{image.h}!afficherCellules@{afficherCellules}}
+\index{afficherCellules@{afficherCellules}!image.h@{image.h}}
+\subsubsection[{afficherCellules}]{\setlength{\rightskip}{0pt plus 5cm}void afficherCellules (
+\begin{DoxyParamCaption}
+\item[{{\bf GameModel} $\ast$}]{model, }
+\item[{RenderWindow $\ast$\&}]{window, }
+\item[{Sprite $\ast$}]{celluleSprite}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_a1f46ed96401b10df193cf0ad424a321c}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\# AFFICHAGE OBJETS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+\#\#\#\#\#\#\#\#\#\#\#\#\# AFFICHAGE OBJETS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+
+\begin{DoxyParams}{Paramètres}
+{\em model} & \hyperlink{classGameModel}{GameModel} du jeu \\
+\hline
+{\em window} & Renderwindow fenetre de jeu qui affichera les sprites \\
+\hline
+{\em celluleSprite} & Sprite à afficher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        int ti, tj;
+        float w,h;
+        model->getSizePictureCellule(w,h);
+        Unite e;
+        
+        model->getTailleGrilleCellule(ti, tj);
+        
+        for ( int i=0; i < ti; i++ )
+        {
+                for ( int j=0; j < tj; j++ )
+                {
+                        model->getCoordonneCellule(i, j, e);
+                        if ( model->getEtatCellule(i,j) == alive )
+                        {
+                                if ( model->getSanteCellule(i,j) == resist ) // q
+      uand la cellule est resistante
+                                {
+                                        setSprite(*celluleSprite,0,0,247,247);
+                                        sizepositionimg(*celluleSprite, e.getX(),
+       e.getY(), w, h);
+                                        window->Draw(*celluleSprite);
+                                }
+                                else // si la cellule est normale
+                                {
+                                        setSprite(*celluleSprite,0,494,247,247);
+                                        sizepositionimg(*celluleSprite, e.getX(),
+       e.getY(), w, h);
+                                        window->Draw(*celluleSprite);
+                                }
+                        }
+                        else if ( model->getEtatCellule(i,j) == infest )
+                        {
+                                setSprite(*celluleSprite,0,247,247,247);
+                                sizepositionimg(*celluleSprite, e.getX(), e.getY(
+      ), w, h);
+                                window->Draw(*celluleSprite);
+                        }
+                }
+        }
+}
+\end{DoxyCode}
+\hypertarget{image_8h_a76e7c3f341c5282279a1cde0f9d9e124}{
+\index{image.h@{image.h}!afficherselect@{afficherselect}}
+\index{afficherselect@{afficherselect}!image.h@{image.h}}
+\subsubsection[{afficherselect}]{\setlength{\rightskip}{0pt plus 5cm}void afficherselect (
+\begin{DoxyParamCaption}
+\item[{RenderWindow $\ast$\&}]{window, }
+\item[{Sprite $\ast$}]{select, }
+\item[{const int \&}]{i, }
+\item[{const int \&}]{j, }
+\item[{const float \&}]{w, }
+\item[{const float \&}]{h}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_a76e7c3f341c5282279a1cde0f9d9e124}
+
+
+Fonction qui affiche le cadre de selection des cellules. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em window} & Renderwindow fenetre de jeu qui affichera les sprites \\
+\hline
+{\em select} & Sprite contenant l'image a afficher \\
+\hline
+{\em i,j} & entiers indiquant les indices d'une cellules selectionnée \\
+\hline
+{\em w,h} & réels definissant la taille du selecteur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if ( ((j-1)*h)+30 >= 30 )
+        {
+                sizepositionimg( *select, i*w, ((j-1)*h)+30, w, h);
+                window->Draw( *select );
+        }
+}
+\end{DoxyCode}
+\hypertarget{image_8h_a0c767ab3726e38a0b7ced5ec0464257a}{
+\index{image.h@{image.h}!afficherSlider@{afficherSlider}}
+\index{afficherSlider@{afficherSlider}!image.h@{image.h}}
+\subsubsection[{afficherSlider}]{\setlength{\rightskip}{0pt plus 5cm}void afficherSlider (
+\begin{DoxyParamCaption}
+\item[{RenderWindow $\ast$\&}]{window, }
+\item[{{\bf Slider} $\ast$}]{slider}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_a0c767ab3726e38a0b7ced5ec0464257a}
+
+
+Fonction qui affiche les objet \hyperlink{classSlider}{Slider}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em window} & Renderwindow fenetre de jeu qui affichera les sprites \\
+\hline
+{\em slider} & \hyperlink{classSlider}{Slider} que l'on doit afficher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if ( slider->getMove() ) slider->changeSprite(5,0,5,20);
+        else slider->changeSprite(0,0,5,20);
+
+        window->Draw( slider->getSpriteBg() );
+        window->Draw( slider->getSpriteFg() );
+        window->Draw( slider->getTxtInfo() );
+        window->Draw( slider->getTxtVal() );
+}
+\end{DoxyCode}
+\hypertarget{image_8h_a09283dd26c8f48b1b7eccecba8abac92}{
+\index{image.h@{image.h}!afficherVirus@{afficherVirus}}
+\index{afficherVirus@{afficherVirus}!image.h@{image.h}}
+\subsubsection[{afficherVirus}]{\setlength{\rightskip}{0pt plus 5cm}void afficherVirus (
+\begin{DoxyParamCaption}
+\item[{{\bf GameModel} $\ast$}]{model, }
+\item[{RenderWindow $\ast$\&}]{window, }
+\item[{Sprite $\ast$}]{virusSprite}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_a09283dd26c8f48b1b7eccecba8abac92}
+
+\begin{DoxyCode}
+{
+        int tg = model->getSizeGroupeVirus();
+        float x, y, w, h;
+        
+        for ( int i=0; i < tg; i++ )
+        {
+                model->getCoordonneVirus(i, x, y, w, h);
+                sizepositionimg(*virusSprite, x, y, w, h);
+                window->Draw(*virusSprite);
+        }
+}
+\end{DoxyCode}
+\hypertarget{image_8h_afd14cd7aa23aa260499a2d006b390cfe}{
+\index{image.h@{image.h}!loadimage@{loadimage}}
+\index{loadimage@{loadimage}!image.h@{image.h}}
+\subsubsection[{loadimage}]{\setlength{\rightskip}{0pt plus 5cm}void loadimage (
+\begin{DoxyParamCaption}
+\item[{Image \&}]{img, }
+\item[{Sprite \&}]{spt, }
+\item[{string}]{file, }
+\item[{const float \&}]{x, }
+\item[{const float \&}]{y, }
+\item[{const float \&}]{w, }
+\item[{const float \&}]{h}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_afd14cd7aa23aa260499a2d006b390cfe}
+
+
+Fonction qui simplifie le chargement d'une image dans un sprite et de ça forme. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em img} & Images qui sera chargé dans le sprite \\
+\hline
+{\em spt} & Sprite qu'on doit charger \\
+\hline
+{\em file} & string qui indique le chemin du fichier image \\
+\hline
+{\em x,y,w,h} & réels qui definit taille et coordonné du sprite \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        loadimage(img, spt, file);
+        setSprite(spt, x, y, w, h);
+}
+\end{DoxyCode}
+\hypertarget{image_8h_a5d9a3033db67b84e0648ea2d8aa787bb}{
+\index{image.h@{image.h}!loadimage@{loadimage}}
+\index{loadimage@{loadimage}!image.h@{image.h}}
+\subsubsection[{loadimage}]{\setlength{\rightskip}{0pt plus 5cm}void loadimage (
+\begin{DoxyParamCaption}
+\item[{Image \&}]{img, }
+\item[{Sprite \&}]{spt, }
+\item[{string}]{file}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_a5d9a3033db67b84e0648ea2d8aa787bb}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\# CHARGEMENT IMAGES / TEXTES \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+\#\#\#\#\#\#\#\#\#\#\#\#\# CHARGEMENT IMAGES / TEXTES \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+
+\begin{DoxyParams}{Paramètres}
+{\em img} & Images qui sera chargé dans le sprite \\
+\hline
+{\em spt} & Sprite qu'on doit charger \\
+\hline
+{\em file} & string qui indique le chemin du fichier image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if (!img.LoadFromFile(file) )
+        {
+                cout << "l'images : " << file << " s'est pas chargé ! " << endl;
+        spt = Sprite();
+        }
+        else
+                spt = Sprite( img );
+}
+\end{DoxyCode}
+\hypertarget{image_8h_a72d38eb4a484157fb56c46384589ee5b}{
+\index{image.h@{image.h}!loadtextefont@{loadtextefont}}
+\index{loadtextefont@{loadtextefont}!image.h@{image.h}}
+\subsubsection[{loadtextefont}]{\setlength{\rightskip}{0pt plus 5cm}void loadtextefont (
+\begin{DoxyParamCaption}
+\item[{String \&}]{t, }
+\item[{Font $\ast$}]{f, }
+\item[{const float \&}]{size, }
+\item[{const float \&}]{x, }
+\item[{const float \&}]{y, }
+\item[{const string \&}]{texte}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_a72d38eb4a484157fb56c46384589ee5b}
+
+
+Fonction qui simplifie le chargement d'un texte String. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em t} & String variable qui contiendra le texte \\
+\hline
+{\em f} & Font qui correspond au type d'écriture \\
+\hline
+{\em size,x,y} & réels qui definit taille et coordonnée du String \\
+\hline
+{\em texte} & string qui contient le texte voulu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        t.SetFont(*f);
+        t.SetSize(size);
+        t.SetPosition(x,y);
+        t.SetText(texte);
+        t.SetColor(Color(0,0,0));
+}
+\end{DoxyCode}
+\hypertarget{image_8h_aea710e3bc8656f8bb4141a397228948e}{
+\index{image.h@{image.h}!setSprite@{setSprite}}
+\index{setSprite@{setSprite}!image.h@{image.h}}
+\subsubsection[{setSprite}]{\setlength{\rightskip}{0pt plus 5cm}void setSprite (
+\begin{DoxyParamCaption}
+\item[{Sprite \&}]{spt, }
+\item[{const float \&}]{x, }
+\item[{const float \&}]{y, }
+\item[{const float \&}]{w, }
+\item[{const float \&}]{h}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_aea710e3bc8656f8bb4141a397228948e}
+
+
+Fonction qui définit rectangle de lecture de l'image. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em spt} & Sprite qu'on doit modifier \\
+\hline
+{\em x,y,w,h} & réels qui definit taille et coordonné du rectangle de lecture \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        Rect<int> r(x,y,x+w,y+h);
+        spt.SetSubRect(r);
+}
+\end{DoxyCode}
+\hypertarget{image_8h_aecc57699d416e79ab8cf532ec27a7f3a}{
+\index{image.h@{image.h}!sizepositionimg@{sizepositionimg}}
+\index{sizepositionimg@{sizepositionimg}!image.h@{image.h}}
+\subsubsection[{sizepositionimg}]{\setlength{\rightskip}{0pt plus 5cm}void sizepositionimg (
+\begin{DoxyParamCaption}
+\item[{Sprite \&}]{spt, }
+\item[{const float \&}]{x, }
+\item[{const float \&}]{y, }
+\item[{const float \&}]{w, }
+\item[{const float \&}]{h}
+\end{DoxyParamCaption}
+)}}
+\label{image_8h_aecc57699d416e79ab8cf532ec27a7f3a}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\# MODIFICATION SPRITES \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+\#\#\#\#\#\#\#\#\#\#\#\# MODIFICATION SPRITES \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+
+\begin{DoxyParams}{Paramètres}
+{\em spt} & Sprite qu'on doit modifier \\
+\hline
+{\em x,y,w,h} & réels qui definit taille et coordonné du sprite \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        spt.SetPosition(x,y);
+        spt.Resize(w,h);
+}
+\end{DoxyCode}

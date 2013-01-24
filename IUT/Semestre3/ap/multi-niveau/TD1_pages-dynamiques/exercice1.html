@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta content="fr" http-equiv="Content-Language" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>sans titre 1</title>
+	<script type="text/javascript">
+	
+		function afficher( texte )
+		{
+			alert(texte);
+		}
+		
+		function verifierentier( valeur )
+		{
+			if ( isNaN(valeur) )
+			{
+				afficher('votre variable n\'est pas un entier');
+				for (i=0; i<5; i++ )
+					alert('HOLALALA TU SAIS PAS ECRIRE, T TRO SAL : ' + i);
+			}
+			else
+				afficher('votre variable est un entier');
+		}
+		
+		function afficherinfo( )
+		{
+			if( confirm("ALORS TU VEUX TES INFOS OU PAS ?") )
+			{
+				afficher('Votre écran a une résolution de ' + screen.width + ' / ' + screen.height);
+				afficher('Vous naviguez actuellement avec ' + navigator.appCodeName );
+				afficher('Vous utilisez l\'OS ' + navigator.platform );
+			}
+			
+		}
+		
+		function quelheuredate( variable )
+		{
+			var datetoday;
+			datetoday = new Date();
+			variable.value=(datetoday.getDay() + ' / ' + datetoday.getMonth() + ' / ' + datetoday.getFullYear()
+							 + ' - ' + datetoday.getHours() + ' : ' + datetoday.getMinutes() + ' : ' + datetoday.getSeconds() );
+		}
+		
+		function opennew( titre )
+		{
+			window.open("bibu.html",titre,"menubar=no, width=319, height=560");
+		}
+		
+		function changebacklinkcolor( )
+		{
+			var elem = document.getElementsByName("test")[0];
+			alert(elem.innerHTML);
+			elem.style.visibility = 'false';
+			elem.style.backgroundColor='red';
+		}
+		
+	</script>
+</head>
+
+<body style="background-color: #CCFFFF">
+	
+	
+	<div name="entrerinfo">
+		<form method="post">
+			ENTREZ UNE VALEUR NUMERIQUE OR WHAT ?<br />
+			<br />
+			<input name="champsaisie" type="text" value="tapez moi"/> 
+			<input type="button" name="but" value="OK" onclick="verifierentier(champsaisie.value)"/>
+		</form>
+	</div>
+	<p>&nbsp;</p>
+	<p>TU VEUX DES INFORMATIONS PLUTOT COOL ? ^^</p>
+	<form method="post">
+		<input name="wantinfo" type="button" value="OH YES I WANT" onclick="afficherinfo()"/></form>
+	</p>
+	<p></p>
+	<p>TU VOIS AUJOURD&#39;HUI, LA MAINTENANT JE VEUX LA DATE, ET L&#39;HEURE</p>
+	<form method="post">
+		<input name="showdate" type="button" value="VOILA MONSIEUR" onclick="quelheuredate(dateetheure)"/>
+		<input name="dateetheure" type="text" /></form>
+	</p>
+	<p>&nbsp;</p>
+	<p>OUAIS BAH MAINTENANT JE VEUX UNE NOUVELLE FENETRE, LA TOUTE DE SUITE 
+	!!!!!</p>
+	<p>
+		<input name="newfenetre" type="button" value="okay master..." 
+				ondblclick="opennew('a votre service')"/>&nbsp;
+	 	ou avec ce lien suivant : 
+		<a href="bibu.html" name="test" onmouseover="changebacklinkcolor()" >BIBULAND.FR</a>
+	</p>
+		
+</body>
+
+</html>

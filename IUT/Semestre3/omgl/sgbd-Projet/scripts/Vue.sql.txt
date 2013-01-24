@@ -1,0 +1,16 @@
+-- Vue pour avoir les clients qui on réalisé une ou plusieur achat	
+CREATE OR REPLACE VIEW Vue_ClientAchat AS
+	SELECT C.numero_client, C.nom_client, C.prenom_client, 
+		C.anniversaire_client, C.adresse_client, C.email_client 
+	FROM Clients C, ListeAchat A
+	WHERE C.numero_client = A.client
+	GROUP BY C.numero_client;
+
+-- Vue pour avoir les clients qui on réalisé une ou plusieur location	
+CREATE OR REPLACE VIEW Vue_ClientLocation AS
+	SELECT C.numero_client, C.nom_client, C.prenom_client,  
+		C.anniversaire_client, C.adresse_client, C.email_client 
+	FROM Clients C, ListeLocation L 
+	WHERE C.numero_client = L.client 
+	GROUP BY C.numero_client; 
+	

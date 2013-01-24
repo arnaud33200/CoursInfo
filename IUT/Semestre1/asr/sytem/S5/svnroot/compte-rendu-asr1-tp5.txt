@@ -1,0 +1,26 @@
+
+		   COMPTE RENDU DU TP 5 -  ASR1/USI
+		     Semaine du 11 Octobre 2010
+
+Nom    : 
+Prénom :
+Groupe :
+
+------------------------------------------------------------
+
+Pendant la séance de TP, remplissez ce compte-rendu au fur et 
+à mesure de l'avancement de votre travail. Sauvez de temps en 
+temps. Perdre le fichier est une faute grave.
+
+En fin de séance, envoyez-le (même incomplet) par courrier
+électronique à votre enseignant.
+
+Si vous n'avez pas eu le temps de tout faire, terminez le
+travail pendant la semaine.
+
+------------------------------------------------------------
+
+SVN
+
+% remplissez vous-même
+

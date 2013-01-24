@@ -1,0 +1,116 @@
+\hypertarget{main_8cc}{
+\section{Référence du fichier main.cc}
+\label{main_8cc}\index{main.cc@{main.cc}}
+}
+
+
+main du programme  
+
+
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include \char`\"{}GameModel.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}GameView.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}MenuView.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Intro.h\char`\"{}}\par
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const float \hyperlink{main_8cc_a24712aa44b06aa8dfd6515a0ba4b0133}{SCREEN\_\-WIDTH} = 800
+\item 
+const float \hyperlink{main_8cc_a73b55119d65c4180955d91f4f9d56414}{SCREEN\_\-HEIGHT} = 600
+\item 
+const float \hyperlink{main_8cc_a5110a4ccf978517ca57d926a787a9316}{PAR\_\-WIDTH} = 198
+\item 
+const float \hyperlink{main_8cc_a55ab860c8bd6f8b34a7c3b2cb4bb25e7}{PAR\_\-HEIGHT} = 600
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+main du programme \begin{DoxyAuthor}{Auteur}
+Mayira.Y Arnaud.L 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+avril/mai 2011 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{main_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{
+\index{main.cc@{main.cc}!main@{main}}
+\index{main@{main}!main.cc@{main.cc}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+$\sim$$\sim$ COMMENTER CETTE PARTIE POUR ENLEVER L'INTRODUCTION 
+
+
+\begin{DoxyCode}
+{
+        srand(time(NULL));
+
+// DEBUT
+        Intro* introjeu = new Intro;
+        while(introjeu->treatEvents())
+        { introjeu->draw(); }
+        delete introjeu;
+// FIN
+        
+        GameModel * model = new GameModel(SCREEN_WIDTH, SCREEN_HEIGHT);
+        
+        MenuView * menuView = new MenuView(PAR_WIDTH, PAR_HEIGHT, 0, 0);
+        GameView * gameView = new GameView(SCREEN_WIDTH, SCREEN_HEIGHT+30, 210, 0
+      );
+        
+        gameView->setModel(model);
+        gameView->setMenu(menuView);
+        menuView->setModel(model);
+
+        while(gameView->treatEvents())
+        {
+                menuView->treatEvents();
+                model->nextStep();
+                gameView->draw();
+                menuView->draw();
+        }
+        
+        delete gameView; 
+        delete menuView; 
+        delete model; 
+        
+        return EXIT_SUCCESS;
+}
+\end{DoxyCode}
+
+
+\subsection{Documentation des variables}
+\hypertarget{main_8cc_a55ab860c8bd6f8b34a7c3b2cb4bb25e7}{
+\index{main.cc@{main.cc}!PAR\_\-HEIGHT@{PAR\_\-HEIGHT}}
+\index{PAR\_\-HEIGHT@{PAR\_\-HEIGHT}!main.cc@{main.cc}}
+\subsubsection[{PAR\_\-HEIGHT}]{\setlength{\rightskip}{0pt plus 5cm}const float {\bf PAR\_\-HEIGHT} = 600}}
+\label{main_8cc_a55ab860c8bd6f8b34a7c3b2cb4bb25e7}
+\hypertarget{main_8cc_a5110a4ccf978517ca57d926a787a9316}{
+\index{main.cc@{main.cc}!PAR\_\-WIDTH@{PAR\_\-WIDTH}}
+\index{PAR\_\-WIDTH@{PAR\_\-WIDTH}!main.cc@{main.cc}}
+\subsubsection[{PAR\_\-WIDTH}]{\setlength{\rightskip}{0pt plus 5cm}const float {\bf PAR\_\-WIDTH} = 198}}
+\label{main_8cc_a5110a4ccf978517ca57d926a787a9316}
+\hypertarget{main_8cc_a73b55119d65c4180955d91f4f9d56414}{
+\index{main.cc@{main.cc}!SCREEN\_\-HEIGHT@{SCREEN\_\-HEIGHT}}
+\index{SCREEN\_\-HEIGHT@{SCREEN\_\-HEIGHT}!main.cc@{main.cc}}
+\subsubsection[{SCREEN\_\-HEIGHT}]{\setlength{\rightskip}{0pt plus 5cm}const float {\bf SCREEN\_\-HEIGHT} = 600}}
+\label{main_8cc_a73b55119d65c4180955d91f4f9d56414}
+\hypertarget{main_8cc_a24712aa44b06aa8dfd6515a0ba4b0133}{
+\index{main.cc@{main.cc}!SCREEN\_\-WIDTH@{SCREEN\_\-WIDTH}}
+\index{SCREEN\_\-WIDTH@{SCREEN\_\-WIDTH}!main.cc@{main.cc}}
+\subsubsection[{SCREEN\_\-WIDTH}]{\setlength{\rightskip}{0pt plus 5cm}const float {\bf SCREEN\_\-WIDTH} = 800}}
+\label{main_8cc_a24712aa44b06aa8dfd6515a0ba4b0133}

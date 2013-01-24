@@ -1,0 +1,266 @@
+Script started on lun 18 oct 2010 11:34:01 CEST
+aladouce@info-moyox:~/asr/S6$ tree /media/usbdisk1/outil/[15@rsync -vr ../outil/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[15Ptree[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ktree /media/usbdisk1/outil/[Ktree /media/usbdisk1/outil/[15@rsync -vr ../outil/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[15Ptree[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K(ls;date)
+[00m[01;35mdavide.jpg[00m  [01;35mf2.png[00m  [00mmonfichier[00m  [00mscript[00m  [01;35mtube.jpg[00m  [01;35mtube.png[00m  [00mtypescript[00m
+[mlundi 18 octobre 2010, 11:35:38 (UTC+0200)
+aladouce@info-moyox:~/asr/S6$ emacs exemple.cc &
+[1] 6670
+aladouce@info-moyox:~/asr/S6$ make exemple.cc exemple
+make: Rien à faire pour « exemple.cc ».
+g++     exemple.cc   -o exemple
+exemple.cc:2: error: expected constructor, destructor, or type conversion before ‘namespace’
+make: *** [exemple] Erreur 1
+aladouce@info-moyox:~/asr/S6$ ls
+[00m[01;35mdavide.jpg[00m  [00mexemple.cc[00m  [01;35mf2.png[00m  [00mmonfichier[00m  [00mscript[00m  [01;35mtube.jpg[00m  [01;35mtube.png[00m  [00mtypescript[00m
+[maladouce@info-moyox:~/asr/S6$ 
+aladouce@info-moyox:~/asr/S6$ lsmake exemple.cc exemple
+make: Rien à faire pour « exemple.cc ».
+g++     exemple.cc   -o exemple
+exemple.cc:2: error: expected constructor, destructor, or type conversion before ‘namespace’
+make: *** [exemple] Erreur 1
+aladouce@info-moyox:~/asr/S6$ make exemple.cc exemple
+make: Rien à faire pour « exemple.cc ».
+g++     exemple.cc   -o exemple
+exemple.cc:4: error: expected `;' before ‘int’
+make: *** [exemple] Erreur 1
+aladouce@info-moyox:~/asr/S6$ make exemple.cc exemple
+make: Rien à faire pour « exemple.cc ».
+g++     exemple.cc   -o exemple
+aladouce@info-moyox:~/asr/S6$ ls
+[00m[01;35mdavide.jpg[00m  [01;32mexemple[00m  [00mexemple.cc[00m  [00mexemple.cc~[00m  [01;35mf2.png[00m  [00mmonfichier[00m  [00mscript[00m  [01;35mtube.jpg[00m  [01;35mtube.png[00m  [00mtypescript[00m
+[maladouce@info-moyox:~/asr/S6$ emacs[K[K[K[K[K./exemple 
+sortie standard
+error
+aladouce@info-moyox:~/asr/S6$ ./exemple 2> error
+sortie standard
+aladouce@info-moyox:~/asr/S6$ ./exemple 2> error& error1 error
+sortie standard
+error
+aladouce@info-moyox:~/asr/S6$ lq[Ks [K[K[Kcat e
+error        exemple      exemple.cc   exemple.cc~  
+aladouce@info-moyox:~/asr/S6$ cat error 
+error
+aladouce@info-moyox:~/asr/S6$ ll
+[00mtotal 1232
+-rw-r-----+ 1 aladouce info_etudiants 579033 oct 18 11:03 [01;35mdavide.jpg[00m
+-rw-rw----+ 1 aladouce info_etudiants      6 oct 18 11:42 [00merror[00m
+-rwxrwx--x+ 1 aladouce info_etudiants   8109 oct 18 11:41 [01;32mexemple[00m
+-rw-rw----+ 1 aladouce info_etudiants    133 oct 18 11:41 [00mexemple.cc[00m
+-rw-rw----+ 1 aladouce info_etudiants    133 oct 18 11:40 [00mexemple.cc~[00m
+-rw-rw----+ 1 aladouce info_etudiants 397991 oct 18 11:11 [01;35mf2.png[00m
+-rw-rw----+ 1 aladouce info_etudiants   3734 oct 18 10:51 [00mmonfichier[00m
+-rw-rw----+ 1 aladouce info_etudiants    456 oct 18 11:33 [00mscript[00m
+-rw-rw----+ 1 aladouce info_etudiants  47854 oct 18 11:14 [01;35mtube.jpg[00m
+-rw-rw----+ 1 aladouce info_etudiants 142207 oct 18 11:20 [01;35mtube.png[00m
+-rw-rw----+ 1 aladouce info_etudiants      0 oct 18 11:34 [00mtypescript[00m
+[maladouce@info-moyox:~/asr/S6$ emacs toto &
+[2] 6923
+aladouce@info-moyox:~/asr/S6$ od toto 
+0000000 067564 067564 064440 020154 020141 061541 062550 164564
+0000020 160040 066040 020141 072563 062560 062562 072164 026145
+0000040 062040 020145 060554 061040 164151 062562 062440 020164
+0000060 062544 066040 020141 060563 061565 071551 062563
+0000076
+[2]+  Done                    emacs toto
+aladouce@info-moyox:~/asr/S6$ od toto [K[K[K[K[K[K[K[Kcat toto 
+toto il a achet� � la superette, de la bi�re et de la saucissealadouce@info-moyox:~/asr/S6$ cat toto 
+toto il a achet� � la superette, de la bi�re et de la saucissealadouce@info-moyox:~/asr/S6$ cat toto od -c toto 
+cat: option invalide -- c
+Pour en savoir davantage, faites: « cat --help ».
+aladouce@info-moyox:~/asr/S6$ cat toto od -c toto [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kod -c toto 
+0000000   t   o   t   o       i   l       a       a   c   h   e   t 351
+0000020     340       l   a       s   u   p   e   r   e   t   t   e   ,
+0000040       d   e       l   a       b   i 350   r   e       e   t    
+0000060   d   e       l   a       s   a   u   c   i   s   s   e
+0000076
+aladouce@info-moyox:~/asr/S6$ file toto 
+toto: ISO-8859 text, with no line terminators
+aladouce@info-moyox:~/asr/S6$ wget http;//ww[K[K[K[K[K://www.labrei[K[Ki.fr -o fo[K[Kfichier.html
+aladouce@info-moyox:~/asr/S6$ wget http://www.labri.fr -o fichier.html[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile toto [K[K[K[K[K[K[K[K[K[K[Kemacs fichier.html 
+aladouce@info-moyox:~/asr/S6$ emacs fichier.html wget http://www.labri.fr -o fichier.html
+aladouce@info-moyox:~/asr/S6$ wget http://www.labri.fr -o fichier.html[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[21Pemacs fichier.html 
+aladouce@info-moyox:~/asr/S6$ od -c p[Kfichier.html | less
+[?1049h[?1h=0000000   -   -   2   0   1   0   -   1   0   -   1   8       1   2   :
+0000020   0   7   :   5   2   -   -           h   t   t   p   :   /   /
+0000040   w   w   w   .   l   a   b   r   i   .   f   r   /  \n   R 303
+0000060 251   s   o   l   u   t   i   o   n       d   e       w   w   w
+0000100   .   l   a   b   r   i   .   f   r   .   .   .       1   4   7
+0000120   .   2   1   0   .   8   .   5   9  \n   C   o   n   n   e   x
+0000140   i   o   n       v   e   r   s       w   w   w   .   l   a   b
+0000160   r   i   .   f   r   |   1   4   7   .   2   1   0   .   8   .
+0000200   5   9   |   :   8   0   .   .   .   c   o   n   n   e   c   t
+0000220 303 251   .  \n   r   e   q   u 303 252   t   e       H   T   T
+0000240   P       t   r   a   n   s   m   i   s   e   ,       e   n    
+0000260   a   t   t   e   n   t   e       d   e       l   a       r 303
+0000300 251   p   o   n   s   e   .   .   .   2   0   0       O   K  \n
+0000320   L   o   n   g   u   e   u   r   :       2   3   2   8   8    
+0000340   (   2   3   K   )       [   t   e   x   t   /   h   t   m   l
+0000360   ]  \n   S   a   v   i   n   g       t   o   :       `   i   n
+0000400   d   e   x   .   h   t   m   l   .   1   '  \n  \n            
+0000420           0   K       .   .   .   .   .   .   .   .   .   .    
+0000440   .   .   .   .   .   .   .   .   .   .       .   .            
+0000460                                                                
+0000500                                               1   0   0   %    
+0000520       3   1   7   M   =   0   s  \n  \n   2   0   1   0   -   1
+0000540   0   -   1   8       1   2   :   0   7   :   5   3       (   3
+0000560   1   7       M   B   /   s   )       -     302 253       i   n
+0000600   d   e   x   .   h   t   m   l   .   1     302 273       s   a
+0000620   u   v   e   g   a   r   d 303 251       [   2   3   2   8   8
+0000640   /   2   3   2   8   8   ]  \n  \n
+0000651
+[7m(END) [27m[K[K[?1l>[?1049laladouce@info-moyox:~/asr/S6$ iconv -f latin1 -t  utf8 f-o f[K[K[K[K[Ktoto  [K-o totoo[K.utf
+aladouce@info-moyox:~/asr/S6$ 
+aladouce@info-moyox:~/asr/S6$ ls
+[00m[01;35mdavide.jpg[00m  [00merror[00m  [01;32mexemple[00m  [00mexemple.cc[00m  [00mexemple.cc~[00m  [01;35mf2.png[00m  [00mfichier.html[00m  [00mindex.html[00m  [00mindex.html.1[00m  [00mmonfichier[00m  [00mscript[00m  [00mtoto[00m  [00mtoto.utf[00m  [01;35mtube.jpg[00m  [01;35mtube.png[00m  [00mtypescript[00m
+[maladouce@info-moyox:~/asr/S6$ od -c[K[K[K[K[Kls -l toto*
+[00m-rw-rw----+ 1 aladouce info_etudiants 62 oct 18 11:58 [00mtoto[00m
+-rw-rw----+ 1 aladouce info_etudiants 65 oct 18 12:13 [00mtoto.utf[00m
+[maladouce@info-moyox:~/asr/S6$ od -o toto.utf 
+0000000 067564 067564 064440 020154 020141 061541 062550 141564
+0000020 020251 120303 066040 020141 072563 062560 062562 072164
+0000040 026145 062040 020145 060554 061040 141551 071250 020145
+0000060 072145 062040 020145 060554 071440 072541 064543 071563
+0000100 000145
+0000101
+aladouce@info-moyox:~/asr/S6$ emacs toto.utf 
+aladouce@info-moyox:~/asr/S6$ man od
+[?1049h[?1h=OD(1)                                                                            User Commands                                                                            OD(1)[m
+[m
+[1mNAME[0m[m
+       od - dump files in octal and other formats[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mod[0m [[4mOPTION[24m]... [[4mFILE[24m]...[m
+       [1mod[0m [[4m-abcdfilosx[24m]... [[4mFILE[24m] [[[4m+[24m][4mOFFSET[24m[[4m.[24m][[4mb[24m]][m
+       [1mod[0m [4m--traditional[24m [[4mOPTION[24m]... [[4mFILE[24m] [[[4m+[24m][4mOFFSET[24m[[4m.[24m][[4mb[24m] [[4m+[24m][[4mLABEL[24m][[4m.[24m][[4mb[24m]][m
+[m
+[1mDESCRIPTION[0m[m
+       Write an unambiguous representation, octal bytes by default, of FILE to standard output.  With more than one FILE argument, concatenate them in the listed order to form[m
+       the input.  With no FILE, or when FILE is -, read standard input.[m
+[m
+       All arguments to long options are mandatory for short options.[m
+[m
+       [1m-A[0m, [1m--address-radix[0m=[4mRADIX[24m[m
+              decide how file offsets are printed[m
+[m
+       [1m-j[0m, [1m--skip-bytes[0m=[4mBYTES[24m[m
+              skip BYTES input bytes first[m
+[m
+       [1m-N[0m, [1m--read-bytes[0m=[4mBYTES[24m[m
+              limit dump to BYTES input bytes[m
+[m
+       [1m-S[0m, [1m--strings[0m[=[4mBYTES[24m][m
+              output strings of at least BYTES graphic chars[m
+[m
+       [1m-t[0m, [1m--format[0m=[4mTYPE[24m[m
+              select output format or formats[m
+[m
+       [1m-v[0m, [1m--output-duplicates[0m[m
+              do not use * to mark line suppression[m
+[m
+       [1m-w[0m, [1m--width[0m[=[4mBYTES[24m][m
+              output BYTES bytes per output line[m
+[m
+       [1m--traditional[0m[m
+              accept arguments in traditional form[m
+[m
+       [1m--help[0m display this help and exit[m
+[m
+       [1m--version[0m[m
+              output version information and exit[m
+[m
+   [1mTraditional[0m [1mformat[0m [1mspecifications[0m [1mmay[0m [1mbe[0m [1mintermixed;[0m [1mthey[0m [1maccumulate:[0m[m
+       [1m-a[0m     same as [1m-t[0m a,  select named characters, ignoring high-order bit[m
+[m
+       [1m-b[0m     same as [1m-t[0m o1, select octal bytes[m
+[m
+       [1m-c[0m     same as [1m-t[0m c,  select ASCII characters or backslash escapes[m
+[m
+       [1m-d[0m     same as [1m-t[0m u2, select unsigned decimal 2-byte units[m
+[m
+       [1m-f[0m     same as [1m-t[0m fF, select floats[m
+[m
+       [1m-i[0m     same as [1m-t[0m dI, select decimal ints[m
+[m
+       [1m-l[0m     same as [1m-t[0m dL, select decimal longs[m
+[7m Manual page od(1) line 1[27m[K[K[m
+[7m Manual page od(1) line 2[27m[K[K [KESCESC[KOO[KBB[K       [1m-o[0m     same as [1m-t[0m o2, select octal 2-byte units[m
+[7m Manual page od(1) line 5[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 6[27m[K[K [KESCESC[KOO[KBB[K       [1m-s[0m     same as [1m-t[0m d2, select decimal 2-byte units[m
+[7m Manual page od(1) line 7[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 8[27m[K[K [KESCESC[KOO[KBB[K       [1m-x[0m     same as [1m-t[0m x2, select hexadecimal 2-byte units[m
+[7m Manual page od(1) line 9[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 10[27m[K[K [KESCESC[KOO[KBB[K       If first and second call formats both apply, the second format is assumed if the last operand begins with + or (if there are 2 operands) a  digit.   An  OFFSET  operand[m
+[7m Manual page od(1) line 11[27m[K[K [KESCESC[KOO[KBB[K       means  [1m-j[0m OFFSET.  LABEL is the pseudo-address at first byte printed, incremented when dump is progressing.  For OFFSET and LABEL, a 0x or 0X prefix indicates hexadeci‐[m
+[7m Manual page od(1) line 12[27m[K[K [KESCESC[KOO[KBB[K       mal; suffixes may be . for octal and b for multiply by 512.[m
+[7m Manual page od(1) line 13[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 14[27m[K[K [KESCESC[KOO[KBB[K       TYPE is made up of one or more of these specifications:[m
+[7m Manual page od(1) line 15[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 16[27m[K[K [KESCESC[KOO[KBB[K       a      named character, ignoring high-order bit[m
+[7m Manual page od(1) line 17[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 18[27m[K[K [KESCESC[KOO[KBB[K       c      ASCII character or backslash escape[m
+[7m Manual page od(1) line 19[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 20[27m[K[K [KESCESC[KOO[KBB[K       d[SIZE][m
+[7m Manual page od(1) line 21[27m[K[K [KESCESC[KOO[KBB[K              signed decimal, SIZE bytes per integer[m
+[7m Manual page od(1) line 22[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 23[27m[K[K [KESCESC[KOO[KBB[K       f[SIZE][m
+[7m Manual page od(1) line 24[27m[K[K [KESCESC[KOO[KBB[K              floating point, SIZE bytes per integer[m
+[7m Manual page od(1) line 25[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 26[27m[K[K [KESCESC[KOO[KBB[K       o[SIZE][m
+[7m Manual page od(1) line 27[27m[K[K [KESCESC[KOO[KBB[K              octal, SIZE bytes per integer[m
+[7m Manual page od(1) line 28[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 29[27m[K[K [KESCESC[KOO[KBB[K       u[SIZE][m
+[7m Manual page od(1) line 30[27m[K[K [KESCESC[KOO[KBB[K              unsigned decimal, SIZE bytes per integer[m
+[7m Manual page od(1) line 31[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 32[27m[K[K [KESCESC[KOO[KBB[K       x[SIZE][m
+[7m Manual page od(1) line 33[27m[K[K [KESCESC[KOO[KBB[K              hexadecimal, SIZE bytes per integer[m
+[7m Manual page od(1) line 34[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 35[27m[K[K [KESCESC[KOO[KBB[K       SIZE is a number.  For TYPE in doux, SIZE may also be C for sizeof(char), S for sizeof(short), I for sizeof(int) or L for sizeof(long).  If TYPE is f, SIZE may also  be[m
+[7m Manual page od(1) line 36[27m[K[K [KESCESC[KOO[KBB[K       F for sizeof(float), D for sizeof(double) or L for sizeof(long double).[m
+[7m Manual page od(1) line 37[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 38[27m[K[K [KESCESC[KOO[KBB[K       RADIX  is  d  for decimal, o for octal, x for hexadecimal or n for none.  BYTES is hexadecimal with 0x or 0X prefix, and may have a multiplier suffix: b 512, kB 1000, K[m
+[7m Manual page od(1) line 39[27m[K[K [KESCESC[KOO[KBB[K       1024, MB 1000*1000, M 1024*1024, GB 1000*1000*1000, G 1024*1024*1024, and so on for T, P, E, Z, Y.  Adding a z suffix to any type displays printable characters  at  the[m
+[7m Manual page od(1) line 40[27m[K[K [KESCESC[KOO[KBB[K       end of each output line.  [1m--string[0m without a number implies 3.  [1m--width[0m without a number implies 32.  By default, od uses [1m-A[0m o [1m-t[0m d2 [1m-w16[0m.[m
+[7m Manual page od(1) line 41[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 42[27m[K[K [KESCESC[KOO[KBB[K[1mAUTHOR[0m[m
+[7m Manual page od(1) line 43[27m[K[K [KESCESC[KOO[KBB[K       Written by Jim Meyering.[m
+[7m Manual page od(1) line 44[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 45[27m[K[K [KESCESC[KOO[KBB[K[1mREPORTING[0m [1mBUGS[0m[m
+[7m Manual page od(1) line 46[27m[K[K [KESCESC[KOO[KBB[K       Report bugs to <bug-coreutils@gnu.org>.[m
+[7m Manual page od(1) line 47[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 48[27m[K[K [KESCESC[KOO[KBB[K[1mCOPYRIGHT[0m[m
+[7m Manual page od(1) line 49[27m[K[K [KESCESC[KOO[KBB[K       Copyright © 2008 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>[m
+[7m Manual page od(1) line 50[27m[K[K [KESCESC[KOO[KBB[K       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.[m
+[7m Manual page od(1) line 51[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 52[27m[K[K [KESCESC[KOO[KBB[K[1mSEE[0m [1mALSO[0m[m
+[7m Manual page od(1) line 53[27m[K[K [KESCESC[KOO[KBB[K       The full documentation for [1mod[0m is maintained as a Texinfo manual.  If the [1minfo[0m and [1mod[0m programs are properly installed at your site, the command[m
+[7m Manual page od(1) line 54[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 55[27m[K[K [KESCESC[KOO[KBB[K              [1minfo[0m [1mod[0m[m
+[7m Manual page od(1) line 56[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 57[27m[K[K [KESCESC[KOO[KBB[K       should give you access to the complete manual.[m
+[7m Manual page od(1) line 58[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-f[0m     same as [1m-t[0m fF, select floats[m
+[60;1H[K[7m Manual page od(1) line 57[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[60;1H[K[7m Manual page od(1) line 56[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-d[0m     same as [1m-t[0m u2, select unsigned decimal 2-byte units[m
+[60;1H[K[7m Manual page od(1) line 55[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[60;1H[K[7m Manual page od(1) line 54[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-c[0m     same as [1m-t[0m c,  select ASCII characters or backslash escapes[m
+[60;1H[K[7m Manual page od(1) line 53[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[60;1H[K[7m Manual page od(1) line 52[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-b[0m     same as [1m-t[0m o1, select octal bytes[m
+[60;1H[K[7m Manual page od(1) line 51[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[60;1H[K[7m Manual page od(1) line 50[27m[K[K [KESCESC[KOO[KAA[K[HM       [1m-a[0m     same as [1m-t[0m a,  select named characters, ignoring high-order bit[m
+[60;1H[K[7m Manual page od(1) line 49[27m[K[K [KESCESC[KOO[KAA[K[HM   [1mTraditional[0m [1mformat[0m [1mspecifications[0m [1mmay[0m [1mbe[0m [1mintermixed;[0m [1mthey[0m [1maccumulate:[0m[m
+[60;1H[K[7m Manual page od(1) line 48[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[60;1H[K[7m Manual page od(1) line 47[27m[K[K [KESCESC[KOO[KAA[K[HM              output version information and exit[m
+[60;1H[K[7m Manual page od(1) line 46[27m[K[K [KESCESC[KOO[KBB[K       Report bugs to <bug-coreutils@gnu.org>.[m
+[7m Manual page od(1) line 47[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 48[27m[K[K [KESCESC[KOO[KBB[K[1mCOPYRIGHT[0m[m
+[7m Manual page od(1) line 49[27m[K[K [KESCESC[KOO[KBB[K       Copyright © 2008 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>[m
+[7m Manual page od(1) line 50[27m[K[K [KESCESC[KOO[KBB[K       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.[m
+[7m Manual page od(1) line 51[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 52[27m[K[K [KESCESC[KOO[KBB[K[1mSEE[0m [1mALSO[0m[m
+[7m Manual page od(1) line 53[27m[K[K [KESCESC[KOO[KBB[K       The full documentation for [1mod[0m is maintained as a Texinfo manual.  If the [1minfo[0m and [1mod[0m programs are properly installed at your site, the command[m
+[7m Manual page od(1) line 54[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 55[27m[K[K [KESCESC[KOO[KBB[K              [1minfo[0m [1mod[0m[m
+[7m Manual page od(1) line 56[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 57[27m[K[K [KESCESC[KOO[KBB[K       should give you access to the complete manual.[m
+[7m Manual page od(1) line 58[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page od(1) line 59[27m[K[K [KESCESC[KOO[KBB[KGNU coreutils 6.9.92.4-f088d-dirty                                                January 2008                                                                            OD(1)[m
+[7m Manual page od(1) line 60[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m Manual page od(1) line 60/120 (END)[27m

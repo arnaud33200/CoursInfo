@@ -1,0 +1,37 @@
+test 1 : F f;
+     Constructeur M()
+     Constructeur F()
+     Destructeur ~F()
+     Destructeur ~M()
+
+test 2 : F f(12);
+     constructor M()
+     constructor F(int)
+     Destructeur ~F()
+     Destructeur ~M()
+     
+     
+test 5 : M* f = new F(); f->hello(); 
+	constructor M()
+	constructor F()
+	Bonjour de la part de M
+	Destructor ~M()
+	
+lorsque on met en virtual le destructeur de M
+	Destructor ~F()
+	
+	
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+dynamic_cast<Animal*> : indique qu'il s'agit d'un pointeur de type aniaA
+
+Animal poisson();
+Element epoisson();
+
+
+mettre des méthodes en virtuals -> creation d'une classe abstraite
+=> déclaré avec une classe fille
+
+	
+
+     

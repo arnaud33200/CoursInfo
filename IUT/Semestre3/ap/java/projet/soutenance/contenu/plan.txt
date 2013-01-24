@@ -1,0 +1,11 @@
+I : struture et adaptation
+   -> expliquer notre diagramme ( reflexion objet
+   -> on s'est adapaté a JAVA
+
+II : implémentation et outil
+   -> technique pour mettre en place les salles
+   -> organisation level changer + nouvel outil
+
+III : detail et explication
+   -> notre algo reste trés efficace
+   -> une demo avec salle créer 

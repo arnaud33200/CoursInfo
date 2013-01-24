@@ -1,0 +1,261 @@
+
+		   COMPTE RENDU DU TP 5 -  ASR1/USI
+		     Semaine du 11 Octobre 2010
+
+Nom    : Arnaud
+Prénom : Ladoucette
+Groupe : S1C''
+
+------------------------------------------------------------
+
+Pendant la séance de TP, remplissez ce compte-rendu au fur et 
+à mesure de l'avancement de votre travail. Sauvez de temps en 
+temps. Perdre le fichier est une faute grave.
+
+En fin de séance, envoyez-le (même incomplet) par courrier
+électronique à votre enseignant.
+
+Si vous n'avez pas eu le temps de tout faire, terminez le
+travail pendant la semaine.
+
+------------------------------------------------------------
+
+SVN
+
+************************************************************
+// 1.2 : Créer un dépôt SVN
+************************************************************
+************************************************************
+
+************************************************************
+// creer un dépot : //
+************************************************************
+
+-> svnadmin create $HOME/svnroot
+
+
+
+********************************************************************************
+********************************************************************************
+
+
+
+************************************************************
+// 1.3 : initialiser et gérer un projet avec svn
+************************************************************
+************************************************************
+
+
+************************************************************
+// 1/  importer création du projet "mon-projet-1" : //
+************************************************************
+
+-> svn import projet-test/ file:///net/8280/Home/aladouce/svnroot/mon-projet-1 
+
+
+************************************************************
+// 3/  aprés suppression du repétoire "projet-test", comande pour faire une copie local du projet
+************************************************************
+
+-> svn checkout file:///net/8280/Home/aladouce/svnroot
+
+
+
+************************************************************
+// 4/  consulter le contenue
+************************************************************
+
+-> tree:
+.
+|-- #compte-rendu-asr1-tp5.txt#
+|-- compte-rendu-asr1-tp5.txt
+|-- feuille-tp5.pdf
+`-- svnroot
+    |-- compte-rendu-asr1-tp5.txt
+    |-- feuille-tp5.pdf
+    |-- mon-projet-1
+    `-- projet-test
+
+
+************************************************************
+// 6/ fichier ESSAI1.txt prét a etre inseré dans le projet ?
+************************************************************
+
+-> svn statut 
+   ?      ESSAI1.txt
+
+svn a reconnu le fichier comme etant inconnu au projet
+donc prét a etre inséré
+
+
+************************************************************
+// 7/ valider l'ajout du fichier
+************************************************************
+
+-> svn commit ESSAI1.txt 
+       svn: Échec de la propagation (commit), détails : 
+       svn: '/net/8280/Home/aladouce/asr/S5/svnroot/mon-projet-1/ESSAI1.txt' n'est pas versionné
+
+
+il faut utiliser la comande svn add pour le versionné :
+
+-> svn add ESSAI1.txt 
+       A         ESSAI1.txt
+
+puis refaire un commit
+-> svn commit ESSAI1.txt 
+
+       Entrée du journal non modifié ou non précisé
+       a)nnule, c)ontinue, e)dite
+-> c
+	Ajout          ESSAI1.txt
+   	Transmission des données .
+  	Révision 3 propagée.
+
+
+et vérifier la intégration de la copie:
+
+-> aladouce@info-gernellex:~/asr/S5/svnroot/mon-projet-1$ svnlook tree /net/8280/Home/aladouce/svnroot/
+
+        projet-test/
+	feuille-tp5.pdf
+ 	mon-projet-1/
+  	ESSAI1.txt
+ 	compte-rendu-asr1-tp5.txt
+
+
+************************************************************
+// 8/ creation du repertoir SUB_DIRTEST et du fichier ESSAI2.txt
+************************************************************
+
+enregistrement dans la copie local:
+
+->  svn add SUBD_DIRTEST/
+    	A         SUBD_DIRTEST
+	A         SUBD_DIRTEST/ESSAI2.TXT
+
+
+expédition de la copie locale dans le depot:
+
+-> svn commit
+
+       Entrée du journal non modifié ou non précisé
+       a)nnule, c)ontinue, e)dite
+-> c
+       Ajout          mon-projet-1/SUBD_DIRTEST
+       Ajout          mon-projet-1/SUBD_DIRTEST/ESSAI2.TXT
+       Transmission des données .
+       Révision 4 propagée.
+
+
+verification de la copie :
+
+-> svnlook tree /net/8280/Home/aladouce/svnroot/
+
+   	    projet-test/
+	     feuille-tp5.pdf
+	      mon-projet-1/
+	        ESSAI1.txt
+		  SUBD_DIRTEST/
+		     ESSAI2.TXT
+		      compte-rendu-asr1-tp5.txt
+
+
+************************************************************
+// 9/ voir historique
+************************************************************
+
+-> svn log -v
+       ------------------------------------------------------------------------
+	r2 | aladouce | 2010-10-12 14:31:47 +0200 (mar 12 oct 2010) | 1 line
+	Chemins modifiés :
+	   A /mon-projet-1
+
+
+	------------------------------------------------------------------------
+
+
+************************************************************
+// 10/ effacer le fichier ESSAI1.txt
+************************************************************
+
+-> svn st
+       !      ESSAI1.txt
+
+( le "!" indique alors ici une supression d'un fichier
+et qu'il y a pas encore sychronisation ave le depot )
+
+
+pour le restauré :
+
+-> svn up
+       'ESSAI1.txt' restauré
+       À la révision 4.
+
+
+************************************************************
+//  11/ modification et intégration du fichier ESSAI1.txt
+************************************************************
+
+aprés modification, verification de l'état de la copie :
+
+-> svn st
+       M      ESSAI1.txt
+
+(le "M" indique qu'il y a eu une modification dans la copie locale)
+
+
+intégration de la modification:
+
+-> svn commit ESSAI1.txt 
+
+      Entrée du journal non modifié ou non précisé
+      a)nnule, c)ontinue, e)dite
+-> c
+      Envoi          ESSAI1.txt
+      Transmission des données .
+      Révision 5 propagée.
+
+
+************************************************************
+// 12/ affichage historique
+************************************************************
+
+-> svn log -v
+       ------------------------------------------------------------------------
+       r4 | aladouce | 2010-10-12 15:20:50 +0200 (mar 12 oct 2010) | 1 line
+       Chemins modifiés :
+        A /mon-projet-1/SUBD_DIRTEST
+        A /mon-projet-1/SUBD_DIRTEST/ESSAI2.TXT
+
+
+       ------------------------------------------------------------------------
+       r3 | aladouce | 2010-10-12 15:13:02 +0200 (mar 12 oct 2010) | 1 line
+       Chemins modifiés :
+         A /mon-projet-1/ESSAI1.txt
+
+
+	 ------------------------------------------------------------------------
+	 r2 | aladouce | 2010-10-12 14:31:47 +0200 (mar 12 oct 2010) | 1 line
+	 Chemins modifiés :
+ 	   A /mon-projet-1
+
+
+	 ------------------------------------------------------------------------
+
+ 
+************************************************************
+// 13/ afficher la différence entre les deux modifications
+************************************************************
+
+-> svn di -r 3 ESSAI1.txt 
+       Index: ESSAI1.txt
+       ===================================================================
+       --- ESSAI1.txt	(révision 3)
+       +++ ESSAI1.txt	(copie de travail)
+       @@ -1 +1,2 @@
+        voili voilou
+	+c'est la fête
+
+
+

@@ -1,0 +1,173 @@
+\hypertarget{enum_8h}{
+\section{Référence du fichier enum.h}
+\label{enum_8h}\index{enum.h@{enum.h}}
+}
+
+
+énumérations.  
+
+
+{\ttfamily \#include $<$string$>$}\par
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \{ \hyperlink{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90ac188eabb2d61ddb1e8632280be9b0dd5}{alive} = 1, 
+\hyperlink{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90a2bc11c916ebf99c8bd8b66b416de6d62}{dead} = 0, 
+\hyperlink{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90a466e13e039a43220ab74e7153fea1dee}{infest} = -\/1
+ \}
+\begin{DoxyCompactList}\small\item\em DEFINIT L'ETAT D'UNE CELLULE. \end{DoxyCompactList}\item 
+enum \hyperlink{enum_8h_ae2f10db0fed275ae9f323a3c41243971}{health} \{ \hyperlink{enum_8h_ae2f10db0fed275ae9f323a3c41243971aace903014fa5080cb1eae93ba8fd3c95}{resist} = 1, 
+\hyperlink{enum_8h_ae2f10db0fed275ae9f323a3c41243971aebc81705969b8c5ae986b0b2ec08d1d5}{normal} = 0
+ \}
+\begin{DoxyCompactList}\small\item\em DEFINIT LA RESISTANCE D'UNE CELLULE. \end{DoxyCompactList}\item 
+enum \hyperlink{enum_8h_af1ffd7c07d3cf727dfbec1ee327606fa}{tab} \{ \hyperlink{enum_8h_af1ffd7c07d3cf727dfbec1ee327606faa0eafdaca1e72f724021867b23c306f35}{cellule}, 
+\hyperlink{enum_8h_af1ffd7c07d3cf727dfbec1ee327606faa638bd4b3b8670087bc11099bb1a0ceb4}{virus}
+ \}
+\begin{DoxyCompactList}\small\item\em DEFINIT LES ONGLETS DE LA FENETRE PARAMETRE. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{enum_8h_a3af91b8823f58aa1f4b22122f51f0a49}{getState} (const int \&n)
+\begin{DoxyCompactList}\small\item\em ACCESSEURS SUR LES ENUMS. \end{DoxyCompactList}\item 
+\hyperlink{enum_8h_ae2f10db0fed275ae9f323a3c41243971}{health} \hyperlink{enum_8h_a710ba0bd49283fdcb447958f98f7b116}{getHealth} (const int \&n)
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+énumérations. \begin{DoxyAuthor}{Auteur}
+Mayira.Y Arnaud.L 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+avril/mai 2011 
+\end{DoxyDate}
+
+
+\subsection{Documentation du type de l'énumération}
+\hypertarget{enum_8h_ae2f10db0fed275ae9f323a3c41243971}{
+\index{enum.h@{enum.h}!health@{health}}
+\index{health@{health}!enum.h@{enum.h}}
+\subsubsection[{health}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf health}}}
+\label{enum_8h_ae2f10db0fed275ae9f323a3c41243971}
+
+
+DEFINIT LA RESISTANCE D'UNE CELLULE. 
+
+sante \hyperlink{classCellule}{Cellule}.
+
+health definit si une cellule est resistante au attaque des virus ou si il s'agit d'une cellule normale. health est aussi associé à un entier. \begin{Desc}
+\item[Valeurs énumérées: ]\par
+\begin{description}
+\index{resist@{resist}!enum.h@{enum.h}}\index{enum.h@{enum.h}!resist@{resist}}\item[{\em 
+\hypertarget{enum_8h_ae2f10db0fed275ae9f323a3c41243971aace903014fa5080cb1eae93ba8fd3c95}{
+resist}
+\label{enum_8h_ae2f10db0fed275ae9f323a3c41243971aace903014fa5080cb1eae93ba8fd3c95}
+}]\index{normal@{normal}!enum.h@{enum.h}}\index{enum.h@{enum.h}!normal@{normal}}\item[{\em 
+\hypertarget{enum_8h_ae2f10db0fed275ae9f323a3c41243971aebc81705969b8c5ae986b0b2ec08d1d5}{
+normal}
+\label{enum_8h_ae2f10db0fed275ae9f323a3c41243971aebc81705969b8c5ae986b0b2ec08d1d5}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+{ resist=1, normal=0 };
+\end{DoxyCode}
+\hypertarget{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90}{
+\index{enum.h@{enum.h}!state@{state}}
+\index{state@{state}!enum.h@{enum.h}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf state}}}
+\label{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90}
+
+
+DEFINIT L'ETAT D'UNE CELLULE. 
+
+Etat \hyperlink{classCellule}{Cellule}.
+
+state definit les trois etats possibles d'une cellule. De plus chaque etat est associé à un entier. \begin{Desc}
+\item[Valeurs énumérées: ]\par
+\begin{description}
+\index{alive@{alive}!enum.h@{enum.h}}\index{enum.h@{enum.h}!alive@{alive}}\item[{\em 
+\hypertarget{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90ac188eabb2d61ddb1e8632280be9b0dd5}{
+alive}
+\label{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90ac188eabb2d61ddb1e8632280be9b0dd5}
+}]\index{dead@{dead}!enum.h@{enum.h}}\index{enum.h@{enum.h}!dead@{dead}}\item[{\em 
+\hypertarget{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90a2bc11c916ebf99c8bd8b66b416de6d62}{
+dead}
+\label{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90a2bc11c916ebf99c8bd8b66b416de6d62}
+}]\index{infest@{infest}!enum.h@{enum.h}}\index{enum.h@{enum.h}!infest@{infest}}\item[{\em 
+\hypertarget{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90a466e13e039a43220ab74e7153fea1dee}{
+infest}
+\label{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90a466e13e039a43220ab74e7153fea1dee}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+{ alive=1, dead=0, infest=-1 };
+\end{DoxyCode}
+\hypertarget{enum_8h_af1ffd7c07d3cf727dfbec1ee327606fa}{
+\index{enum.h@{enum.h}!tab@{tab}}
+\index{tab@{tab}!enum.h@{enum.h}}
+\subsubsection[{tab}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tab}}}
+\label{enum_8h_af1ffd7c07d3cf727dfbec1ee327606fa}
+
+
+DEFINIT LES ONGLETS DE LA FENETRE PARAMETRE. 
+
+Onglet du Menu.
+
+tab definit si l'onglet présent dans \hyperlink{classMenuView}{MenuView} concerne les cellules ou concerne les virus; \begin{Desc}
+\item[Valeurs énumérées: ]\par
+\begin{description}
+\index{cellule@{cellule}!enum.h@{enum.h}}\index{enum.h@{enum.h}!cellule@{cellule}}\item[{\em 
+\hypertarget{enum_8h_af1ffd7c07d3cf727dfbec1ee327606faa0eafdaca1e72f724021867b23c306f35}{
+cellule}
+\label{enum_8h_af1ffd7c07d3cf727dfbec1ee327606faa0eafdaca1e72f724021867b23c306f35}
+}]\index{virus@{virus}!enum.h@{enum.h}}\index{enum.h@{enum.h}!virus@{virus}}\item[{\em 
+\hypertarget{enum_8h_af1ffd7c07d3cf727dfbec1ee327606faa638bd4b3b8670087bc11099bb1a0ceb4}{
+virus}
+\label{enum_8h_af1ffd7c07d3cf727dfbec1ee327606faa638bd4b3b8670087bc11099bb1a0ceb4}
+}]\end{description}
+\end{Desc}
+
+
+\begin{DoxyCode}
+{ cellule, virus };
+\end{DoxyCode}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{enum_8h_a710ba0bd49283fdcb447958f98f7b116}{
+\index{enum.h@{enum.h}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!enum.h@{enum.h}}
+\subsubsection[{getHealth}]{\setlength{\rightskip}{0pt plus 5cm}{\bf health} getHealth (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{n}
+\end{DoxyParamCaption}
+)}}
+\label{enum_8h_a710ba0bd49283fdcb447958f98f7b116}
+
+\begin{DoxyCode}
+{
+        return health(n);
+}
+\end{DoxyCode}
+\hypertarget{enum_8h_a3af91b8823f58aa1f4b22122f51f0a49}{
+\index{enum.h@{enum.h}!getState@{getState}}
+\index{getState@{getState}!enum.h@{enum.h}}
+\subsubsection[{getState}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} getState (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{n}
+\end{DoxyParamCaption}
+)}}
+\label{enum_8h_a3af91b8823f58aa1f4b22122f51f0a49}
+
+
+ACCESSEURS SUR LES ENUMS. 
+
+
+\begin{DoxyCode}
+{
+        return state(n);
+}
+\end{DoxyCode}

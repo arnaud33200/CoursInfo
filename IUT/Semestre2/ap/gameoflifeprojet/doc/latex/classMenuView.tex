@@ -1,0 +1,745 @@
+\hypertarget{classMenuView}{
+\section{Référence de la classe MenuView}
+\label{classMenuView}\index{MenuView@{MenuView}}
+}
+
+
+classe qui gère la partie graphique du jeu  
+
+
+
+
+{\ttfamily \#include $<$MenuView.h$>$}
+
+Graphe d'héritage de MenuView:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMenuView}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMenuView_ae710ce83508b0f6ed1bdfc82808a1649}{MenuView} (const float \&w, const float \&h, const float \&x, const float \&y)
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# CONSTRUCTEUR DESTRUCTEUR \#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+\hyperlink{classMenuView_a4a88288f9b34c9651e3cc26cc7de977a}{$\sim$MenuView} ()
+\item 
+void \hyperlink{classMenuView_adb5b3eb08b57b3b2203bd391f12f2508}{draw} ()
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# ACTION FENETRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+bool \hyperlink{classMenuView_a1834e64b341049e7f6a28a265de80a0f}{treatEvents} ()
+\begin{DoxyCompactList}\small\item\em Methode qui récupére les évenements d'entrées sorties. \end{DoxyCompactList}\item 
+void \hyperlink{classMenuView_adf9242e71526c12177bd582631ea6067}{updateSlider} ()
+\begin{DoxyCompactList}\small\item\em Methode qui met a jours les valeurs de chaque slider du Menu. \end{DoxyCompactList}\item 
+void \hyperlink{classMenuView_af41eff2e272224e69b1328e448224b2c}{openWindow} (const bool \&open, int x, int y)
+\begin{DoxyCompactList}\small\item\em Methode qui reouvre la fenetre du \hyperlink{classMenuView}{MenuView}. \end{DoxyCompactList}\item 
+void \hyperlink{classMenuView_a4cd88f13fab8f23c8341ebfdfcc38763}{changeTabCellule} (const bool \&t)
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# CHANGEMENT ONGLETS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+void \hyperlink{classMenuView_a34b315b75c28860fa72a77bc201cc353}{changeTabVirus} (const bool \&t)
+\begin{DoxyCompactList}\small\item\em méthode qui ouvre l'onglet \char`\"{}Virus\char`\"{} \end{DoxyCompactList}\item 
+bool \hyperlink{classMenuView_a22d149bef690319035f9dd0bbff16b97}{getWindow} () const 
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# ACCESSEURS MENU \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+void \hyperlink{classMenuView_ad84172312bc686e5704e32ec6530bb73}{setModel} (\hyperlink{classGameModel}{GameModel} $\ast$model)
+\end{DoxyCompactItemize}
+\subsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGameModel}{GameModel} $\ast$ \hyperlink{classMenuView_aacb048b144e056ac0b99569fbaef6ac2}{\_\-model}
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# ATRIBUTS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+RenderWindow $\ast$ \hyperlink{classMenuView_a038a98b254b2c5b95217f0effbe0e289}{\_\-window}
+\item 
+\hyperlink{enum_8h_af1ffd7c07d3cf727dfbec1ee327606fa}{tab} \hyperlink{classMenuView_a9fcfd5b227056bc52359edb248289e7a}{\_\-onglet}
+\item 
+int \hyperlink{classMenuView_a5fac451fc6c45479926b8b00865e38ad}{\_\-mouseX}
+\item 
+int \hyperlink{classMenuView_a522046f53c6f43686f3dd25193a2e795}{\_\-mouseY}
+\item 
+Image \hyperlink{classMenuView_a9d00738baf5ed7a58e19b9e233636914}{\_\-bgCellImg}
+\item 
+Image \hyperlink{classMenuView_ad24381fdd0cdfb7585bbace523ca7b17}{\_\-bgVirusImg}
+\item 
+Sprite \hyperlink{classMenuView_a74e92f938b434a54229f4fa81e803fb7}{\_\-bgCellSprite}
+\item 
+Sprite \hyperlink{classMenuView_aaadb330dbaf71ca086ecdc49462ce285}{\_\-bgVirusSprite}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_a52424a068656749a098f0a46f3bcb81e}{\_\-playButton}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_ab437e4727d8381964fa7a0d584ac17b8}{\_\-addColum}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_a5bd024bb7d464417c65087c2e28441d7}{\_\-removeColum}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_a77db02321d1e42439bd61528a14fd5b2}{\_\-addLine}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_ac60ae85c296f4acd1bd92b0156e4dc33}{\_\-removeLine}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_ab34b59aaa6955c9b2e5fae146be8221f}{\_\-addVirus}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_a0bd235fdfcd954c55a4c5f473fc929de}{\_\-removeVirus}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_a1e49e44405b91c463eeff0019b1e822a}{\_\-removeAllVirus}
+\item 
+\hyperlink{classButton}{Button} \hyperlink{classMenuView_a516ac9fa81f55e155e791e7289beef7e}{\_\-updateAll}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a459ca483b65ce8e5b8de24413d332f92}{\_\-vitesseJeu}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a49bd867e05c9f948edade72c9946a5aa}{\_\-minAliveCellule}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_ac8ba89797373b1287c86737c1155b54e}{\_\-maxAliveCellule}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a908ee4bed6feebc980dd326aa94a686c}{\_\-minDeadCellule}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a0a2dddc686d39245959c810388b39707}{\_\-maxDeadCellule}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a7e2350d2ec096544eecb1e6b64406746}{\_\-aleaCellule}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a8d4eb64d57530f53e0a67639bf6daee0}{\_\-aleaResist}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a20a271062852d0a99d8867aff64c1283}{\_\-nbEnfantVirus}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a5ffd50183f18befa3939aa95a94582f1}{\_\-tmpLifeVirus}
+\item 
+\hyperlink{classSlider}{Slider} \hyperlink{classMenuView_a6a8e198f883ccc85a9e2920975e975b7}{\_\-tmpIncubVirus}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+classe qui gère la partie graphique du jeu 
+
+\subsection{Documentation des constructeurs et destructeur}
+\hypertarget{classMenuView_ae710ce83508b0f6ed1bdfc82808a1649}{
+\index{MenuView@{MenuView}!MenuView@{MenuView}}
+\index{MenuView@{MenuView}!MenuView@{MenuView}}
+\subsubsection[{MenuView}]{\setlength{\rightskip}{0pt plus 5cm}MenuView::MenuView (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{w, }
+\item[{const float \&}]{h, }
+\item[{const float \&}]{x, }
+\item[{const float \&}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_ae710ce83508b0f6ed1bdfc82808a1649}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# CONSTRUCTEUR DESTRUCTEUR \#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+
+\begin{DoxyCode}
+: Element(x, y, w, h), 
+
+
+_playButton( 0, 475, 100, 50, 0, "jouer", 20, 8, 25),                                   /
+      / boutton joueur / pause
+
+_addColum( 0, 350, 100, 50, 1, "Ajouter \nColonne", 27, 8, 15),                 /
+      / boutton ajouter une colonne de cellule
+_removeColum( 100, 350, 100, 50, 1, "Enlever \nColonne", 27, 8, 15),    // boutto
+      n enlever une colonne de cellule
+_addLine( 0, 400, 100, 50, 1, "Ajouter  \nLigne", 27, 8, 15),                   /
+      / boutton ajouter une ligne de cellule
+_removeLine( 100, 400, 100, 50, 1, "Enlever\n  Ligne", 25, 8, 15),              /
+      / boutton enlever une ligne de cellule
+_updateAll( 100, 475, 100, 50, 1,"Mise a\n Jour", 28, 8, 15),                   /
+      / boutton mise a jour des cellules
+
+_addVirus( 0, 50, 100, 50, 0, "Ajouter\n Virus", 27, 8, 15),                    /
+      / boutton ajouter un virus
+_removeVirus( 100, 50, 100, 50, 0, "Retirer\n Virus", 27, 8, 15),               /
+      / boutton enlever un virus
+_removeAllVirus( 50, 100, 100, 50, 0, "Enlever\n Tout", 27, 8, 15),             /
+      / boutton tout les virus        
+
+
+_vitesseJeu( 10, 570, 180, 10, 65, 100, 0, 18, "vitesse jeu =" ),               /
+      / vitesse du jeu
+        
+_minAliveCellule( 10, 80, 180, 10, 2, 8, 0, 18, "Min Vivant = " ),              /
+      / minimum cellule voisin pour rester vivant
+_maxAliveCellule( 10, 125, 180, 10, 3, 8, 0, 18, "Max Vivant = " ),     // maximu
+      m cellule voisin pour rester vivant
+_minDeadCellule( 10, 170, 180, 10, 3, 8, 0, 18, "Min Mort = " ),                /
+      / minimum cellule voisin pour devenir vivant
+_maxDeadCellule( 10, 215, 180, 10, 3, 8, 0, 18, "Max Mort = " ),                /
+      / maximum cellule voisin pour devenir vivant
+_aleaCellule( 10, 260, 180, 10, 45, 100, 0, 18, "ViVant/100 = "),               /
+      / pourcentage aleatoire pour l'apparittion de cellule vivante
+_aleaResist(10, 305, 180, 10, 10, 100, 0, 18, "Resistant/100 = "),              /
+      / pourcentage aleatoire pour l'apparattion de cellule resistante
+
+_nbEnfantVirus( 10, 195, 180, 10, 2, 8, 1, 18, "Enfant = " ),                   /
+      / nombre d'enfant descendant d'un virus
+_tmpLifeVirus( 10, 245, 180, 10, 6, 12, 1, 18, "Temps Vie = "  ),               /
+      / temps de vie d'un virus
+_tmpIncubVirus( 10, 295, 180, 10, 2, 8, 1, 18, "Incubation = " )                /
+      / temps d'incubation d'un virus
+
+{
+        _onglet = cellule;
+        _window = new RenderWindow(sf::VideoMode(_w, _h, 32), "Parametre", sf::St
+      yle::Close);
+        _window->SetPosition(_x,_y);
+        
+        loadimage(_bgCellImg, _bgCellSprite, "images/bg_cell.png");
+        loadimage(_bgVirusImg, _bgVirusSprite, "images/bg_virus.png");  
+}
+\end{DoxyCode}
+\hypertarget{classMenuView_a4a88288f9b34c9651e3cc26cc7de977a}{
+\index{MenuView@{MenuView}!$\sim$MenuView@{$\sim$MenuView}}
+\index{$\sim$MenuView@{$\sim$MenuView}!MenuView@{MenuView}}
+\subsubsection[{$\sim$MenuView}]{\setlength{\rightskip}{0pt plus 5cm}MenuView::$\sim$MenuView (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_a4a88288f9b34c9651e3cc26cc7de977a}
+
+\begin{DoxyCode}
+{
+        if(_window != NULL) delete _window;
+}
+\end{DoxyCode}
+
+
+\subsection{Documentation des fonctions membres}
+\hypertarget{classMenuView_a4cd88f13fab8f23c8341ebfdfcc38763}{
+\index{MenuView@{MenuView}!changeTabCellule@{changeTabCellule}}
+\index{changeTabCellule@{changeTabCellule}!MenuView@{MenuView}}
+\subsubsection[{changeTabCellule}]{\setlength{\rightskip}{0pt plus 5cm}void MenuView::changeTabCellule (
+\begin{DoxyParamCaption}
+\item[{const bool \&}]{t}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_a4cd88f13fab8f23c8341ebfdfcc38763}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# CHANGEMENT ONGLETS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+méthode qui ouvre l'onglet \char`\"{}Cellule\char`\"{}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em t} & booléen qui indique si on a cliqué dans la zone de l'onglet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if ( t )
+        {
+                if ( _onglet == virus )
+                {
+                        _onglet = cellule;
+                }
+        }
+}
+\end{DoxyCode}
+\hypertarget{classMenuView_a34b315b75c28860fa72a77bc201cc353}{
+\index{MenuView@{MenuView}!changeTabVirus@{changeTabVirus}}
+\index{changeTabVirus@{changeTabVirus}!MenuView@{MenuView}}
+\subsubsection[{changeTabVirus}]{\setlength{\rightskip}{0pt plus 5cm}void MenuView::changeTabVirus (
+\begin{DoxyParamCaption}
+\item[{const bool \&}]{t}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_a34b315b75c28860fa72a77bc201cc353}
+
+
+méthode qui ouvre l'onglet \char`\"{}Virus\char`\"{} 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em t} & booléen qui indique si on a cliqué dans la zone de l'onglet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if ( t )
+        {
+                if ( _onglet == cellule )
+                {
+                        _onglet = virus;
+                }
+        }
+}
+\end{DoxyCode}
+\hypertarget{classMenuView_adb5b3eb08b57b3b2203bd391f12f2508}{
+\index{MenuView@{MenuView}!draw@{draw}}
+\index{draw@{draw}!MenuView@{MenuView}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void MenuView::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_adb5b3eb08b57b3b2203bd391f12f2508}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# ACTION FENETRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+Methode qui dessine les images et Objets du menu.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rien} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+
+SEULEMENT SI LA FENETRE EST OUVERTE 
+
+
+\begin{DoxyCode}
+{
+        if(_window->IsOpened())
+        {
+                if ( _model->getStateGame() ) _playButton.setTxt( "pause" );
+                        else _playButton.setTxt( "jouer" );
+        
+                if ( _onglet == cellule ) // l'onglet cellule selectionné, affich
+      er ....
+                {
+                        _window->Draw(_bgCellSprite);                   // fond d
+      e menu (select cellule)
+                        
+                        afficherSlider(_window, &_minAliveCellule);             /
+      / slider : min vivant Cellule
+                        afficherSlider(_window, &_maxAliveCellule);             /
+      / slider : max vivant Cellule
+                        afficherSlider(_window, &_minDeadCellule);              /
+      / slider : min mort Cellule
+                        afficherSlider(_window, &_maxDeadCellule);              /
+      / slider : max mort Cellule
+                        afficherSlider(_window, &_aleaCellule);                 /
+      / slider : pourcentage Cellule vivante
+                        afficherSlider(_window, &_aleaResist);                  /
+      / slider : pourcentage Cellule Resistante
+                        
+                                
+                }
+                else // l'onglet virus selectionné, afficher ....
+                {
+                        _window->Draw(_bgVirusSprite);                  // fond d
+      e menu (select virus)
+                        afficherButton(_window, &_addVirus);            // boutto
+      n : ajouter un virus
+                        afficherButton(_window, &_removeVirus);         // boutto
+      n : enlever un virus
+                        afficherButton(_window, &_removeAllVirus);      // boutto
+      n : enlever tous les virus
+                        
+                        afficherSlider(_window, &_nbEnfantVirus);       // slider
+       : nombre d'enfant
+                        afficherSlider(_window, &_tmpLifeVirus);        // slider
+       : temps de vie Virus
+                        afficherSlider(_window, &_tmpIncubVirus);       // slider
+       : temps d'incubation
+                }
+                
+                _model->setVitesse( _vitesseJeu.getVal() );
+                _model->setMinAliveCellule( _minAliveCellule.getVal() );
+                _model->setMaxAliveCellule( _maxAliveCellule.getVal() ); 
+                _model->setMinDeadCellule( _minDeadCellule.getVal() ); 
+                _model->setMaxDeadCellule( _maxDeadCellule.getVal() );
+                _model->setNbEfantVirus( _nbEnfantVirus.getVal() );
+                _model->setDureVieVirus( _tmpLifeVirus.getVal() );
+                _model->setDureIncubVirus( _tmpIncubVirus.getVal() );
+                
+                afficherButton(_window, &_addColum);            // boutton : ajou
+      ter colone cellule
+                afficherButton(_window, &_removeColum);         // boutton : enle
+      ver colone cellule
+                afficherButton(_window, &_addLine);                     // boutto
+      n : ajouter ligne cellule
+                afficherButton(_window, &_removeLine);          // boutton : enle
+      ver ligne cellule       
+                
+                afficherButton(_window, &_playButton);                  // boutto
+      n : jeu en pause ou lecteur
+                afficherButton(_window, &_updateAll);
+                afficherSlider(_window, &_vitesseJeu);
+
+
+                _window->Display();
+                usleep(10000);
+        }
+}
+\end{DoxyCode}
+\hypertarget{classMenuView_a22d149bef690319035f9dd0bbff16b97}{
+\index{MenuView@{MenuView}!getWindow@{getWindow}}
+\index{getWindow@{getWindow}!MenuView@{MenuView}}
+\subsubsection[{getWindow}]{\setlength{\rightskip}{0pt plus 5cm}bool MenuView::getWindow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{classMenuView_a22d149bef690319035f9dd0bbff16b97}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# ACCESSEURS MENU \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+
+\begin{DoxyCode}
+{ return _window->IsOpened(); }
+\end{DoxyCode}
+\hypertarget{classMenuView_af41eff2e272224e69b1328e448224b2c}{
+\index{MenuView@{MenuView}!openWindow@{openWindow}}
+\index{openWindow@{openWindow}!MenuView@{MenuView}}
+\subsubsection[{openWindow}]{\setlength{\rightskip}{0pt plus 5cm}void MenuView::openWindow (
+\begin{DoxyParamCaption}
+\item[{const bool \&}]{open, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_af41eff2e272224e69b1328e448224b2c}
+
+
+Methode qui reouvre la fenetre du \hyperlink{classMenuView}{MenuView}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em open} & booléen venant du Gameview aprés un click sur un boutton \\
+\hline
+{\em x,y} & entiers qui definissent la position d'apparition de la fenetre menu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if ( ! getWindow() && open )
+        {
+                delete _window;
+                _window = new RenderWindow(sf::VideoMode(_w, _h, 32), "Parametre 
+      G O F", sf::Style::Close);
+                //~ _window->SetPosition(0,0);  
+                //~ _window->Display();
+        }
+        
+                
+}
+\end{DoxyCode}
+\hypertarget{classMenuView_ad84172312bc686e5704e32ec6530bb73}{
+\index{MenuView@{MenuView}!setModel@{setModel}}
+\index{setModel@{setModel}!MenuView@{MenuView}}
+\subsubsection[{setModel}]{\setlength{\rightskip}{0pt plus 5cm}void MenuView::setModel (
+\begin{DoxyParamCaption}
+\item[{{\bf GameModel} $\ast$}]{model}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_ad84172312bc686e5704e32ec6530bb73}
+
+\begin{DoxyCode}
+{ 
+        _model = model; 
+}
+\end{DoxyCode}
+\hypertarget{classMenuView_a1834e64b341049e7f6a28a265de80a0f}{
+\index{MenuView@{MenuView}!treatEvents@{treatEvents}}
+\index{treatEvents@{treatEvents}!MenuView@{MenuView}}
+\subsubsection[{treatEvents}]{\setlength{\rightskip}{0pt plus 5cm}bool MenuView::treatEvents (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_a1834e64b341049e7f6a28a265de80a0f}
+
+
+Methode qui récupére les évenements d'entrées sorties. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rien} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        bool result = false;
+        if(_window->IsOpened())
+        {
+        result = true;
+        sf::Event event;
+                while ( _window->GetEvent(event) )
+                {
+                        // evenement permettant de fermer la fenetre
+                if ((event.Type == sf::Event::Closed) ||
+                        ((event.Type == sf::Event::KeyPressed) && (event.Key.Code
+       == sf::Key::Escape))) 
+                        {
+                                _window->Close();
+                                result = false;
+                }
+                
+                _mouseX = _window->GetInput().GetMouseX();
+                _mouseY = _window->GetInput().GetMouseY();
+                
+
+                // ~~~~~~~~~ AJOUTER UN VIRUS DANS LE JEU ~~~~~~~~~~~~~~~~~             
+                if ( _onglet == virus )
+                {
+                                _model->add_virus( clickButton(&event, _mouseX, 
+      _mouseY, &_addVirus) ); 
+                                _model->del_virus( clickButton(&event, _mouseX, 
+      _mouseY, &_removeVirus) );              
+                                _model->removeAllVirus( clickButton(&event, 
+      _mouseX, _mouseY, &_removeAllVirus) );
+                                
+                                moveSlider( &event, _nbEnfantVirus.getSlider(), &
+      _nbEnfantVirus, _mouseX, _mouseY );
+                                moveSlider( &event, _tmpLifeVirus.getSlider(), &
+      _tmpLifeVirus, _mouseX, _mouseY );
+                                moveSlider( &event, _tmpIncubVirus.getSlider(), &
+      _tmpIncubVirus, _mouseX, _mouseY );
+                        }
+                
+                else  // l'onglet Cellule
+                {
+                                moveSlider( &event, _minAliveCellule.getSlider(),
+       &_minAliveCellule, _mouseX, _mouseY );
+                                moveSlider( &event, _maxAliveCellule.getSlider(),
+       &_maxAliveCellule, _mouseX, _mouseY );
+                                moveSlider( &event, _maxDeadCellule.getSlider(), 
+      &_maxDeadCellule, _mouseX, _mouseY );
+                                moveSlider( &event, _minDeadCellule.getSlider(), 
+      &_minDeadCellule, _mouseX, _mouseY );
+                                moveSlider( &event, _aleaCellule.getSlider(), &
+      _aleaCellule, _mouseX, _mouseY );
+                                moveSlider( &event, _aleaResist.getSlider(), &
+      _aleaResist, _mouseX, _mouseY );
+                        }
+                        
+                        updateSlider();
+                        
+                moveSlider( &event, _vitesseJeu.getSlider(), &_vitesseJeu, 
+      _mouseX, _mouseY );
+
+                _model->play_pause( clickButton(&event, _mouseX, _mouseY, &
+      _playButton) );
+                _model->update_all_Cellule( clickButton(&event, _mouseX, _mouseY,
+       &_updateAll) );
+                
+                
+                changeTabCellule( (event.Type == sf::Event::MouseButtonPressed) 
+                                                           && _mouseX >= 0 && _mo
+      useX <=100 && _mouseY >= 0 && _mouseY <= 40 );
+                        changeTabVirus( (event.Type == sf::Event::MouseButtonPres
+      sed) 
+                                                           && _mouseX >= 100 && 
+      _mouseY >= 0 && _mouseY <= 40 );
+        }
+        
+        _model->add_line( clickButton(&event, _mouseX, _mouseY, &_addLine), &
+      _addLine );
+                _model->remove_line( clickButton(&event, _mouseX, _mouseY, &
+      _removeLine), &_removeLine );
+        _model->add_column( clickButton(&event, _mouseX, _mouseY, &_addColum), &
+      _addColum );
+        _model->remove_column( clickButton(&event, _mouseX, _mouseY, &
+      _removeColum), &_removeColum );
+        }
+        return result;
+}
+\end{DoxyCode}
+\hypertarget{classMenuView_adf9242e71526c12177bd582631ea6067}{
+\index{MenuView@{MenuView}!updateSlider@{updateSlider}}
+\index{updateSlider@{updateSlider}!MenuView@{MenuView}}
+\subsubsection[{updateSlider}]{\setlength{\rightskip}{0pt plus 5cm}void MenuView::updateSlider (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classMenuView_adf9242e71526c12177bd582631ea6067}
+
+
+Methode qui met a jours les valeurs de chaque slider du Menu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rien} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        _model->setVitesse( _vitesseJeu.getVal() );
+        _model->setMinAliveCellule( _minAliveCellule.getVal() );
+        _model->setMaxAliveCellule( _maxAliveCellule.getVal() ); 
+        _model->setMinDeadCellule( _minDeadCellule.getVal() ); 
+        _model->setMaxDeadCellule( _maxDeadCellule.getVal() );
+        _model->setAleaCelluleGrille( _aleaCellule.getVal() );
+        _model->setAleaResistGrille( _aleaResist.getVal() );
+        
+        _model->setNbEfantVirus( _nbEnfantVirus.getVal() );
+        _model->setDureVieVirus( _tmpLifeVirus.getVal() );
+        _model->setDureIncubVirus( _tmpIncubVirus.getVal() );
+}
+\end{DoxyCode}
+
+
+\subsection{Documentation des données membres}
+\hypertarget{classMenuView_ab437e4727d8381964fa7a0d584ac17b8}{
+\index{MenuView@{MenuView}!\_\-addColum@{\_\-addColum}}
+\index{\_\-addColum@{\_\-addColum}!MenuView@{MenuView}}
+\subsubsection[{\_\-addColum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-addColum}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_ab437e4727d8381964fa7a0d584ac17b8}
+\hypertarget{classMenuView_a77db02321d1e42439bd61528a14fd5b2}{
+\index{MenuView@{MenuView}!\_\-addLine@{\_\-addLine}}
+\index{\_\-addLine@{\_\-addLine}!MenuView@{MenuView}}
+\subsubsection[{\_\-addLine}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-addLine}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a77db02321d1e42439bd61528a14fd5b2}
+\hypertarget{classMenuView_ab34b59aaa6955c9b2e5fae146be8221f}{
+\index{MenuView@{MenuView}!\_\-addVirus@{\_\-addVirus}}
+\index{\_\-addVirus@{\_\-addVirus}!MenuView@{MenuView}}
+\subsubsection[{\_\-addVirus}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-addVirus}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_ab34b59aaa6955c9b2e5fae146be8221f}
+\hypertarget{classMenuView_a7e2350d2ec096544eecb1e6b64406746}{
+\index{MenuView@{MenuView}!\_\-aleaCellule@{\_\-aleaCellule}}
+\index{\_\-aleaCellule@{\_\-aleaCellule}!MenuView@{MenuView}}
+\subsubsection[{\_\-aleaCellule}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-aleaCellule}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a7e2350d2ec096544eecb1e6b64406746}
+\hypertarget{classMenuView_a8d4eb64d57530f53e0a67639bf6daee0}{
+\index{MenuView@{MenuView}!\_\-aleaResist@{\_\-aleaResist}}
+\index{\_\-aleaResist@{\_\-aleaResist}!MenuView@{MenuView}}
+\subsubsection[{\_\-aleaResist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-aleaResist}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a8d4eb64d57530f53e0a67639bf6daee0}
+\hypertarget{classMenuView_a9d00738baf5ed7a58e19b9e233636914}{
+\index{MenuView@{MenuView}!\_\-bgCellImg@{\_\-bgCellImg}}
+\index{\_\-bgCellImg@{\_\-bgCellImg}!MenuView@{MenuView}}
+\subsubsection[{\_\-bgCellImg}]{\setlength{\rightskip}{0pt plus 5cm}Image {\bf MenuView::\_\-bgCellImg}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a9d00738baf5ed7a58e19b9e233636914}
+\hypertarget{classMenuView_a74e92f938b434a54229f4fa81e803fb7}{
+\index{MenuView@{MenuView}!\_\-bgCellSprite@{\_\-bgCellSprite}}
+\index{\_\-bgCellSprite@{\_\-bgCellSprite}!MenuView@{MenuView}}
+\subsubsection[{\_\-bgCellSprite}]{\setlength{\rightskip}{0pt plus 5cm}Sprite {\bf MenuView::\_\-bgCellSprite}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a74e92f938b434a54229f4fa81e803fb7}
+\hypertarget{classMenuView_ad24381fdd0cdfb7585bbace523ca7b17}{
+\index{MenuView@{MenuView}!\_\-bgVirusImg@{\_\-bgVirusImg}}
+\index{\_\-bgVirusImg@{\_\-bgVirusImg}!MenuView@{MenuView}}
+\subsubsection[{\_\-bgVirusImg}]{\setlength{\rightskip}{0pt plus 5cm}Image {\bf MenuView::\_\-bgVirusImg}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_ad24381fdd0cdfb7585bbace523ca7b17}
+\hypertarget{classMenuView_aaadb330dbaf71ca086ecdc49462ce285}{
+\index{MenuView@{MenuView}!\_\-bgVirusSprite@{\_\-bgVirusSprite}}
+\index{\_\-bgVirusSprite@{\_\-bgVirusSprite}!MenuView@{MenuView}}
+\subsubsection[{\_\-bgVirusSprite}]{\setlength{\rightskip}{0pt plus 5cm}Sprite {\bf MenuView::\_\-bgVirusSprite}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_aaadb330dbaf71ca086ecdc49462ce285}
+\hypertarget{classMenuView_ac8ba89797373b1287c86737c1155b54e}{
+\index{MenuView@{MenuView}!\_\-maxAliveCellule@{\_\-maxAliveCellule}}
+\index{\_\-maxAliveCellule@{\_\-maxAliveCellule}!MenuView@{MenuView}}
+\subsubsection[{\_\-maxAliveCellule}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-maxAliveCellule}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_ac8ba89797373b1287c86737c1155b54e}
+\hypertarget{classMenuView_a0a2dddc686d39245959c810388b39707}{
+\index{MenuView@{MenuView}!\_\-maxDeadCellule@{\_\-maxDeadCellule}}
+\index{\_\-maxDeadCellule@{\_\-maxDeadCellule}!MenuView@{MenuView}}
+\subsubsection[{\_\-maxDeadCellule}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-maxDeadCellule}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a0a2dddc686d39245959c810388b39707}
+\hypertarget{classMenuView_a49bd867e05c9f948edade72c9946a5aa}{
+\index{MenuView@{MenuView}!\_\-minAliveCellule@{\_\-minAliveCellule}}
+\index{\_\-minAliveCellule@{\_\-minAliveCellule}!MenuView@{MenuView}}
+\subsubsection[{\_\-minAliveCellule}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-minAliveCellule}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a49bd867e05c9f948edade72c9946a5aa}
+\hypertarget{classMenuView_a908ee4bed6feebc980dd326aa94a686c}{
+\index{MenuView@{MenuView}!\_\-minDeadCellule@{\_\-minDeadCellule}}
+\index{\_\-minDeadCellule@{\_\-minDeadCellule}!MenuView@{MenuView}}
+\subsubsection[{\_\-minDeadCellule}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-minDeadCellule}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a908ee4bed6feebc980dd326aa94a686c}
+\hypertarget{classMenuView_aacb048b144e056ac0b99569fbaef6ac2}{
+\index{MenuView@{MenuView}!\_\-model@{\_\-model}}
+\index{\_\-model@{\_\-model}!MenuView@{MenuView}}
+\subsubsection[{\_\-model}]{\setlength{\rightskip}{0pt plus 5cm}{\bf GameModel}$\ast$ {\bf MenuView::\_\-model}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_aacb048b144e056ac0b99569fbaef6ac2}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# ATRIBUTS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+\hypertarget{classMenuView_a5fac451fc6c45479926b8b00865e38ad}{
+\index{MenuView@{MenuView}!\_\-mouseX@{\_\-mouseX}}
+\index{\_\-mouseX@{\_\-mouseX}!MenuView@{MenuView}}
+\subsubsection[{\_\-mouseX}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf MenuView::\_\-mouseX}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a5fac451fc6c45479926b8b00865e38ad}
+\hypertarget{classMenuView_a522046f53c6f43686f3dd25193a2e795}{
+\index{MenuView@{MenuView}!\_\-mouseY@{\_\-mouseY}}
+\index{\_\-mouseY@{\_\-mouseY}!MenuView@{MenuView}}
+\subsubsection[{\_\-mouseY}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf MenuView::\_\-mouseY}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a522046f53c6f43686f3dd25193a2e795}
+\hypertarget{classMenuView_a20a271062852d0a99d8867aff64c1283}{
+\index{MenuView@{MenuView}!\_\-nbEnfantVirus@{\_\-nbEnfantVirus}}
+\index{\_\-nbEnfantVirus@{\_\-nbEnfantVirus}!MenuView@{MenuView}}
+\subsubsection[{\_\-nbEnfantVirus}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-nbEnfantVirus}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a20a271062852d0a99d8867aff64c1283}
+\hypertarget{classMenuView_a9fcfd5b227056bc52359edb248289e7a}{
+\index{MenuView@{MenuView}!\_\-onglet@{\_\-onglet}}
+\index{\_\-onglet@{\_\-onglet}!MenuView@{MenuView}}
+\subsubsection[{\_\-onglet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf tab} {\bf MenuView::\_\-onglet}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a9fcfd5b227056bc52359edb248289e7a}
+\hypertarget{classMenuView_a52424a068656749a098f0a46f3bcb81e}{
+\index{MenuView@{MenuView}!\_\-playButton@{\_\-playButton}}
+\index{\_\-playButton@{\_\-playButton}!MenuView@{MenuView}}
+\subsubsection[{\_\-playButton}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-playButton}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a52424a068656749a098f0a46f3bcb81e}
+\hypertarget{classMenuView_a1e49e44405b91c463eeff0019b1e822a}{
+\index{MenuView@{MenuView}!\_\-removeAllVirus@{\_\-removeAllVirus}}
+\index{\_\-removeAllVirus@{\_\-removeAllVirus}!MenuView@{MenuView}}
+\subsubsection[{\_\-removeAllVirus}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-removeAllVirus}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a1e49e44405b91c463eeff0019b1e822a}
+\hypertarget{classMenuView_a5bd024bb7d464417c65087c2e28441d7}{
+\index{MenuView@{MenuView}!\_\-removeColum@{\_\-removeColum}}
+\index{\_\-removeColum@{\_\-removeColum}!MenuView@{MenuView}}
+\subsubsection[{\_\-removeColum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-removeColum}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a5bd024bb7d464417c65087c2e28441d7}
+\hypertarget{classMenuView_ac60ae85c296f4acd1bd92b0156e4dc33}{
+\index{MenuView@{MenuView}!\_\-removeLine@{\_\-removeLine}}
+\index{\_\-removeLine@{\_\-removeLine}!MenuView@{MenuView}}
+\subsubsection[{\_\-removeLine}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-removeLine}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_ac60ae85c296f4acd1bd92b0156e4dc33}
+\hypertarget{classMenuView_a0bd235fdfcd954c55a4c5f473fc929de}{
+\index{MenuView@{MenuView}!\_\-removeVirus@{\_\-removeVirus}}
+\index{\_\-removeVirus@{\_\-removeVirus}!MenuView@{MenuView}}
+\subsubsection[{\_\-removeVirus}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-removeVirus}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a0bd235fdfcd954c55a4c5f473fc929de}
+\hypertarget{classMenuView_a6a8e198f883ccc85a9e2920975e975b7}{
+\index{MenuView@{MenuView}!\_\-tmpIncubVirus@{\_\-tmpIncubVirus}}
+\index{\_\-tmpIncubVirus@{\_\-tmpIncubVirus}!MenuView@{MenuView}}
+\subsubsection[{\_\-tmpIncubVirus}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-tmpIncubVirus}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a6a8e198f883ccc85a9e2920975e975b7}
+\hypertarget{classMenuView_a5ffd50183f18befa3939aa95a94582f1}{
+\index{MenuView@{MenuView}!\_\-tmpLifeVirus@{\_\-tmpLifeVirus}}
+\index{\_\-tmpLifeVirus@{\_\-tmpLifeVirus}!MenuView@{MenuView}}
+\subsubsection[{\_\-tmpLifeVirus}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-tmpLifeVirus}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a5ffd50183f18befa3939aa95a94582f1}
+\hypertarget{classMenuView_a516ac9fa81f55e155e791e7289beef7e}{
+\index{MenuView@{MenuView}!\_\-updateAll@{\_\-updateAll}}
+\index{\_\-updateAll@{\_\-updateAll}!MenuView@{MenuView}}
+\subsubsection[{\_\-updateAll}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Button} {\bf MenuView::\_\-updateAll}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a516ac9fa81f55e155e791e7289beef7e}
+\hypertarget{classMenuView_a459ca483b65ce8e5b8de24413d332f92}{
+\index{MenuView@{MenuView}!\_\-vitesseJeu@{\_\-vitesseJeu}}
+\index{\_\-vitesseJeu@{\_\-vitesseJeu}!MenuView@{MenuView}}
+\subsubsection[{\_\-vitesseJeu}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Slider} {\bf MenuView::\_\-vitesseJeu}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a459ca483b65ce8e5b8de24413d332f92}
+\hypertarget{classMenuView_a038a98b254b2c5b95217f0effbe0e289}{
+\index{MenuView@{MenuView}!\_\-window@{\_\-window}}
+\index{\_\-window@{\_\-window}!MenuView@{MenuView}}
+\subsubsection[{\_\-window}]{\setlength{\rightskip}{0pt plus 5cm}RenderWindow$\ast$ {\bf MenuView::\_\-window}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classMenuView_a038a98b254b2c5b95217f0effbe0e289}
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants :\begin{DoxyCompactItemize}
+\item 
+\hyperlink{MenuView_8h}{MenuView.h}\item 
+\hyperlink{MenuView_8cc}{MenuView.cc}\end{DoxyCompactItemize}

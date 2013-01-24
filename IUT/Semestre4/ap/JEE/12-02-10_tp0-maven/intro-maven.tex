@@ -1,0 +1,241 @@
+\NeedsTeXFormat{LaTeX2e}[1996/12/01]
+\documentclass[a4,12pt]{article}
+
+%%% Necessaire pour la nouvelle norme des fontes %%%
+%%% et les caracteres francais                   %%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}     
+\usepackage[francais]{babel}  
+%%% -------------------------------------------- %%%
+
+%%% A utiliser en DRAFT - visualisation des refs %%%
+%%% \usepackage{showkeys}
+%%% -------------------------------------------- %%%
+
+%%% Modification globale des marges              %%%
+\usepackage{vmargin}
+\setmarginsrb{3cm}{2cm}{3cm}{2cm}{0cm}{2cm}{0cm}{1cm}
+%%% -------------------------------------------- %%%
+
+%%% Gestion des entetes de pages                 %%%
+%\usepackage{fancyhdr}
+%\pagestyle{headings} %headings fancy
+
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{noitemsep}
+\usepackage{algorithm2e}
+\usepackage{enteteTD}
+\input{macroAlgo}
+%\usepackage{here}
+\usepackage{multicol}
+
+\usepackage{latexsym}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{hyperref}
+
+\newcommand{\texthline}{\noindent \hbox{\raisebox{0.4em}{\vrule depth 0pt height 0.4pt width \textwidth}}} 
+
+\RequirePackage{listings}
+\renewcommand*\lstlistingname{Source}
+
+\definecolor{vert}{rgb}{0.2,0.6,0.4} 
+\lstset{frame=tb, breaklines=true, basicstyle=\ttfamily,backgroundcolor=\color{white},basicstyle=\small, keywordstyle=\color{blue}, commentstyle=\color{vert}, stringstyle=\color{red}, identifierstyle=\ttfamily}
+
+\begin{document}
+
+\TDHead{JEE}{Semestre 4}{\large TP JEE (0)\\ Introduction à MAVEN}
+
+\newboolean{correction}
+% Changer à false pour ne pas avoir la correction
+\setboolean{correction}{true}
+
+
+
+\section{Introduction à Apache Maven}
+
+Les projets Java (surtout JEE) ont la particularité de dépendre de beaucoup (trop ?) de librairies externes.  Ainsi pour construire une application JEE il faut télécharger des JAR (``Java ARchive'', fichier d'archive contenant des classes java compilées), les installer et les renseigner lors de la construction du logiciel. 
+
+Cette étape est complexe : outre la partie installation, il faut pouvoir renseigner à Eclipse où sont ces fichiers JAR.  Cela va constituer le \emph{buildpath} de l'application. Malheureusement ce $buildpath$ diffère selon les machines des développeurs de l'équipe : \emph{/Users/Jean/mesJARS}, \emph{/home/Yves/ProgJava/MesJars}. Par la suite chaque développeur doit maintenir et gérer sa propre collection de librairies et sa propre configuration. Ces étapes sont souvent tellement complexes qu'elle sont en général laissées à la charge de l'architecte logiciel.
+
+Apache Maven est un système très populaire de gestion de construction pour les projets Java, conçu pour supprimer les tâches difficiles du processus de build.  
+
+A partir d'une configuration Maven créée et gérée par un architecte, il est possible de construire des applications complexes sur des types de configurations différentes et avec des IDE différents (Eclipse, Netbeans, ...).
+
+Dans les autres TPs les fichiers de configuration Maven vous seront données, mais afin de les comprendre il est nécessaire de faire une petite initiation. C'est le but de ce TP. De plus, nous verrons comment créer un projet JEE simple. La compréhension de cette étape est cruciale pour commencer le développement en JEE.
+
+\subsection{Création d'un JAR simple}
+
+ \begin{figure}[!ht]
+\definecolor{vert}{rgb}{0.2,0.6,0.4} 
+\lstinputlisting[language=bash]{samples/commandGenerateJarSimple}
+\caption{Création d'un projet Maven. La commande va créer un projet avec une architecture classic (répondez par défaut aux questions). (file=samples/commandGenerateJarSimple) }\label{newMavenProject}
+\end{figure}
+
+
+\paragraph{Exercice}
+\begin{enumerate}
+	\item Teléchargez \href{http://maven.apache.org/download.html}{Maven}  et Installez-le.
+	\item Créez un nouveau projet de type \emph{Maven} appeler \emph{MonPremierProjet} en vous inspirant de la ligne de commande de la Figure~\ref{newMavenProject}.
+	\item Commentez les arguments de la ligne de commande précédente.  A quoi servent ces arguments ?
+	\item Parcourez le dossier qui à été créé. Que contient-il ? Qu'est ce que le fichier pom.xml ? Où est la classe contenant la fonction main ?
+	\item A quoi sert la partie du fichier pom.xml contenant la chaîne de caractère ``junit'' ?
+	\item Compilez-le avec la commande mvn compile.
+	\item A quoi sert le dossier test ? Lancer les tests avec la commande mvn test.
+	\item Créez un JAR avec la commande mvn package. Où se trouve-t-il ?
+\end{enumerate}
+
+
+\subsection{Les plugins maven : creation d'un \emph{Runnable Jar}}
+
+\paragraph{}
+La commande Maven \emph{mvn package} nous a permis de créer un JAR qui contient la classe App.java. Nous allons utiliser les plugins maven pour transformer ce JAR en \emph{Runnable JAR}. Un Runnable JAR est un JAR qui peut être exécuté. Afin de l'exécuter, un fichier \emph{Manifest} doit être créé. Il sert à informer la JVM où se trouve la classe principale (celle qui possède une fonction main). Nous allons ici utiliser les plugins de type ``build'' de Maven. 
+
+\paragraph{Exercice}
+\begin{enumerate}
+	\item Modifier le pom.xml afin d'intégrer l'extrait de source suivant :
+\lstinputlisting[language=xml]{samples/pom-runnable}
+	\item Dans le nouveau pom.xml, à quoi sert la balise <mainClass> ? et la balise <phase> ?
+	\item Compilez le nouveau JAR et lancez-le.
+\end{enumerate}
+
+
+\section{Un projet WEB}
+
+Dans cette section nous allons créer notre premier projet Web Java. Un projet web est comme en PHP un projet qui permet d'être exécuté sur un serveur. Nous allons voir comment en créer un, d'abord à la main, puis en utilisant Maven.
+
+\subsection{À la main}
+
+\paragraph{Exercice}
+\begin{enumerate}
+\item Création de la structure hiérarchique du projet :
+\lstset{language=bash}
+\begin{lstlisting}
+mkdir MonProjetWebMain
+cd MonProjetWebMain
+mkdir webapp
+cd webapp
+touch index.jsp
+mkdir WEB-INF
+cd WEB-INF/
+touch web.xml
+\end{lstlisting}
+
+
+\item  Modifier le descripteur de déploiement web.xml.
+\lstinputlisting[language=xml]{samples/web.xml}
+
+
+
+\item On modifie notre première JSP (JavaServer Page) : index.jsp
+\lstset{language=html}
+\begin{lstlisting}
+<html>
+<body>
+<h2>Hello World! </h2>
+</body>
+</html>
+\end{lstlisting}
+
+\item Créez un fichier WAR avec la commande jar -cvf webapp.war * (Depuis le dossier webapp).
+\item Qu'est-ce qu'un fichier WAR ?
+\end{enumerate}
+
+
+%\paragraph{Exercice :}
+%\begin{enumerate}
+%	\item Téléchargez et lancez Apache Tomcat 7.0.
+%	\item Configurez Tomcat (fichier conf/tomcat-users.xml) en ajoutant un utilisateur avec les droit de publication en vous inspirant du listing suivant :
+%	\lstset{language=xml}
+%	\begin{lstlisting}
+%<user username="admin" password="" roles="manager-gui"/>
+%	\end{lstlisting}
+%\end{enumerate}
+
+\paragraph{Déployer et tester votre fichier WAR}
+\begin{enumerate}
+	\item Lancer une instance de tomcat (./bin/startup.sh) (shutdown.sh pour l`éteindre).
+	\item Trouver le login/mot de passe de tomcat dans le fichier ./conf/tomcat-users.xml.
+	\item Rendez-vous sur la page http://localhost:8080 puis, dans la partie Manager App.
+	\item Déployer votre fichier WAR et tester votre site web.
+	\item Qu'est ce que Tomcat ?
+\end{enumerate}
+
+
+\subsection{Avec Maven}
+
+\paragraph{Exercice :}
+\begin{enumerate}
+	\item Créer un projet Maven avec la commande suivante :
+	\lstinputlisting[language=bash]{samples/commandeGenerateWarSimple}
+	\item Quelle est la différence entre ce pom.xml et le précédent ?  
+  	\item Configurez le fichier pom.xml pour avoir un profil pour votre serveur Tomcat. Inspirez vous du fichier samples/pom-mavenweb.xml. Attention au balises \emph{finalName} et \emph{artifactId}
+	\item Commentez les différentes parties de ce fichier. À quoi servent les balise \emph{repositories} et \emph{profiles}. Quel est l'utilité des différents plugins ?
+	\item Déployez et testez votre projet.
+
+\end{enumerate}
+
+\subsection{Création d'une Servlet}
+\begin{enumerate}
+	\item Générez un projet Eclipse avec la commande :\footnote{Note : si vous travaillez à la maison, attention à ce que la variable d'environnement JAVA\_HOME pointe bien vers le dossier de votre JVM. Ce chemin dépend de votre système.}
+	\begin{lstlisting}
+mvn eclipse:eclipse -Dwtpversion=2.0
+	 \end{lstlisting}
+	\item Ouvrez Eclipse et importez le projet généré (via ``importer un projet existant dans l'espace de travail'').
+	\item Dans éclipse créez un nouveau dossier de sources (src/main/java).
+	\item Dans ce même dossier de sources, créer un nouveau package (org.iut.jee).
+%	\item Dans Eclipse, activez la gestion des dépendances Maven.
+	\item Pour finir, créez une nouvelle Servlet \emph{HelloWorld.java}. Dans le
+          menu de création de fichier d'Eclipse, il y a une catégorie
+          spéciale pour les Servlets.
+          \item Si ce n'est pas déjà fait, ajouter l'annotation @WebServlet comme le montre l'extrait de code suivant.
+\begin{lstlisting}
+@WebServlet("/hello")
+public class HelloWorld extends HttpServlet {
+    	public HelloWorld() {}
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+}
+\end{lstlisting}
+	\item Qu'est ce qu'une Servlet ? à quoi sert l'annotation \emph{@WebServlet("/hello")} ?
+	\item Commentez et expliquez le rôle des différentes méthodes de la Servlet.
+	\item Copiez-collez le code suivant dans la méthode doGet de votre servlet :
+\begin{lstlisting}
+PrintWriter out = response.getWriter();
+out.println( "Hello !" );
+out.flush();
+out.close();
+\end{lstlisting}
+	\item Dans \emph{/src/main/webapp/WEB-INF/}, il existe un fichier web.xml. À quoi sert-il ? 
+	\item Supprimez le. Expliquer pourquoi cette suppression est nécéssaire. 
+	\item Créer un nouveau WAR avec Maven, et déployer le sur tomcat avec la commande mvn tomcat:deploy. \\ \textbf{ATTENTION :} Dans le cas d'un redéploiement il faut utiliser la commande mvn tomcat:redeploy. 
+	\item Testez la nouvelle servlet.
+\end{enumerate}
+
+\section{Integration de Maven et eclipse}
+\paragraph{}
+Après avoir visionné la video : Bibliothèue/JEE/2011-2012/Maven2Eclipse.mov. Ajouter le serveur Tomcat dans éclipse, déployer votre application depuis éclipse.
+\begin{enumerate}
+	\item Comment débugger une application depuis éclipse ?
+\end{enumerate}
+
+\section{La culture Java EE (ou : avoir une bonne note à l'exam)}
+\paragraph{}
+Répondez au questions suivantes en vous aidant de votre navigateur favori:
+\begin{enumerate}
+	\item Qu'est-ce que Maven ? Qu'est ce que ANT ? Quel est le lien entre ces deux outils ? Quel est leur équivalent en C++ (ou autres languages).
+	\item Quel est le nom du fichier de configuration Maven ?
+	\item Comment compiler un projet Maven ?
+	\item Comment générer un projet eclipse depuis Maven ?
+	\item Qu'est-ce que Tomcat ?
+	\item Qu'est-ce qu'un fichier WAR ?
+	\item Qu'est-ce qu'un fichier JSP ?
+	\item Qu'est-ce qu'une Servlet ?
+\end{enumerate}	
+
+\end{document}

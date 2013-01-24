@@ -1,0 +1,164 @@
+\hypertarget{util_8h}{
+\section{Référence du fichier util.h}
+\label{util_8h}\index{util.h@{util.h}}
+}
+
+
+fonctions utiles  
+
+
+{\ttfamily \#include $<$SFML/Graphics.hpp$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$string$>$}\par
+{\ttfamily \#include \char`\"{}enum.h\char`\"{}}\par
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{util_8h_ade8253c5c230c3a02c77171834694fbc}{aleafloat} (float a, float b)
+\item 
+int \hyperlink{util_8h_aac4b84c003fe10e2353030346507cd3f}{aleaint} (int a, int b)
+\item 
+int \hyperlink{util_8h_a5b1276e2e940b0688bde0ce77e39ed64}{aleadirect} (const int \&a, const int \&b)
+\item 
+bool \hyperlink{util_8h_ad974023c544102be2bae21eb2b349809}{aleabool} (float pct)
+\item 
+\hyperlink{enum_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{util_8h_af50e0a89e277abdcd67c6e59bd5d68b6}{aleastate} (float pct)
+\item 
+\hyperlink{enum_8h_ae2f10db0fed275ae9f323a3c41243971}{health} \hyperlink{util_8h_ae544cf225bdce906c4b82f902ff9579f}{aleahealth} (float pct)
+\item 
+string \hyperlink{util_8h_a382e5067a3d1008983ac016e32c20f10}{toString} (const int \&e)
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+fonctions utiles \begin{DoxyAuthor}{Auteur}
+Mayira.Y Arnaud.L 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+avril/mai 2011 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{util_8h_ad974023c544102be2bae21eb2b349809}{
+\index{util.h@{util.h}!aleabool@{aleabool}}
+\index{aleabool@{aleabool}!util.h@{util.h}}
+\subsubsection[{aleabool}]{\setlength{\rightskip}{0pt plus 5cm}bool aleabool (
+\begin{DoxyParamCaption}
+\item[{float}]{pct}
+\end{DoxyParamCaption}
+)}}
+\label{util_8h_ad974023c544102be2bae21eb2b349809}
+
+\begin{DoxyCode}
+{
+        if ( aleafloat(0,1) > pct )
+                return true;
+        else
+                return false;
+}
+\end{DoxyCode}
+\hypertarget{util_8h_a5b1276e2e940b0688bde0ce77e39ed64}{
+\index{util.h@{util.h}!aleadirect@{aleadirect}}
+\index{aleadirect@{aleadirect}!util.h@{util.h}}
+\subsubsection[{aleadirect}]{\setlength{\rightskip}{0pt plus 5cm}int aleadirect (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{a, }
+\item[{const int \&}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{util_8h_a5b1276e2e940b0688bde0ce77e39ed64}
+
+\begin{DoxyCode}
+{
+        if ( Randomizer::Random(a,b) >= 0 )
+                return b;
+        else
+                return a;
+}
+\end{DoxyCode}
+\hypertarget{util_8h_ade8253c5c230c3a02c77171834694fbc}{
+\index{util.h@{util.h}!aleafloat@{aleafloat}}
+\index{aleafloat@{aleafloat}!util.h@{util.h}}
+\subsubsection[{aleafloat}]{\setlength{\rightskip}{0pt plus 5cm}float aleafloat (
+\begin{DoxyParamCaption}
+\item[{float}]{a, }
+\item[{float}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{util_8h_ade8253c5c230c3a02c77171834694fbc}
+
+\begin{DoxyCode}
+{ 
+        return ( rand()/(float)RAND_MAX ) * (b-(a)) + a ;
+}
+\end{DoxyCode}
+\hypertarget{util_8h_ae544cf225bdce906c4b82f902ff9579f}{
+\index{util.h@{util.h}!aleahealth@{aleahealth}}
+\index{aleahealth@{aleahealth}!util.h@{util.h}}
+\subsubsection[{aleahealth}]{\setlength{\rightskip}{0pt plus 5cm}{\bf health} aleahealth (
+\begin{DoxyParamCaption}
+\item[{float}]{pct}
+\end{DoxyParamCaption}
+)}}
+\label{util_8h_ae544cf225bdce906c4b82f902ff9579f}
+
+\begin{DoxyCode}
+{
+        if ( aleabool(pct) )
+                return resist;
+        else
+                return normal;
+}
+\end{DoxyCode}
+\hypertarget{util_8h_aac4b84c003fe10e2353030346507cd3f}{
+\index{util.h@{util.h}!aleaint@{aleaint}}
+\index{aleaint@{aleaint}!util.h@{util.h}}
+\subsubsection[{aleaint}]{\setlength{\rightskip}{0pt plus 5cm}int aleaint (
+\begin{DoxyParamCaption}
+\item[{int}]{a, }
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)}}
+\label{util_8h_aac4b84c003fe10e2353030346507cd3f}
+
+\begin{DoxyCode}
+{ 
+        return Randomizer::Random(a,b) ; 
+}
+\end{DoxyCode}
+\hypertarget{util_8h_af50e0a89e277abdcd67c6e59bd5d68b6}{
+\index{util.h@{util.h}!aleastate@{aleastate}}
+\index{aleastate@{aleastate}!util.h@{util.h}}
+\subsubsection[{aleastate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf state} aleastate (
+\begin{DoxyParamCaption}
+\item[{float}]{pct}
+\end{DoxyParamCaption}
+)}}
+\label{util_8h_af50e0a89e277abdcd67c6e59bd5d68b6}
+
+\begin{DoxyCode}
+{
+        if ( aleabool(pct) )
+                return alive;
+        else
+                return dead;
+}
+\end{DoxyCode}
+\hypertarget{util_8h_a382e5067a3d1008983ac016e32c20f10}{
+\index{util.h@{util.h}!toString@{toString}}
+\index{toString@{toString}!util.h@{util.h}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}string toString (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{e}
+\end{DoxyParamCaption}
+)}}
+\label{util_8h_a382e5067a3d1008983ac016e32c20f10}
+
+\begin{DoxyCode}
+{
+        ostringstream s;
+        s << e;
+        return s.str();
+}
+\end{DoxyCode}

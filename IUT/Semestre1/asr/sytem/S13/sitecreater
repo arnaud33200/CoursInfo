@@ -1,0 +1,18 @@
+#!/bin/bash
+
+while read balise
+do
+case "$balise" in
+    *.jpg)
+    echo "<img src='$balise'/>"
+    ;;
+    " ")
+    echo "<br>"
+    ;;
+    *)
+    echo "<p>$balise</p>"
+    ;;
+
+esac
+done < $1
+> jose.html

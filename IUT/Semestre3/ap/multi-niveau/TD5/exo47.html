@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+	<title>Exo Ajax</title>
+	<script type="text/javascript">
+	
+		var requeteAjax;
+
+		function connect(page)
+		{
+		        requeteAjax = creerRequete();
+		        if (requeteAjax != null)
+		        {
+		            requeteAjax.open("GET", page, true);
+		            requeteAjax.onreadystatechange = handler;
+		            requeteAjax.send();
+		        }
+		        else
+		        	window.alert("Pas de support AJAX (XMLHTTP)");
+		}
+		
+		function creerRequete()
+		{
+    		var requete = null;
+    		try { requete = new XMLHttpRequest(); } 
+			catch(e1) 
+			{
+        		try { requete = new ActiveXObject("Msxml2.XMLHTTP"); }
+        		catch(e2) 
+				{
+            		try { requete = new ActiveXObject("Microsoft.XMLHTTP"); } 
+	            	catch (echec)
+	            	{
+	               		requete = null;
+	           		}
+       			 }
+    		}
+    		return requete;
+    	}
+
+		
+		function handler()
+		{
+		    if (requeteAjax.readyState == 4 && requeteAjax.status == 200)
+		    {
+		    	var docxml = requeteAjax.responseXML;
+		    	var info = docxml.getElementsByTagName("NOM");
+		    	var txt="<ul>";
+		    	for( i=0; i<info.length; i++)
+		    		txt += "<li>" + info[i].firstChild.nodeValue + "</i>";
+		    }
+		    	document.getElementById("essaie").innerHTML = txt;
+		}    
+		
+	</script>
+</head>
+
+<body>
+	<p>Le texte de la page courant </p>
+	<p><button onclick="connect('gens.xml')">recup personnes</button></p>
+	<div id="essaie" style="height: 215px; width: 279px; background-color: #E0B7FF">
+		texte de la div avant l&#39;appel ajax</div>
+</body>
+</html>

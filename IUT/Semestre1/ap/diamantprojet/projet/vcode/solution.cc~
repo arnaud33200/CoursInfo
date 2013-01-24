@@ -1,0 +1,105 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include<fstream>
+
+#include "const.hh"
+
+using namespace std;
+
+
+/************************************************************
+ * Nom fonction : Solution Colonne.
+ * Nom / Date : YGORRA Virgile 1.0 	/ 23/11/2010
+ * Description : La fonction vérifie si trois ou plus de trois diamants sont alignés verticalement et à la suite, si c'est le cas, cette fonction modifie les coordonnées du premier et du dernier diamant. Les coordonnées sont celles des diamants de la dernière solution. S'il n'y a pas de solutions, alors ces coordonnées seront de -1.
+ * Entrées : Grille de jeu, Coordonnées du premier diamant et coordonnées du dernier diamant de la solution.
+ * Sorties :Grille de jeu, Coordonnées du premier diamant et coordonnées du dernier diamant de la solution.
+************************************************************/
+void solutioncolone(int tab[][G_SIZE], int & fc, int & fl, int & lc, int & ll)
+{
+	
+	int i,c,l,cpt;
+
+	
+	l=0;
+	cpt=1;
+	
+	while(l<8)
+	{
+		
+		for(c=1;c<8;c++)
+		{
+			if(tab[l][c] == tab[l-1][c])
+			{
+				cpt++;
+				if(cpt>=3){
+				fl=l-cpt+1;
+				fc=c;
+				ll= l;
+				lc= fc;
+	
+			
+				}
+			}
+			else
+			{
+				cpt=1;
+			}
+		
+		} // fin du for.
+		l++;
+		cpt =1;
+	} // fin du tant que.
+		cout << " coordoné premier diamant colonne / ligne" << fc << " " << fl;
+		cout << "coordonné dernier diamant colonne / ligne " << lc << " " << fl; 
+	
+	
+}
+
+
+/************************************************************
+ * Nom fonction : Solution Ligne
+ * Nom / Date : YGORRA Virgile 1.0 	/ 23/11/2010
+ * Description : La fonction vérifie si trois ou plus de trois diamants sont alignés verticalement et à la suite, si c'est le cas, cette fonction modifie les coordonnées du premier et du dernier diamant. Les coordonnées sont celles des diamants de la dernière solution. S'il n'y a pas de solutions, alors ces coordonnées seront de -1.
+ * Entrées : Grille de jeu, Coordonnées du premier diamant et coordonnées du dernier diamant de la solution.
+ * Sorties :Grille de jeu, Coordonnées du premier diamant et coordonnées du dernier diamant de la solution.
+************************************************************/
+void solutionligne(int tab[][G_SIZE], int & fc, int & fl, int & lc, int & ll)
+{
+	
+	int i,c,l,cpt;
+	
+	
+	c=0;
+	cpt=1;
+	
+	while(c<8)
+	{
+		
+		for(l=1;l<8;l++)
+		{
+			if(tab[l][c] == tab[l][c-1])
+			{
+				cpt++;
+				if(cpt>=3){
+				fl=l-cpt+1;
+				fc=c-cpt;
+				ll= l;
+				lc= fc;
+	
+				
+				}
+			}
+			else
+			{
+				cpt=1;
+			}
+		
+		} // fin du for.
+		l++;
+		cpt =1;
+	} // fin du tant que.
+		
+	
+	
+}

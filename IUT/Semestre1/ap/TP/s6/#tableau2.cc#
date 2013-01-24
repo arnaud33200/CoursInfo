@@ -1,0 +1,76 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+const int TAILLE = 100;
+
+
+typedef int TTabInt[TAILLE];
+
+void saisirTableau(TTabInt tab, int taille)
+{
+  for( int i = 0 ; i < taille ; i++ )
+    cin >> tab[i];
+
+  for ( int i=0; i<taille; i++ )
+    for ( int j=i+1; j<taille; j++ )
+      if ( tab[i] > tab[j] )
+	{
+	  tab[i]=tab[i]+tab[j];
+	  tab[j]=tab[i]-tab[j];
+	  tab[i]=tab[i]-tab[j];
+	}
+}
+
+
+void 
+afficherTableau(TTabInt tab, int taille)
+{
+  int i;
+
+  for( i = 0 ; i < taille ; i++ )
+    cout << tab[i] << " ";
+  cout << endl;
+}
+	   
+
+void 
+fusionner (int tab1[], int taille1, int tab2[], int taille2, int tab12[])
+{
+  tab12[taille1+taille2];
+
+
+  int i=0;  // indice tab1
+  int j=0;  // indice tab2
+
+  while ( i<(taille1+taille2) )
+    {
+
+ 
+    }
+}
+
+
+int main()
+{
+  TTabInt tab1;
+  TTabInt tab2;
+  TTabInt tab12;
+
+  int taille1 = 25;
+  int taille2 = 6;
+ 
+  saisirTableau(tab1, taille1);
+  saisirTableau(tab2, taille2);
+  afficherTableau(tab1, taille1);
+  cout << endl;
+  afficherTableau(tab2, taille2);
+  cout << endl;
+
+  // fait une fusion differente en fonction de la taille1 et taille 2
+
+
+  return EXIT_SUCCESS;
+}
+
+

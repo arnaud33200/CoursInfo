@@ -1,0 +1,16 @@
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\bin\Debug\edvqrv.exe
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\bin\Debug\edvqrv.pdb
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\obj\Debug\ResolveAssemblyReference.cache
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\obj\Debug\edvqrv.Form1.resources
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\obj\Debug\edvqrv.Properties.Resources.resources
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\obj\Debug\edvqrv.csproj.GenerateResource.Cache
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\obj\Debug\edvqrv.exe
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\obj\Debug\edvqrv.pdb
+\\info\Etudiants\Home\xjouveno\Documents\Visual Studio 2008\Projects\edvqrv\edvqrv\obj\Debug\edvqrv.CaseDamier.resources
+Z:\projetVS\edvqrv\edvqrv\obj\Debug\edvqrv.exe
+Z:\projetVS\edvqrv\edvqrv\obj\Debug\edvqrv.pdb
+Z:\projetVS\edvqrv\edvqrv\obj\Debug\ResolveAssemblyReference.cache
+Z:\projetVS\edvqrv\edvqrv\obj\Debug\edvqrv.CaseDamier.resources
+Z:\projetVS\edvqrv\edvqrv\obj\Debug\edvqrv.Form1.resources
+Z:\projetVS\edvqrv\edvqrv\obj\Debug\edvqrv.Properties.Resources.resources
+Z:\projetVS\edvqrv\edvqrv\obj\Debug\edvqrv.csproj.GenerateResource.Cache

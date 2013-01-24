@@ -1,0 +1,19 @@
+body {
+  background: aqua;
+}
+
+h1 {
+  color: orange;
+}
+
+img {
+  margin: 50px;
+}
+
+#entete {
+  border: 1px solid orange;
+}
+
+.elem_menu {
+  list-style: square;
+}

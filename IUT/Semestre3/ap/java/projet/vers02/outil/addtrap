@@ -1,0 +1,106 @@
+#!/bin/bash
+
+function retirersalle
+{
+	let retrait=nbdelete-1
+	head -n $retrait $dir/tmp_fin.txt > $dir/fin_f.txt
+	let retrait=nbfin-nbdelete
+	tail -n $retrait $dir/tmp_fin.txt > $dir/fin_d.txt
+	rm $dir/tmp_fin.txt
+	cat $dir/fin_f.txt > $dir/tmp_fin.txt
+	rm $dir/fin_f.txt
+	cat $dir/fin_d.txt >> $dir/tmp_fin.txt
+	rm $dir/fin_d.txt
+	echo "la salle $lignep - $colonnep a été remplacé en salle piégé"
+	
+	nbfin=$(cat $dir/tmp_fin.txt | wc -l)  #~ on remet a jours le nombre de ligne
+}
+
+
+dir=$PWD
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#	verification des eventuelles erreurs
+
+if [ -z "$*" ]
+then
+	echo "il manque le nombre de piege et la map en parametre !"
+	echo "inittrap [nb pieges] [Map]"
+	exit 1
+elif [ -n "$3" ] || [ -z "$2" ]
+then
+	echo "il faut deux parametres seulement !"
+	echo "inittrap [nb pieges] [Map]"
+	exit 2
+elif [ "$1" -le "0" ]
+then
+	echo "vous devez donner un nombre de piege > 0"
+	exit 3
+elif [ $(head -n 4 $2 | tail -n 1 | wc -w) -eq 1 ]
+then
+	echo "ERREUR : la map est deja un labyrinthe piégé"
+	exit 4
+fi 
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# new=$(echo "$(echo $1 | cut -f 1 -d "." | cut -f 2 -d "/")_traped.txt")
+new="level_trapped.txt"
+
+nbligne=$(cat $2 | wc -l)
+let second=nbligne-3
+
+head -n 3 $2 > $dir/tmp_debut.txt
+tail -n $second $2 > $dir/tmp_fin.txt
+
+maxligne=$(head -n 1 $2 | cut -f 1 -d " ")
+maxcolonne=$(head -n 1 $2 | cut -f 2 -d " ")
+coorentre=$(head -n 2 $2 | tail -n 1)
+coorsortie=$(head -n 3 $2 | tail -n 1)
+nbtrap="1"
+nbfin=$(cat $dir/tmp_fin.txt | wc -l)
+
+echo "$1" > $dir/new_fin.txt
+
+while [ "$nbtrap" -le "$1" ]
+do
+	echo -e "\ninsertion du piège $nbtrap sur $1 :"
+	read -p "    ligne : " lignep
+	read -p "    colonne : " colonnep
+	
+	newline=$(echo "$lignep $colonnep")
+
+	if [ $lignep -ge $maxligne ]
+	then
+		echo -e "\nLA LIGNE DONNE N'EST PAS JUSTE : COMPRIS ENTRE 0 et $maxligne\n"
+	elif [ $colonnep -ge $maxcolonne ]
+	then
+		echo -e "\nLA COLONNE DONNE N'EST PAS JUSTE : COMPRIS ENTRE 0 et $maxcolonne\n"	
+	elif [ "$newline" = "$coorentre" ]
+	then
+		echo -e "\nLA SALLE D'ENTRE NE PEUX PAS ETRE UN PIEGE\n"
+	elif [ "$newline" = "$coorsortie" ]
+	then
+		echo -e "\nLA SALLE DE SORTIE NE PEUX PAS ETRE UN PIEGE\n"
+	else
+		if (grep -qnw "$newline" $dir/tmp_fin.txt)
+		then
+			nbdelete=$(grep -nw "$lignep $colonnep" $dir/tmp_fin.txt | cut -f 1 -d ":")
+			retirersalle
+		fi
+		echo "$newline" >> $dir/new_fin.txt	
+		let nbtrap=nbtrap+1
+	fi
+done
+
+cat $dir/new_fin.txt >> $dir/tmp_debut.txt
+cat $dir/tmp_fin.txt >> $dir/tmp_debut.txt
+cat $dir/tmp_debut.txt > $dir/$new
+
+
+
+rm $dir/tmp_debut.txt $dir/tmp_fin.txt $dir/new_fin.txt
+
+(zenity --info --text="la map a été modifier dans $dir/$new") || (echo -e "\nla map a été modifier dans $dir/$new")
+
+# by ALADOUCE

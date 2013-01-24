@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>JeuDeLaVie:  Fichier source de GameModel.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">JeuDeLaVie</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">GameModel.h</div>  </div>
+</div>
+<div class="contents">
+<a href="GameModel_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef GAMEMODEL_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define GAMEMODEL_H</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;cstdlib&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="GameSave_8h.html" title="gestion de sauvegarde">GameSave.h</a>&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="Button_8h.html" title="boutton avec un texte">Button.h</a>&quot;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="Unite_8h.html" title="unité du jeu">Unite.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="GrilleCellule_8h.html" title="regroupement de Cellule">GrilleCellule.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="GroupeVirus_8h.html" title="regroupement de Virus">GroupeVirus.h</a>&quot;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;<a class="code" href="enum_8h.html" title="énumérations.">enum.h</a>&quot;</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="keyword">using namespace </span>std;
+<a name="l00019"></a>00019 
+<a name="l00024"></a><a class="code" href="classGameModel.html">00024</a> <span class="keyword">class </span><a class="code" href="classGameModel.html" title="classe qui gère la partie model">GameModel</a>
+<a name="l00025"></a>00025 {       
+<a name="l00026"></a>00026         <span class="keyword">private</span>:
+<a name="l00027"></a><a class="code" href="classGameModel.html#abd35ff8c3aced3bc352b03e5cc38ef63">00027</a>                 <span class="keywordtype">float</span> <a class="code" href="classGameModel.html#abd35ff8c3aced3bc352b03e5cc38ef63">_w</a>;
+<a name="l00028"></a><a class="code" href="classGameModel.html#a30bd3e959cb1d952159c40bbf7f337ae">00028</a>                 <span class="keywordtype">float</span> <a class="code" href="classGameModel.html#a30bd3e959cb1d952159c40bbf7f337ae">_h</a>;
+<a name="l00029"></a><a class="code" href="classGameModel.html#a989ee76691c469ffc881408004679cf6">00029</a>                 <span class="keywordtype">bool</span> <a class="code" href="classGameModel.html#a989ee76691c469ffc881408004679cf6">_stateGame</a>, _clickL, _clickR;
+<a name="l00030"></a><a class="code" href="classGameModel.html#a5fd61cf62d652d1b61ae12e8e5817a15">00030</a>                 <a class="code" href="classGrilleCellule.html" title="classe qui regroupe tous les Cellules">GrilleCellule</a> * <a class="code" href="classGameModel.html#a5fd61cf62d652d1b61ae12e8e5817a15">_gCellule</a>;
+<a name="l00031"></a><a class="code" href="classGameModel.html#aac78650e8885c459e821bbb618a37715">00031</a>                 <a class="code" href="classGroupeVirus.html" title="classe qui regroupe tous les Virus">GroupeVirus</a> * <a class="code" href="classGameModel.html#aac78650e8885c459e821bbb618a37715">_gVirus</a>;
+<a name="l00032"></a><a class="code" href="classGameModel.html#ae20f9b32b10a54e58f33aa6d2d484579">00032</a>                 <span class="keywordtype">float</span> <a class="code" href="classGameModel.html#ae20f9b32b10a54e58f33aa6d2d484579">_vitesseExe</a>;
+<a name="l00033"></a><a class="code" href="classGameModel.html#a598286d6b42e682fffa1811e7f0e6938">00033</a>                 <a class="code" href="classGameSave.html" title="classe qui sauvegarde une partie">GameSave</a> * <a class="code" href="classGameModel.html#a598286d6b42e682fffa1811e7f0e6938">_save</a>;
+<a name="l00034"></a><a class="code" href="classGameModel.html#a88f9ec42a124ec6e541a13951bcf31d6">00034</a>                 Clock <a class="code" href="classGameModel.html#a88f9ec42a124ec6e541a13951bcf31d6">_timeVitesse</a>;
+<a name="l00035"></a>00035                         
+<a name="l00036"></a>00036         <span class="keyword">public</span>:
+<a name="l00037"></a>00037         
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040                 <a class="code" href="classGameModel.html" title="classe qui gère la partie model">GameModel</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> &amp; w, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp; h );
+<a name="l00041"></a>00041                 ~<a class="code" href="classGameModel.html" title="classe qui gère la partie model">GameModel</a>();
+<a name="l00042"></a>00042                 
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045                 <span class="keywordtype">void</span> nextStep();
+<a name="l00046"></a>00046                 <span class="keywordtype">void</span> play_pause(<span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; p);
+<a name="l00047"></a>00047                 <span class="keywordtype">void</span> virusVsCellule();
+<a name="l00048"></a>00048                 <span class="keywordtype">void</span> loadSave( <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; b );
+<a name="l00049"></a>00049                 <span class="keywordtype">void</span> saveSave( <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; b );
+<a name="l00050"></a>00050                 
+<a name="l00052"></a>00052                 
+<a name="l00053"></a>00053                 <span class="keywordtype">void</span> add_column( <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; add, <a class="code" href="classButton.html" title="classe qui gère les boutons">Button</a>* button);
+<a name="l00054"></a>00054                 <span class="keywordtype">void</span> add_line(<span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; add, <a class="code" href="classButton.html" title="classe qui gère les boutons">Button</a>* button);
+<a name="l00055"></a>00055                 <span class="keywordtype">void</span> remove_column(<span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; del, <a class="code" href="classButton.html" title="classe qui gère les boutons">Button</a>* button);
+<a name="l00056"></a>00056                 <span class="keywordtype">void</span> remove_line(<span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; del, <a class="code" href="classButton.html" title="classe qui gère les boutons">Button</a>* button);
+<a name="l00057"></a>00057                 <span class="keywordtype">void</span> alive_cellule( Event* event, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; mx, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; my );
+<a name="l00058"></a>00058                 <span class="keywordtype">void</span> dead_cellule( Event* event, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; mx, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; my );
+<a name="l00059"></a>00059                 <span class="keywordtype">void</span> update_all_Cellule(<span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; b);
+<a name="l00060"></a>00060                 
+<a name="l00062"></a>00062                 
+<a name="l00063"></a>00063                 <span class="keywordtype">void</span> add_virus ( <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; add );
+<a name="l00064"></a>00064                 <span class="keywordtype">void</span> del_virus ( <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; del );
+<a name="l00065"></a>00065                 <span class="keywordtype">void</span> removeAllVirus ( <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; all );
+<a name="l00066"></a>00066                 <span class="keywordtype">void</span> updateVirus(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp; w, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; h);
+<a name="l00067"></a>00067                 <span class="keywordtype">void</span> removeVirus( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; d );
+<a name="l00068"></a>00068         
+<a name="l00069"></a>00069                 
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072                 <span class="keywordtype">int</span> getSizeGroupeVirus() <span class="keyword">const</span>;
+<a name="l00073"></a>00073                 <span class="keywordtype">void</span> getCoordonneVirus( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; i, <span class="keywordtype">float</span> &amp; x, <span class="keywordtype">float</span> &amp; y, <span class="keywordtype">float</span> &amp; w, <span class="keywordtype">float</span> &amp; h ) <span class="keyword">const</span>;
+<a name="l00074"></a>00074                 <span class="keywordtype">void</span> setNbEfantVirus( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; e );
+<a name="l00075"></a>00075                 <span class="keywordtype">void</span> setDureVieVirus( <span class="keyword">const</span> <span class="keywordtype">float</span> &amp; d );
+<a name="l00076"></a>00076                 <span class="keywordtype">void</span> setDureIncubVirus( <span class="keyword">const</span> <span class="keywordtype">float</span> &amp; d );
+<a name="l00077"></a>00077 
+<a name="l00079"></a>00079                 
+<a name="l00080"></a>00080                 <a class="code" href="enum_8h.html#adc6e5733fc3c22f0a7b2914188c49c90" title="DEFINIT L&#39;ETAT D&#39;UNE CELLULE.">state</a> getEtatCellule(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; j) <span class="keyword">const</span>;
+<a name="l00081"></a>00081                 <a class="code" href="enum_8h.html#ae2f10db0fed275ae9f323a3c41243971" title="DEFINIT LA RESISTANCE D&#39;UNE CELLULE.">health</a> getSanteCellule(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; j) <span class="keyword">const</span>;
+<a name="l00082"></a>00082                 <span class="keywordtype">void</span> getCoordonneCellule( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; j, <a class="code" href="classUnite.html">Unite</a> &amp; e) <span class="keyword">const</span>;
+<a name="l00083"></a>00083                 <span class="keywordtype">void</span> getSizePictureCellule( <span class="keywordtype">float</span> &amp; w, <span class="keywordtype">float</span> &amp; h ) <span class="keyword">const</span>;
+<a name="l00084"></a>00084                 <span class="keywordtype">void</span> getTailleGrilleCellule( <span class="keywordtype">int</span> &amp; ti, <span class="keywordtype">int</span> &amp; tj ) <span class="keyword">const</span>;
+<a name="l00085"></a>00085                 <span class="keywordtype">void</span> setMinAliveCellule( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; a );
+<a name="l00086"></a>00086                 <span class="keywordtype">void</span> setMaxAliveCellule( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; a );
+<a name="l00087"></a>00087                 <span class="keywordtype">void</span> setMinDeadCellule( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; a );
+<a name="l00088"></a>00088                 <span class="keywordtype">void</span> setMaxDeadCellule( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; a );
+<a name="l00089"></a>00089                 <span class="keywordtype">void</span> setAleaCelluleGrille( <span class="keyword">const</span> <span class="keywordtype">float</span> &amp; a );
+<a name="l00090"></a>00090                 <span class="keywordtype">void</span> setAleaResistGrille( <span class="keyword">const</span> <span class="keywordtype">float</span> &amp; a );
+<a name="l00091"></a>00091                 
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094                 <span class="keywordtype">bool</span> getStateGame() <span class="keyword">const</span>;
+<a name="l00095"></a>00095                 <span class="keywordtype">int</span> getVitesse() <span class="keyword">const</span>;
+<a name="l00096"></a>00096                 <span class="keywordtype">void</span> setW(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp; w );
+<a name="l00097"></a>00097                 <span class="keywordtype">void</span> setH(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp; h );
+<a name="l00098"></a>00098                 <span class="keywordtype">void</span> setVitesse( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; v);
+<a name="l00099"></a>00099                 
+<a name="l00100"></a>00100 };
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 <span class="preprocessor">#endif // GAMEMODEL_H</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Fri May 20 2011 22:45:11 pour JeuDeLaVie par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

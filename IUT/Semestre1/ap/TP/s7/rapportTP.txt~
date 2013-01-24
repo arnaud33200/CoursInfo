@@ -1,0 +1,18 @@
+Exercice 3 : Make et Makefile
+-----------------------------
+
+1/ g++ Tableau.o Main.o -o tabTest
+
+5/ seul le fichier Tableau.o a subit une recompilation
+
+6/ avantage, gain de temps:
+   	     - plusieur comande regroupé en une
+	     - evite les compilations inutiles
+plus de propreté dans le code
+
+
+
+Exercice 4 :
+------------
+
+1/ ligne 174 : taille ++ en trop qui raccourci la saisir clavier 

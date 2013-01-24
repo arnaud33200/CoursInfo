@@ -1,0 +1,42 @@
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           Hiérarchie des formes géométriques
+                        %%%%%
+    Description succinte du contenu de cette version
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+* Makefile
+----------
+Il est complet ! pas besoin d'y toucher en principe
+(il compile même les fichiers "vides" en attendant qu'ils soient complets)
+
+	
+* Fichiers des formes
+---------------------
+Shape, Line, LineBrok, Rectangle, Circle
+	=> sont complets 
+
+Triangle et Carre
+	=> sont vides, à compléter
+
+
+* Autres classes utiles
+-----------------------
+Point : coordonnées entières
+
+Screen : pour faciliter les affichages, contient algorithmes de dessins de ligne
+	=> algorithme de dessin de cercle à implémenter plus tard
+	
+
+* main.cc
+---------
+permet de tester chaque classe de forme
+	=> décommenter pour tester les nouvelles formes (Triangle et Carre)
+
+
+* util.h et .cc
+----------------
+contient un type color et des fonctions de saisie des paramètres pour chaque forme
+	=> à compléter pour les nouvelles formes (Triangle et Carre)
+(ces fonctions seront surtout utiles pour la suite)
+

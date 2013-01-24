@@ -1,0 +1,14 @@
+nouvelle mise en place du fichier level
+avant de précisé salles normaux :
+	on donne le numéro de salle piégés dans le labyrinthe
+	coordonnée des salles à la suite
+
+plus efficace et moins lourd que de rajouter une troisième collone pour dire 
+si piégé ou non
+( beaucoup l'on fait, on précise qu'on a fait mieux ahahaha)
+
+construction du labyrinthe reste pareil
+mise en place d'un script qui rajoute des pièges voulu
+	fait les bonnes vérifications : 
+		pas de salle double, pas de depassement du labyrinthe
+		la salle piégé ne peux pas etre l'entrée ou la sortie

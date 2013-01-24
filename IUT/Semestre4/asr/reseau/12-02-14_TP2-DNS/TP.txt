@@ -1,0 +1,91 @@
+---- CLIENT
+
+echo -e "\nauto eth0" >> /etc/network/interfaces
+echo "iface eth0 inet static" >> /etc/network/interfaces
+echo -e "\taddress 10.1.5.100" >> /etc/network/interfaces
+echo -e "\tnetmask 255.255.255.0" >> /etc/network/interfaces
+
+---- SERV1
+
+echo -e "\nauto eth0" >> /etc/network/interfaces
+echo "iface eth0 inet static" >> /etc/network/interfaces
+echo -e "\taddress 10.1.5.1" >> /etc/network/interfaces
+echo -e "\tnetmask 255.255.255.0" >> /etc/network/interfaces
+
+---- SERV2
+
+echo -e "\nauto eth0" >> /etc/network/interfaces
+echo "iface eth0 inet static" >> /etc/network/interfaces
+echo -e "\taddress 10.1.5.2" >> /etc/network/interfaces
+echo -e "\tnetmask 255.255.255.0" >> /etc/network/interfaces
+
+                                                                       
+
+echo "client" > /etc/hostname
+echo "serveur1" > /etc/hostname
+echo "serveur2" > /etc/hostname
+
+echo "127.0.0.1 client" >> /etc/hosts
+echo "127.0.0.1 serveur1" >> /etc/hosts
+echo "127.0.0.1 serveur2" >> /etc/hosts
+
+                                                                     
+
+echo "10.1.5.1 serveur1" >> /etc/hosts
+
+                                                                     
+
+nslookup localhost.
+
+ ---- CLIENT
+
+echo "nameserver 10.1.5.1" >> /etc/resolv.conf
+
+listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes
+10:54:17.852396 IP 10.1.5.100.1024 > 10.1.5.1.domain:  64204+ A? localhost. (27)
+10:54:17.855979 IP 10.1.5.1.domain > 10.1.5.100.1024:  64204* 1/1/0 A localhost (57)
+10:54:22.843788 arp who-has 10.1.5.1 tell 10.1.5.100
+10:54:22.843825 arp reply 10.1.5.1 is-at fe:fd:00:00:00:02
+
+11:12:46.097432 IP 10.1.5.100.1024 > 10.1.5.1.domain:  40818+ A? localhost. (27)
+11:12:46.100895 IP 10.1.5.1.domain > 10.1.5.100.1024:  40818* 1/1/0 A localhost (57)
+
+
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+3.2
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
+~~~~~~~~~~~~~~ db.localdomain ~~~~~~~~~~~~~~~~~Ã©
+
+$TTL    86400
+root@dns1.localdomain.
+@       IN      SOA     dns1.localdomain. root.dns1.localdomain. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ;
+
+@       IN      NS      dns1
+dns1    IN      A       10.1.5.1	;question 3
+dns2    IN      A       10.1.5.2	;question 3
+poste   IN      A       10.1.5.100	;question 3
+www     IN      CNAME   dns1		;question 7
+
+
+~~~~~~~
+serveur1:/etc/bind# tail /var/log/syslog 
+Mar  6 10:24:16 serveur1 named[1033]: listening on IPv4 interface eth0, 10.1.5.1#53
+Mar  6 10:24:16 serveur1 named[1033]: listening on IPv4 interface lo, 127.0.0.1#53
+Mar  6 10:24:16 serveur1 named[1033]: command channel listening on 127.0.0.1#953
+Mar  6 10:24:16 serveur1 named[1033]: command channel listening on ::1#953
+Mar  6 10:24:16 serveur1 named[1033]: zone 0.in-addr.arpa/IN: loaded serial 1
+Mar  6 10:24:16 serveur1 named[1033]: zone 127.in-addr.arpa/IN: loaded serial 1
+Mar  6 10:24:16 serveur1 named[1033]: zone 255.in-addr.arpa/IN: loaded serial 1
+Mar  6 10:24:16 serveur1 named[1033]: zone localdomain/IN: loaded serial 2
+Mar  6 10:24:16 serveur1 named[1033]: zone localhost/IN: loaded serial 1
+Mar  6 10:24:16 serveur1 named[1033]: running
+~~~~~
+
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½

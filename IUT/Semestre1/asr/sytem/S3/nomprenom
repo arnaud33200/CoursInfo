@@ -1,0 +1,19 @@
+;; Keyboard Macro Editor.  Press C-c C-c to finish; press C-x k RET to cancel.
+;; Original keys: C-s SPC RET DEL C-u 20 SPC RET <up> C-u 20 C-f C-k <down> C-a
+
+Command: last-kbd-macro
+Key: none
+
+Macro:
+
+C-s			;; isearch-forward
+SPC			;; next-line
+RET			;; debug-help-follow
+DEL			;; delete-backward-char
+C-u 20 SPC		;; next-line
+RET			;; debug-help-follow
+<up>			;; previous-line
+C-u 20 C-f		;; forward-char
+C-k			;; kill-line
+<down>			;; next-line
+C-a			;; move-beginning-of-line

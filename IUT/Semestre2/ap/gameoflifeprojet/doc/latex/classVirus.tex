@@ -1,0 +1,398 @@
+\hypertarget{classVirus}{
+\section{Référence de la classe Virus}
+\label{classVirus}\index{Virus@{Virus}}
+}
+
+
+classe qui gère un \hyperlink{classVirus}{Virus}  
+
+
+
+
+{\ttfamily \#include $<$Virus.h$>$}
+
+Graphe d'héritage de Virus:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVirus}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVirus_a8d2b6d6312a36c3d364659b7f8fc5580}{Virus} ()
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# CONSTRUCTOR \& DESTRUCTOR \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+\hyperlink{classVirus_acf2e4fb745ef21060166abf48933f2e7}{Virus} (const float \&x, const float \&y)
+\item 
+\hyperlink{classVirus_a99648c8fe90427870df5e615782f8d31}{Virus} (const \hyperlink{classVirus}{Virus} \&v)
+\item 
+\hyperlink{classVirus_ad153520d85db2799257721d5baaebbcc}{$\sim$Virus} ()
+\item 
+void \hyperlink{classVirus_a517c00809952ed976f123436f0cbc415}{move} (const float \&w, const float \&\hyperlink{classUnite_1_1h}{h})
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# MOUVEMENT VIRUS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+bool \hyperlink{classVirus_ac6b08e21db80f69c56b8255e33cf45fd}{getTarget} () const 
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# ACCESSEURS VIRUS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+float \hyperlink{classVirus_a2ecb866c913d90c83cff29b74056ea8c}{getTimeLife} () const 
+\item 
+float \hyperlink{classVirus_a42818314efd64727478570d8642a37fd}{getTimeIncub} () const 
+\item 
+float \hyperlink{classVirus_ab50e2f7230da1205aa6cb1930c22eec0}{getTimePassed} () const 
+\item 
+float \hyperlink{classVirus_a534241108ade2c64fdbcbf03ae382315}{getTimeIncPassed} () const 
+\item 
+void \hyperlink{classVirus_a458881d716992cdea91af5b2bb9c59b5}{setTarget} (const bool \&t)
+\item 
+void \hyperlink{classVirus_aaa6a9f96616db60aeb05edfebfb67830}{setResetLife} ()
+\item 
+void \hyperlink{classVirus_add324ec78ef4bfc077ef5e6a4ca78272}{setResetIncub} ()
+\item 
+void \hyperlink{classVirus_a44667f6e6de28deaeee25d0388160c5f}{setTimePassed} (const float \&t)
+\item 
+void \hyperlink{classVirus_a2490bcb3bc3db94d9c956361b19f342d}{setTimeIncPassed} (const float \&t)
+\end{DoxyCompactItemize}
+\subsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classVirus_ad6fc67768ebaff383c125b771935ed10}{\_\-target}
+\item 
+float \hyperlink{classVirus_ae1ab8da9908880b925b58f6f229798d1}{\_\-dy}
+\item 
+float \hyperlink{classVirus_a7462d0029011b9749003ac3fb551f62e}{\_\-dx}
+\item 
+float \hyperlink{classVirus_a1d5abc2e25b163a6304fd38d8f99c0aa}{\_\-timeDir}
+\item 
+Clock \hyperlink{classVirus_ab6e3f2635a1a8335c634a0ad119067ac}{\_\-timeLife}
+\item 
+Clock \hyperlink{classVirus_aec1145b5aa1df7d5e2162030cfaaf661}{\_\-timeIncub}
+\item 
+float \hyperlink{classVirus_a1c57e4cce13902be2418fafc02da10fb}{\_\-timePassed}
+\item 
+float \hyperlink{classVirus_ab9cf8a0bc3ed6a460f2dae403af30b57}{\_\-timeInc}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+classe qui gère un \hyperlink{classVirus}{Virus} 
+
+\subsection{Documentation des constructeurs et destructeur}
+\hypertarget{classVirus_a8d2b6d6312a36c3d364659b7f8fc5580}{
+\index{Virus@{Virus}!Virus@{Virus}}
+\index{Virus@{Virus}!Virus@{Virus}}
+\subsubsection[{Virus}]{\setlength{\rightskip}{0pt plus 5cm}Virus::Virus (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_a8d2b6d6312a36c3d364659b7f8fc5580}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# CONSTRUCTOR \& DESTRUCTOR \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+
+\begin{DoxyCode}
+: Unite( aleaint(10,790) , aleaint(40, 590)),
+ _target(false), _dx(aleaint(-2,2)), _dy(aleaint(-2,2))
+{ 
+        _timeInc = _timePassed = 0;
+        _timeDir = 0;
+        _timeLife.Reset();
+}
+\end{DoxyCode}
+\hypertarget{classVirus_acf2e4fb745ef21060166abf48933f2e7}{
+\index{Virus@{Virus}!Virus@{Virus}}
+\index{Virus@{Virus}!Virus@{Virus}}
+\subsubsection[{Virus}]{\setlength{\rightskip}{0pt plus 5cm}Virus::Virus (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{x, }
+\item[{const float \&}]{y}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_acf2e4fb745ef21060166abf48933f2e7}
+
+\begin{DoxyCode}
+: Unite( x, y), _target(false)
+{ 
+        _timePassed = 0;
+        _timeDir = 0;
+        _timeLife.Reset();
+}
+\end{DoxyCode}
+\hypertarget{classVirus_a99648c8fe90427870df5e615782f8d31}{
+\index{Virus@{Virus}!Virus@{Virus}}
+\index{Virus@{Virus}!Virus@{Virus}}
+\subsubsection[{Virus}]{\setlength{\rightskip}{0pt plus 5cm}Virus::Virus (
+\begin{DoxyParamCaption}
+\item[{const {\bf Virus} \&}]{v}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_a99648c8fe90427870df5e615782f8d31}
+
+\begin{DoxyCode}
+: Unite(v.getX(),v.getY())
+{
+        _timePassed = 0;
+        _timeDir = 0;
+        _timeLife.Reset();      
+}
+\end{DoxyCode}
+\hypertarget{classVirus_ad153520d85db2799257721d5baaebbcc}{
+\index{Virus@{Virus}!$\sim$Virus@{$\sim$Virus}}
+\index{$\sim$Virus@{$\sim$Virus}!Virus@{Virus}}
+\subsubsection[{$\sim$Virus}]{\setlength{\rightskip}{0pt plus 5cm}Virus::$\sim$Virus (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_ad153520d85db2799257721d5baaebbcc}
+
+\begin{DoxyCode}
+{ }
+\end{DoxyCode}
+
+
+\subsection{Documentation des fonctions membres}
+\hypertarget{classVirus_ac6b08e21db80f69c56b8255e33cf45fd}{
+\index{Virus@{Virus}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!Virus@{Virus}}
+\subsubsection[{getTarget}]{\setlength{\rightskip}{0pt plus 5cm}bool Virus::getTarget (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{classVirus_ac6b08e21db80f69c56b8255e33cf45fd}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# ACCESSEURS VIRUS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+
+\begin{DoxyCode}
+{ return _target; }
+\end{DoxyCode}
+\hypertarget{classVirus_a534241108ade2c64fdbcbf03ae382315}{
+\index{Virus@{Virus}!getTimeIncPassed@{getTimeIncPassed}}
+\index{getTimeIncPassed@{getTimeIncPassed}!Virus@{Virus}}
+\subsubsection[{getTimeIncPassed}]{\setlength{\rightskip}{0pt plus 5cm}float Virus::getTimeIncPassed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{classVirus_a534241108ade2c64fdbcbf03ae382315}
+
+\begin{DoxyCode}
+{ return _timeInc; }
+\end{DoxyCode}
+\hypertarget{classVirus_a42818314efd64727478570d8642a37fd}{
+\index{Virus@{Virus}!getTimeIncub@{getTimeIncub}}
+\index{getTimeIncub@{getTimeIncub}!Virus@{Virus}}
+\subsubsection[{getTimeIncub}]{\setlength{\rightskip}{0pt plus 5cm}float Virus::getTimeIncub (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{classVirus_a42818314efd64727478570d8642a37fd}
+
+\begin{DoxyCode}
+{ return _timeIncub.GetElapsedTime(); }
+\end{DoxyCode}
+\hypertarget{classVirus_a2ecb866c913d90c83cff29b74056ea8c}{
+\index{Virus@{Virus}!getTimeLife@{getTimeLife}}
+\index{getTimeLife@{getTimeLife}!Virus@{Virus}}
+\subsubsection[{getTimeLife}]{\setlength{\rightskip}{0pt plus 5cm}float Virus::getTimeLife (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{classVirus_a2ecb866c913d90c83cff29b74056ea8c}
+
+\begin{DoxyCode}
+{ return _timeLife.GetElapsedTime(); }
+\end{DoxyCode}
+\hypertarget{classVirus_ab50e2f7230da1205aa6cb1930c22eec0}{
+\index{Virus@{Virus}!getTimePassed@{getTimePassed}}
+\index{getTimePassed@{getTimePassed}!Virus@{Virus}}
+\subsubsection[{getTimePassed}]{\setlength{\rightskip}{0pt plus 5cm}float Virus::getTimePassed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}
+\label{classVirus_ab50e2f7230da1205aa6cb1930c22eec0}
+
+\begin{DoxyCode}
+{ return _timePassed; }
+\end{DoxyCode}
+\hypertarget{classVirus_a517c00809952ed976f123436f0cbc415}{
+\index{Virus@{Virus}!move@{move}}
+\index{move@{move}!Virus@{Virus}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Virus::move (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{w, }
+\item[{const float \&}]{h}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_a517c00809952ed976f123436f0cbc415}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# MOUVEMENT VIRUS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+Methode qui definit le mouvement d'une cellule à la prochaine etape.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em w,h} & réels qui donnent la taille du virus qui permettra le deplacement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if ( !_target  )
+        {
+                _timeDir++;
+                if ( _timeDir >= 5 )
+                {
+                        _dx = aleafloat(-1, 1);
+                        _dy = aleafloat(-1, 1);
+                        _timeDir = 0;
+                }
+                //~ if ( getX() <= 0 )
+                //~ { 
+                        //~ setX( 1 );
+                        //~ _dx = _dx * -1;
+                //~ }
+                //~ else if( (getX()-w) >= 798 )
+                //~ { 
+                        //~ setX( 799 );
+                        //~ _dx = _dx * -1;
+                //~ }
+                //~ if ( getY() <= 30 )
+                //~ {
+                                //~ setY(31);
+                         //~ _dy = _dy * -1;
+                //~ }
+                //~ else if ( (getY()-h) >= 628 )
+                //~ {
+                        //~ setY(629);
+                         //~ _dy = _dy * -1;
+                //~ }
+        
+                _x = _x + ( _dx*w );
+                _y = _y + ( _dy*h  );
+        }
+}
+\end{DoxyCode}
+\hypertarget{classVirus_add324ec78ef4bfc077ef5e6a4ca78272}{
+\index{Virus@{Virus}!setResetIncub@{setResetIncub}}
+\index{setResetIncub@{setResetIncub}!Virus@{Virus}}
+\subsubsection[{setResetIncub}]{\setlength{\rightskip}{0pt plus 5cm}void Virus::setResetIncub (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_add324ec78ef4bfc077ef5e6a4ca78272}
+
+\begin{DoxyCode}
+{ _timeIncub.Reset(); }
+\end{DoxyCode}
+\hypertarget{classVirus_aaa6a9f96616db60aeb05edfebfb67830}{
+\index{Virus@{Virus}!setResetLife@{setResetLife}}
+\index{setResetLife@{setResetLife}!Virus@{Virus}}
+\subsubsection[{setResetLife}]{\setlength{\rightskip}{0pt plus 5cm}void Virus::setResetLife (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_aaa6a9f96616db60aeb05edfebfb67830}
+
+\begin{DoxyCode}
+{ _timeLife.Reset(); }
+\end{DoxyCode}
+\hypertarget{classVirus_a458881d716992cdea91af5b2bb9c59b5}{
+\index{Virus@{Virus}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!Virus@{Virus}}
+\subsubsection[{setTarget}]{\setlength{\rightskip}{0pt plus 5cm}void Virus::setTarget (
+\begin{DoxyParamCaption}
+\item[{const bool \&}]{t}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_a458881d716992cdea91af5b2bb9c59b5}
+
+\begin{DoxyCode}
+{ _target = t; }
+\end{DoxyCode}
+\hypertarget{classVirus_a2490bcb3bc3db94d9c956361b19f342d}{
+\index{Virus@{Virus}!setTimeIncPassed@{setTimeIncPassed}}
+\index{setTimeIncPassed@{setTimeIncPassed}!Virus@{Virus}}
+\subsubsection[{setTimeIncPassed}]{\setlength{\rightskip}{0pt plus 5cm}void Virus::setTimeIncPassed (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{t}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_a2490bcb3bc3db94d9c956361b19f342d}
+
+\begin{DoxyCode}
+{ _timeInc = t; }
+\end{DoxyCode}
+\hypertarget{classVirus_a44667f6e6de28deaeee25d0388160c5f}{
+\index{Virus@{Virus}!setTimePassed@{setTimePassed}}
+\index{setTimePassed@{setTimePassed}!Virus@{Virus}}
+\subsubsection[{setTimePassed}]{\setlength{\rightskip}{0pt plus 5cm}void Virus::setTimePassed (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{t}
+\end{DoxyParamCaption}
+)}}
+\label{classVirus_a44667f6e6de28deaeee25d0388160c5f}
+
+\begin{DoxyCode}
+{ _timePassed = t; }
+\end{DoxyCode}
+
+
+\subsection{Documentation des données membres}
+\hypertarget{classVirus_a7462d0029011b9749003ac3fb551f62e}{
+\index{Virus@{Virus}!\_\-dx@{\_\-dx}}
+\index{\_\-dx@{\_\-dx}!Virus@{Virus}}
+\subsubsection[{\_\-dx}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Virus::\_\-dx}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classVirus_a7462d0029011b9749003ac3fb551f62e}
+\hypertarget{classVirus_ae1ab8da9908880b925b58f6f229798d1}{
+\index{Virus@{Virus}!\_\-dy@{\_\-dy}}
+\index{\_\-dy@{\_\-dy}!Virus@{Virus}}
+\subsubsection[{\_\-dy}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Virus::\_\-dy}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classVirus_ae1ab8da9908880b925b58f6f229798d1}
+\hypertarget{classVirus_ad6fc67768ebaff383c125b771935ed10}{
+\index{Virus@{Virus}!\_\-target@{\_\-target}}
+\index{\_\-target@{\_\-target}!Virus@{Virus}}
+\subsubsection[{\_\-target}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf Virus::\_\-target}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classVirus_ad6fc67768ebaff383c125b771935ed10}
+\hypertarget{classVirus_a1d5abc2e25b163a6304fd38d8f99c0aa}{
+\index{Virus@{Virus}!\_\-timeDir@{\_\-timeDir}}
+\index{\_\-timeDir@{\_\-timeDir}!Virus@{Virus}}
+\subsubsection[{\_\-timeDir}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Virus::\_\-timeDir}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classVirus_a1d5abc2e25b163a6304fd38d8f99c0aa}
+\hypertarget{classVirus_ab9cf8a0bc3ed6a460f2dae403af30b57}{
+\index{Virus@{Virus}!\_\-timeInc@{\_\-timeInc}}
+\index{\_\-timeInc@{\_\-timeInc}!Virus@{Virus}}
+\subsubsection[{\_\-timeInc}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Virus::\_\-timeInc}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classVirus_ab9cf8a0bc3ed6a460f2dae403af30b57}
+\hypertarget{classVirus_aec1145b5aa1df7d5e2162030cfaaf661}{
+\index{Virus@{Virus}!\_\-timeIncub@{\_\-timeIncub}}
+\index{\_\-timeIncub@{\_\-timeIncub}!Virus@{Virus}}
+\subsubsection[{\_\-timeIncub}]{\setlength{\rightskip}{0pt plus 5cm}Clock {\bf Virus::\_\-timeIncub}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classVirus_aec1145b5aa1df7d5e2162030cfaaf661}
+\hypertarget{classVirus_ab6e3f2635a1a8335c634a0ad119067ac}{
+\index{Virus@{Virus}!\_\-timeLife@{\_\-timeLife}}
+\index{\_\-timeLife@{\_\-timeLife}!Virus@{Virus}}
+\subsubsection[{\_\-timeLife}]{\setlength{\rightskip}{0pt plus 5cm}Clock {\bf Virus::\_\-timeLife}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classVirus_ab6e3f2635a1a8335c634a0ad119067ac}
+\hypertarget{classVirus_a1c57e4cce13902be2418fafc02da10fb}{
+\index{Virus@{Virus}!\_\-timePassed@{\_\-timePassed}}
+\index{\_\-timePassed@{\_\-timePassed}!Virus@{Virus}}
+\subsubsection[{\_\-timePassed}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Virus::\_\-timePassed}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classVirus_a1c57e4cce13902be2418fafc02da10fb}
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants :\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Virus_8h}{Virus.h}\item 
+\hyperlink{Virus_8cc}{Virus.cc}\end{DoxyCompactItemize}

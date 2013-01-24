@@ -1,0 +1,57 @@
+body 
+{
+    background-color: cyan;
+    color: blue;
+}
+
+a
+{
+    color: red;
+}
+
+#header h1 
+{ 
+color: rgb(0,150,0);
+    text-align: center;
+}
+
+#header h2
+{
+
+    margin-left: 50px;
+}
+
+h3
+{
+    margin-left: 100px;
+}
+
+img
+{
+    margin-left: 300px;
+}
+
+#entete
+{
+    border: 1px solid olive;
+}
+
+.elem_menu
+{
+    list-style: square;
+}
+
+#header
+{
+width: 90%;
+margin: auto;
+border: 1px solid green;
+background-color: yellow;
+}
+
+
+div, p, ul
+{
+    background-color: pink;
+    border: 2px solid orange;
+}

@@ -1,0 +1,10 @@
+\\info\www\perso\2011-2012\aladouce\tanenbaum_ASP\Tanenbaum\bin\Tanenbaum.dll
+\\info\www\perso\2011-2012\aladouce\tanenbaum_ASP\Tanenbaum\bin\Tanenbaum.pdb
+\\info\www\perso\2011-2012\aladouce\tanenbaum_ASP\Tanenbaum\obj\Debug\ResolveAssemblyReference.cache
+\\info\www\perso\2011-2012\aladouce\tanenbaum_ASP\Tanenbaum\obj\Debug\Tanenbaum.dll
+\\info\www\perso\2011-2012\aladouce\tanenbaum_ASP\Tanenbaum\obj\Debug\Tanenbaum.pdb
+C:\Users\arnaud\Documents\Mes sites Web\tanenbaum_ASP\Tanenbaum\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\arnaud\Documents\Mes sites Web\tanenbaum_ASP\Tanenbaum\obj\Debug\Tanenbaum.dll
+C:\Users\arnaud\Documents\Mes sites Web\tanenbaum_ASP\Tanenbaum\obj\Debug\Tanenbaum.pdb
+C:\Users\arnaud\Documents\Mes sites Web\tanenbaum_ASP\Tanenbaum\bin\Tanenbaum.dll
+C:\Users\arnaud\Documents\Mes sites Web\tanenbaum_ASP\Tanenbaum\bin\Tanenbaum.pdb

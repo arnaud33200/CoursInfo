@@ -1,0 +1,108 @@
+// MyPersonnage.java
+
+import java.util.*;
+
+public class MyPersonnage extends PersonnageDefaut {
+	private Salle previous = null;				// indique la salle ou il etait precedement
+	private Salle check;				// point d'encrage, utiliser pour revenir a un endroit en case d'erreur
+	private int dir[] = new int[2] ;			// direction du Hero : dir[1] 
+	Collection<Salle> forbid = new ArrayList();		// toutes les salles interditent.
+
+
+    public Salle faitSonChoix(Collection<Salle> sallesAccessibles)
+    {
+		Salle choix;
+		boolean bloque = false;
+		
+		switch (sallesAccessibles.size()) 
+		{
+			
+/// Cas d'un cul de sac :
+/// n'ayant plus de choix, il est oblige de revenir en arriere
+/// pour verifie si les salles precedentes on d'autre direction
+/// ainsi on indique cette endroit comme interdit
+			case 1:
+			{
+				choix = (Salle)(sallesAccessibles.toArray())[0]; 	// seul & unique salle possible
+				bloque = true;										// il n'enregistre pas sa position
+				forbid.add((Salle)(sallesAccessibles.toArray())[0]);
+				System.out.println("arrive a un cul de sac");
+				break;
+		   	}
+		   	
+/// il a deux choix possible, sois il fait demi tour	
+///	soit il tourne 
+			case 2: //  oblige de tournee
+			{
+		// si on revient pas en arriere et si on emprunte pas une route interdite
+				if ( sallesAccessibles.toArray()[0] != previous && !cheminInterdit((Salle)(sallesAccessibles.toArray())[0]) )
+					choix = (Salle)(sallesAccessibles.toArray())[0];
+				else
+					choix = (Salle)(sallesAccessibles.toArray())[1];
+				break;
+			}
+			case 3: // choix entre deux direction ( voir parcours le plus efficace = enregister checkpoint)
+			{
+				do
+				{
+					//Random generator = new Random();
+					//choix = (Salle)(sallesAccessibles.toArray())[generator.nextInt(2)];
+					if ( (sallesAccessibles.toArray())[0] != previous )
+						choix = (Salle)(sallesAccessibles.toArray())[0];
+					else
+						choix = (Salle)(sallesAccessibles.toArray())[2];
+					break;
+				}
+				while( cheminInterdit(choix) );
+			}
+			case 4: // choix entre 3
+			{
+				if ( (sallesAccessibles.toArray())[0] != previous )
+						choix = (Salle)(sallesAccessibles.toArray())[0];
+					else
+						choix = (Salle)(sallesAccessibles.toArray())[2];
+				break;
+			}
+			default:
+			{
+				Random generator = new Random();
+				choix = (Salle)(sallesAccessibles.toArray())[generator.nextInt(3)];
+			}
+		}
+// si il est dans un cul de sac, il 
+		if ( !bloque || cheminInterdit(choix) )
+			previous = salleCourante;
+		
+		return choix;
+		
+    }
+
+// regarde si une salle est une salle interdite
+// si Salle s est present dans la collection interdite
+// vrai : si la salle s est interdite
+// faux : si la salle est autorisé
+	public boolean cheminInterdit(Salle s)
+	{
+		int i=0;
+		boolean trouve=false;
+		if ( forbid.size() ==0 )
+			return false;
+		while ( !trouve || i<forbid.size() )
+		{
+			if ( forbid.toArray()[i] == s )
+				trouve = true;
+			i++;
+		}
+		return trouve;
+	}
+	
+// a partir de la salle courante et une des salles suivante
+// on peut savoir dans quelle direction il peut allé
+	public int[] directionSalle( Salle next )
+	{
+		int d[] = new int[2];
+		d[0] = next.getColonne() - salleCourante.getColonne();
+		d[1] = next.getLigne() - salleCourante.getLigne();
+		return d; 
+	}
+}

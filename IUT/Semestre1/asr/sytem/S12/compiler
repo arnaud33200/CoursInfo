@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if test -f $1.cc
+then
+    echo le fichier existe
+    if file 
+else
+    echo le fichier existe pas
+fi

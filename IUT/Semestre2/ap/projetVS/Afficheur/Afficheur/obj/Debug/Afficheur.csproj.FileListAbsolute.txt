@@ -1,0 +1,8 @@
+\\info\Etudiants\Home\aladouce\projetVS\Afficheur\Afficheur\bin\Debug\Afficheur.exe
+\\info\Etudiants\Home\aladouce\projetVS\Afficheur\Afficheur\bin\Debug\Afficheur.pdb
+\\info\Etudiants\Home\aladouce\projetVS\Afficheur\Afficheur\obj\Debug\ResolveAssemblyReference.cache
+\\info\Etudiants\Home\aladouce\projetVS\Afficheur\Afficheur\obj\Debug\Afficheur.Form1.resources
+\\info\Etudiants\Home\aladouce\projetVS\Afficheur\Afficheur\obj\Debug\Afficheur.Properties.Resources.resources
+\\info\Etudiants\Home\aladouce\projetVS\Afficheur\Afficheur\obj\Debug\Afficheur.csproj.GenerateResource.Cache
+\\info\Etudiants\Home\aladouce\projetVS\Afficheur\Afficheur\obj\Debug\Afficheur.exe
+\\info\Etudiants\Home\aladouce\projetVS\Afficheur\Afficheur\obj\Debug\Afficheur.pdb

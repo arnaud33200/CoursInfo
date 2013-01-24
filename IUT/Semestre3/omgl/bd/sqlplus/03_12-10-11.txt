@@ -1,0 +1,26 @@
+select * from RESERVATION;
+
+insert into RESERVATION values(10, 154, BIBU);
+
+select NOM_SPECTATEUR
+from RESERVATION
+where NUMERO_SEANCE='4' and NUMERO_PLACE='112';
+
+update RESERVATION
+set NOM_SPECTATEUR='RAICHU'
+where NUMERO_SEANCE='4' and NUMERO_PLACE='112';
+
+update RESERVATION
+set NOM_SPECTATEUR='FLOWERPOWER'
+where NUMERO_SEANCE='1' and NUMERO_PLACE='666';
+
+update RESERVATION
+set NOM_SPECTATEUR='CHATTARTINE'
+where NUMERO_SEANCE='10' and NUMERO_PLACE='22';
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~ 30 /
+
+
+	

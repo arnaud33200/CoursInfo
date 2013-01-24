@@ -1,0 +1,164 @@
+
+body
+{
+	font-family: Arial;	
+    background-color: rgb(189,255,168);
+    margin-left: 72px;
+}
+
+.bordure
+{
+	float: right;
+	position: absolute;
+	left: 930px;
+	top: 55px;
+}
+
+
+.bar1, .bar2, .bar3
+{
+	float: left;
+	position: absolute;
+	left: 0px;
+	min-width: 100%;
+}
+
+.bar1
+{
+	top: 0px;
+	height: 10px;
+	background-color: rgb(12,58,79);
+	border-bottom: 1px solid rgb(31,97,95); 
+}
+
+.bar2
+{
+	top: 11px;
+	height: 27px;
+	background-color: rgb(101,185,133);
+}
+
+.bar3
+{
+	top: 38px;
+	height: 15px;
+	background-color: rgb(167,233,154);
+}
+
+
+#title
+{
+	color: rgb(10,55,77);
+	margin-top: 50px;
+	margin-bottom: 25px;
+	font-size: 50pt;
+	word-spacing: 40px;
+}
+
+.titlelink
+{
+	color: rgb(34,132,107);
+}
+
+h2
+{
+	font-size: 17pt;
+}
+
+p
+{
+	font-size: 10pt;
+}
+
+h2, p
+{
+    margin: 14px;
+}
+
+
+#premierp
+{
+	margin-bottom: 35px;
+}
+
+#bonjour, #texte
+{
+   	width: 479px;
+    border: 2px solid rgb(204,204,204);
+    background-color: white;
+    margin-bottom: 14px;
+    margin-right: 0px;  
+}
+
+
+#video, #tags
+{
+	float: right;
+	background-color: white;
+	border: 2px solid rgb(204,204,204);
+	padding: 5px;
+}
+
+
+#video
+{
+	position: absolute;
+	left: 576px;
+}
+
+#tags
+{
+   	width: 293px;
+   	height: 190px;
+	position: absolute;
+	left: 576px;
+	top: 420px;
+	
+}
+
+.tiny, h6, h5, h4, h3
+{
+float: left;
+float: top;
+position: absolute;
+}
+
+.tiny
+{
+font-size: 8pt;
+left: 145px;
+top: 25px;
+}
+
+h6
+{
+font-size: 13pt;
+}
+
+h5
+{
+font-size: 21pt;
+left: 55px;
+top: 50px;
+}
+
+h4
+{
+font-size: 25pt;
+left: 145px;
+top: 104px;
+}
+
+h3
+{
+font-size: 34pt;
+left: 115px;
+top: -5px;
+}
+
+.la
+{
+position: absolute;
+left: 12px;
+top: 0px;
+}

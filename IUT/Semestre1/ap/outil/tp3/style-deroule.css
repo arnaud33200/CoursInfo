@@ -1,0 +1,95 @@
+body
+{
+    color: white;
+    background-image: url(wallpaper.jpg);
+    background-color: black;
+    max-height: 500px;
+}
+
+
+
+.thumb
+{
+    display: block;
+    width: 100px;
+    height: 75px;
+    float: left;
+    margin: 1px 1px 1px 1px;
+    background-color: black;
+}
+
+
+img
+{
+margin: 0px;
+padding: 0px;
+width: 100px;
+height: 75px;
+}
+
+.thumb a:hover img
+{
+    position: relative;
+    top: 75px;
+    width: 300px;
+    height: 225px;
+}
+
+
+.thumb a
+{
+display: block;
+}
+
+#menu ul 
+{
+margin: 0px;
+padding: 0;
+list-style-type: none;
+text-align: center;
+}
+
+
+#menu li
+{
+    float: left;
+    margin: auto;
+    padding: 0;
+    background-color: green;
+}
+
+
+#menu li a 
+{
+    display: block;
+    width: 100px;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+#menu li a:hover
+{
+    color: blue;
+}
+
+
+#menu ul li ul
+{
+display: none;
+}
+
+#menu ul li ul li ul
+{
+display: none;
+}
+
+#menu li:hover ul 
+{
+display: block;
+}
+
+#menu li ul li:hover ul
+{
+display: block;
+}

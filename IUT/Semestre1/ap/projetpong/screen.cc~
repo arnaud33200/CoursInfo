@@ -1,0 +1,36 @@
+// screen.cc
+
+#include<iostream>
+#include<cstdlib>
+#include<string>
+#include "SDL.h"
+#include "SDL_image.h"
+using namespace std;
+
+int
+main(int argc, char* argv[])
+{
+  bool quit=false;
+
+  SDL_Surface *screen;
+  SDL_Event event;
+ 
+  SDL_Init(SDL_INIT_EVERYTHING);
+  screen=SDL_SetVideoMode(640,480,32,SDL_SWSURFACE);
+
+  while(!quit)
+    {
+      SDL_FillRect(screen,&screen->clip_rect,
+           SDL_MapRGB(screen->format,255,255,255));
+
+      SDL_Flip(screen);
+
+      while(SDL_PollEvent(&event))
+    if(event.type==SDL_QUIT)
+        quit=true;
+    }
+
+  SDL_FreeSurface(screen);
+  SDL_Quit();
+  return EXIT_SUCCESS;   
+}

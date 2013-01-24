@@ -1,0 +1,22 @@
+#!/bin/bash
+
+cpt=0
+reponse=0
+good=$((RANDOM % 10))
+while [ $reponse != $good ]
+do
+    let  cpt=$cpt+1
+    read -p "$cpt : dite un chiffre entre 1 et 10 : " reponse
+    if [ $reponse -gt $good ]
+    then
+	echo trop grand
+    elif [ $reponse -lt $good ]
+    then
+	echo trop petit
+    elif [ $reponse -eq $good ]
+    then
+	echo vous avez gagne
+    fi
+done
+
+echo partie termine

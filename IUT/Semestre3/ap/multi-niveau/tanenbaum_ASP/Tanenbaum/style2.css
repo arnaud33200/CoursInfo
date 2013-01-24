@@ -1,0 +1,140 @@
+﻿html
+{
+	background-image: url('image/back.jpg');
+	background-position: center;
+	/*background-color: #445673;*/
+	background-attachment: fixed;
+}
+
+body
+{
+	padding: 8px 12px 8px 12px;
+	font-family: "Berlin Sans FB";
+}
+
+.tab
+{
+	margin: 5px;
+	margin-top:10px;
+	width: 100%;
+	background-color: #0F4017;
+	border: 1px black double;
+}
+
+.tabrest
+{
+	margin: 5px;
+	margin-top:10px;
+	margin-left: auto;
+  	margin-right: auto;
+	background-color: #0F4017;
+	border: 1px black double;
+}
+
+.tabrest td
+{
+	background-color:#FFFFCC;
+	border:1px black ridge;
+	padding:5px;
+}
+
+.tabhead
+{
+	text-align:center;
+	text-transform:uppercase;
+	font-size:16px;
+	background-color:#DDDDDD;
+	margin-bottom:20px;
+	padding-bottom:20px;
+}
+
+.tabhead td
+{
+	background-color:#DDDDDD;
+	margin-bottom:5px;
+	padding-bottom:5px;
+}
+
+
+.tab td
+{
+	background-color:#FFFFCC;
+	border:1px black ridge;
+	padding:5px;
+}
+
+
+#baniere 
+{
+	background-image:url('image/logo.png');
+	
+	text-align: center;
+	margin:auto;
+	margin-bottom: 72px;
+	position: relative;
+	width: 680px;
+	height: 200px;
+}
+
+/*************************************************************/
+
+.titlemen
+{
+	font-size: 20px;
+	text-transform: capitalize;
+	color: #003300;
+}
+
+#info
+{
+	text-align: center;
+}
+
+#info #menu
+{
+	text-align:center;
+}
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.sousTitre
+{
+	font-size: 18px;
+	font-style: italic;
+	padding: 5px;
+	margin: 6px;
+}
+
+#panneau
+{
+	border: 3px groove #CCFFCC;
+	padding: 10px;
+	margin-top: 16px;
+	float: inherit;
+	display: block;
+	overflow: auto;
+	background-image: url('http://wolpeper.com/sapin-givre.jpg');
+	background-position: center;
+	background-attachment: fixed;
+}
+
+#panneau #affichage
+{
+	background-color: #F3F3F3;
+	border: 2px groove #3C3E46;
+	padding: 10px;
+	/*min-height: 500px;*/
+}
+
+.erreur
+{
+	color:maroon;
+}
+
+#label1
+{
+	width:50px;
+}
+

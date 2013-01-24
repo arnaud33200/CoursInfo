@@ -1,0 +1,48 @@
+
+SQL*Loader: Release 11.2.0.1.0 - Production on Mer. Déc. 14 17:48:03 2011
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Fichier de contrôle :   etddba_loader.ctl
+Fichier de données :      etddba_loader.ctl
+  Fichier des enregistrements refusés :     etddba_loader.bad
+  Fichier DISCARD :  aucune spécification
+
+ (Allouer tous les rebuts)
+
+Nombre à charger : ALL
+Nombre à sauter: 0
+Erreurs permises: 50
+Tableau de variables :     64 lignes, maximum de 256000 octets
+Continuation :    aucune spécification
+Chemin utilisé:      Classique
+
+Table ETD_JBEZOLLEII_CPV, chargé à partir de chaque enregistrement physique.
+Option d'insertion en vigueur pour cette table : APPEND
+
+   Nom de colonne               Position   Long.  Séparat. Encadrem. Type de données
+------------------------------ ---------- ----- ---- ---- ---------------------
+CODEPOSTAL                          FIRST     *   ,  O(") CHARACTER            
+VILLE                                NEXT     *   ,  O(") CHARACTER            
+
+
+Table ETD_JBEZOLLEII_CPV :
+  Chargement réussi de 11 Lignes.
+  0 Lignes chargement impossible dû à des erreurs de données.
+  0 Lignes chargement impossible car échec de toutes les clauses WHEN.
+  0 Lignes chargement impossible car tous les champs étaient non renseignés.
+
+
+Espace affecté au tableau de variables :                  33024 octets(64 lignes)
+Octets de tampon de lecture : 1048576
+
+Nombre total d'enregistrements logiques ignorés :          0
+Nombre total d'enregistrements logiques lus :            11
+Nombre total d'enregistrements logiques rejetés :         0
+Nombre total d'enregistrements logiques mis au rebut :        0
+
+Le début de l'exécution a été effectué sur Mer. Déc.  14 17:48:03 2011
+La fin de l'exécution a été effectuée sur Mer. Déc.  14 17:48:03 2011
+
+Temps écoulé (ELAPSED) :     00:00:00.10
+Temps processeur (CPU) :    00:00:00.05

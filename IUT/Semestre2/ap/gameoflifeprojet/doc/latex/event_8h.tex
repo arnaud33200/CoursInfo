@@ -1,0 +1,324 @@
+\hypertarget{event_8h}{
+\section{Référence du fichier event.h}
+\label{event_8h}\index{event.h@{event.h}}
+}
+
+
+gestion d'évenements  
+
+
+{\ttfamily \#include $<$SFML/Graphics.hpp$>$}\par
+{\ttfamily \#include \char`\"{}Button.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Element.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Slider.h\char`\"{}}\par
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{event_8h_ae69f89bdebc8438d6ec545d076cfff33}{clickDownLeft} (Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# EVENEMENT DE BASE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+bool \hyperlink{event_8h_ab8cda96db4015d3d13cbc66d66be37e4}{clickDownRight} (Event $\ast$event)
+\item 
+bool \hyperlink{event_8h_aaff24b8cafa0f83827c8dde831891b8b}{clickUpLeft} (Event $\ast$event)
+\item 
+bool \hyperlink{event_8h_a7789ee0742acff54b94bf1e3e5a1f320}{clickUpRight} (Event $\ast$event)
+\item 
+bool \hyperlink{event_8h_a0fb7e992c7b1831fea996d87b4e6db37}{keyPress} (Event $\ast$event, const Key::Code \&key)
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\# Evenement clavier \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+bool \hyperlink{event_8h_af88e844b96ca33af35cabfe5f5a53545}{clickButton} (Event $\ast$event, const float \&mx, const float \&my, \hyperlink{classButton}{Button} $\ast$button)
+\begin{DoxyCompactList}\small\item\em \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# EVENEMENT SUR OBJETS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# \end{DoxyCompactList}\item 
+void \hyperlink{event_8h_a315dd22fbb43dcb930dcac2b564c22db}{moveSlider} (Event $\ast$event, \hyperlink{classElement}{Element} $\ast$element, \hyperlink{classSlider}{Slider} $\ast$slider, const float \&mx, const float \&my)
+\begin{DoxyCompactList}\small\item\em Fonction de gestion du mouvement d'un objet \hyperlink{classSlider}{Slider}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+gestion d'évenements \begin{DoxyAuthor}{Auteur}
+Mayira.Y Arnaud.L 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+avril/mai 2011 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{event_8h_af88e844b96ca33af35cabfe5f5a53545}{
+\index{event.h@{event.h}!clickButton@{clickButton}}
+\index{clickButton@{clickButton}!event.h@{event.h}}
+\subsubsection[{clickButton}]{\setlength{\rightskip}{0pt plus 5cm}bool clickButton (
+\begin{DoxyParamCaption}
+\item[{Event $\ast$}]{event, }
+\item[{const float \&}]{mx, }
+\item[{const float \&}]{my, }
+\item[{{\bf Button} $\ast$}]{button}
+\end{DoxyParamCaption}
+)}}
+\label{event_8h_af88e844b96ca33af35cabfe5f5a53545}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# EVENEMENT SUR OBJETS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# EVENEMENT SUR OBJETS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & pointeur d'Event provenant de \hyperlink{classMenuView}{MenuView} et contenant les évenments sourie \\
+\hline
+{\em button} & pointeur sur Boutton, pour faire appel au différent accesseur de la classe \\
+\hline
+{\em mx} & et my réels qui indique les coordonnées de la sourie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un booléen qui indique si ont peut executer l'action que produit le boutton 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{       
+// si on click gauche sur un boutton
+        if ( clickDownLeft(event) && !button->getPress()
+                && mx >= button->getX()+2 && mx <= ( button->getX() + button->
+      getW())-2 
+                && my >= button->getY()+2 && my <= ( button->getY() + button->
+      getH())-2 )
+        {
+                button->setPress(true);
+        }
+// si on relache la sourie sur la zone du boutton
+        if ( clickUpLeft(event) && button->getPress()
+                && mx >= button->getX()+2 && mx <= ( button->getX() + button->
+      getW())-2 
+                && my >= button->getY()+2 && my <= ( button->getY() + button->
+      getH())-2 )
+        {
+                button->setPress(false);
+                        return true;
+        }
+// si on relache la sourie hors du boutton
+        else if ( clickUpLeft(event) && button->getPress() )
+        {
+                button->setPress(false);
+        }
+// si on fait seulement survolé la sourie sur le bouton                 
+        else if ( !clickUpLeft(event) && !clickDownLeft(event)
+                && mx >= button->getX()+2 && mx <= ( button->getX() + button->
+      getW())-2 
+                && my >= button->getY()+2 && my <= ( button->getY() + button->
+      getH())-2 )
+        {
+                button->setHover(true);
+                return false;
+        }
+        else
+        {
+                button->setHover(false);
+                return false;
+        }
+}
+\end{DoxyCode}
+\hypertarget{event_8h_ae69f89bdebc8438d6ec545d076cfff33}{
+\index{event.h@{event.h}!clickDownLeft@{clickDownLeft}}
+\index{clickDownLeft@{clickDownLeft}!event.h@{event.h}}
+\subsubsection[{clickDownLeft}]{\setlength{\rightskip}{0pt plus 5cm}bool clickDownLeft (
+\begin{DoxyParamCaption}
+\item[{Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}
+\label{event_8h_ae69f89bdebc8438d6ec545d076cfff33}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# EVENEMENT DE BASE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# EVENEMENT DE BASE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & pointeur d'Event provenant de \hyperlink{classMenuView}{MenuView} et contenant les évenments sourie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un booléen qui indique si on effectue un click préssé gauche 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return ( (event->Type == sf::Event::MouseButtonPressed) 
+                        && (event->MouseButton.Button == sf::Mouse::Left) );
+}
+\end{DoxyCode}
+\hypertarget{event_8h_ab8cda96db4015d3d13cbc66d66be37e4}{
+\index{event.h@{event.h}!clickDownRight@{clickDownRight}}
+\index{clickDownRight@{clickDownRight}!event.h@{event.h}}
+\subsubsection[{clickDownRight}]{\setlength{\rightskip}{0pt plus 5cm}bool clickDownRight (
+\begin{DoxyParamCaption}
+\item[{Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}
+\label{event_8h_ab8cda96db4015d3d13cbc66d66be37e4}
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & pointeur d'Event provenant de \hyperlink{classMenuView}{MenuView} et contenant les évenments sourie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un booléen qui indique si on effectue un click préssé droit 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return ( (event->Type == sf::Event::MouseButtonPressed) 
+                        && (event->MouseButton.Button == sf::Mouse::Right) );
+}
+\end{DoxyCode}
+\hypertarget{event_8h_aaff24b8cafa0f83827c8dde831891b8b}{
+\index{event.h@{event.h}!clickUpLeft@{clickUpLeft}}
+\index{clickUpLeft@{clickUpLeft}!event.h@{event.h}}
+\subsubsection[{clickUpLeft}]{\setlength{\rightskip}{0pt plus 5cm}bool clickUpLeft (
+\begin{DoxyParamCaption}
+\item[{Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}
+\label{event_8h_aaff24b8cafa0f83827c8dde831891b8b}
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & pointeur d'Event provenant de \hyperlink{classMenuView}{MenuView} et contenant les évenments sourie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un booléen qui indique si on effectue un click relaché gauche 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{ 
+        return ( (event->Type == sf::Event::MouseButtonReleased) 
+                        && (event->MouseButton.Button == sf::Mouse::Left) );
+}
+\end{DoxyCode}
+\hypertarget{event_8h_a7789ee0742acff54b94bf1e3e5a1f320}{
+\index{event.h@{event.h}!clickUpRight@{clickUpRight}}
+\index{clickUpRight@{clickUpRight}!event.h@{event.h}}
+\subsubsection[{clickUpRight}]{\setlength{\rightskip}{0pt plus 5cm}bool clickUpRight (
+\begin{DoxyParamCaption}
+\item[{Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}
+\label{event_8h_a7789ee0742acff54b94bf1e3e5a1f320}
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & pointeur d'Event provenant de \hyperlink{classMenuView}{MenuView} et contenant les évenments sourie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un booléen qui indique si on effectue un click relaché droit 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return ( (event->Type == sf::Event::MouseButtonReleased) 
+                        && (event->MouseButton.Button == sf::Mouse::Right) );
+}
+\end{DoxyCode}
+\hypertarget{event_8h_a0fb7e992c7b1831fea996d87b4e6db37}{
+\index{event.h@{event.h}!keyPress@{keyPress}}
+\index{keyPress@{keyPress}!event.h@{event.h}}
+\subsubsection[{keyPress}]{\setlength{\rightskip}{0pt plus 5cm}bool keyPress (
+\begin{DoxyParamCaption}
+\item[{Event $\ast$}]{event, }
+\item[{const Key::Code \&}]{key}
+\end{DoxyParamCaption}
+)}}
+\label{event_8h_a0fb7e992c7b1831fea996d87b4e6db37}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\# Evenement clavier \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & pointeur d'Event provenant de \hyperlink{classMenuView}{MenuView} et contenant les évenments clavier \\
+\hline
+{\em key} & Key::Code précise la touche qui nous interesse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un booléen qui indique si la touche en question est préssé 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        return ( (event->Type == sf::Event::KeyPressed) && (event->Key.Code == ke
+      y) );
+}
+\end{DoxyCode}
+\hypertarget{event_8h_a315dd22fbb43dcb930dcac2b564c22db}{
+\index{event.h@{event.h}!moveSlider@{moveSlider}}
+\index{moveSlider@{moveSlider}!event.h@{event.h}}
+\subsubsection[{moveSlider}]{\setlength{\rightskip}{0pt plus 5cm}void moveSlider (
+\begin{DoxyParamCaption}
+\item[{Event $\ast$}]{event, }
+\item[{{\bf Element} $\ast$}]{element, }
+\item[{{\bf Slider} $\ast$}]{slider, }
+\item[{const float \&}]{mx, }
+\item[{const float \&}]{my}
+\end{DoxyParamCaption}
+)}}
+\label{event_8h_a315dd22fbb43dcb930dcac2b564c22db}
+
+
+Fonction de gestion du mouvement d'un objet \hyperlink{classSlider}{Slider}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & pointeur d'Event provenant de \hyperlink{classMenuView}{MenuView} et contenant les évenments sourie \\
+\hline
+{\em element} & pointeur sur l'Element bougeable du \hyperlink{classSlider}{Slider} pour récupérer la taille et coordonnées \\
+\hline
+{\em slider} & pointeur sur l'objet \hyperlink{classSlider}{Slider}, permet de faire appel au méthode contenue dans le slider \\
+\hline
+{\em mx} & et my réels qui indique les coordonnées de la sourie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+rien. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+{
+        if ( clickDownLeft(event)
+                && mx >= element->getX() && mx <= ( element->getX() + element->
+      getW()+2) 
+                && my >= element->getY() && my <= ( element->getY() + element->
+      getH()) )
+        {
+                slider->setMove( true );        // le slider est en état de mouve
+      ment
+                
+        }
+// quand on relache le click et que le slider est en etat de bougé
+        else if ( clickUpLeft(event) && slider->getMove() )
+        {
+                slider->setMove( false ); 
+        }
+// si on click sur la bar du slider, hors de la partie mobile
+        if ( clickDownLeft(event)
+                && !(mx >= element->getX() && mx <= ( element->getX() + element->
+      getW()+2) 
+                && my >= element->getY() && my <= ( element->getY() + element->
+      getH()))
+                && (mx >= slider->getX() && mx <= ( slider->getX() + slider->
+      getW()) 
+                && my >= slider->getY() && my <= ( slider->getY() + slider->getH(
+      )))  )
+        {
+                element->setX( mx );            // definit la position du slider 
+      par rapport à sourie
+                slider->updateSlider();         // met à jour le slider pour alig
+      ner et vérifier la position     
+        }
+        
+        if ( slider->getMove() )
+        {
+                element->setX( mx );            // definit la position du slider 
+      par rapport à sourie
+                slider->updateSlider();         // met à jour le slider pour alig
+      ner et vérifier la position
+        }
+}
+\end{DoxyCode}

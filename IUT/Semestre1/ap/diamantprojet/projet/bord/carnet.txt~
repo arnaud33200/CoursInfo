@@ -1,0 +1,256 @@
+###################################################
+# carnet etabli aprÃ©s chaque mise a jour du code #
+###################################################
+
+
+********************************
+********** 26/11/2010 **********
+
+# mise a jour de la fonction change position
+         - ajout d'une fonction "acote" dans verif.cc     
+
+
+
+********************************
+********** 27/11/2010 **********
+
+# modification de la struct diamond :
+  	 - suppression de SDL_Surface img remplacÃ© par une unique 
+	   unique SDL_Surface diamsprite car chaque diamants ont la meme
+	   image a charger
+
+# modification de l'algo qui vÃ©rifie si la grille est bien initialisÃ©
+  	 - ajout de "goodinit" dans verif.cc
+
+
+
+********************************
+********** 29/11/2010 **********
+
+# le changement entre 2 diamants se fait avec un seul clic de la sourie
+  on select -> on deplace -> on relache le boutton 
+
+# ajout d'une variable "diamsmov" qui permet de dire si un diamants est 
+  en deplacement:
+	- si diamant en mov : diamsmov = case grille
+	- sinon : diamsmov = -1
+
+-> faire board.cc pour mettre la fonction qui :
+   	- la grille
+   	- le diamants en deplacement
+	- deux lors de deplacement sans effet de destruction
+
+
+
+********************************
+********** 30/11/2010 **********
+
+# creation de board.cc et de board.hh
+  -> permet l'affichage de la grille et ses diverse action
+  => effacement car il y a fuite de memoire
+
+# correction du code de Virgile : correction totale
+  -> code maitenant fonctionnel pour les deux verifs
+
+-> a faire : modifier description verif.cc
+
+# mise en place de la boucle qui verifie si la grille est 
+  bien initialisée
+  -> verif.cc
+
+-> faire une grille de structure au lieu d'une grille d'entier
+
+
+********************************
+********** 01/12/2010 **********
+
+# correction de la fonction initg de init.cc :
+  -> initialise correctement sans passé par fonction de verif.cc
+  -> evite de perdre du temps a faire des verifs aprés
+( a retravaillé !!! )
+
+# ajout d'une constante NB_SIZE dans const.hh
+  -> determiner le nombre de diamant dans la grille
+  
+
+
+********************************
+********** 02/11/2010 **********
+
+# creation fonction init2 dans init.cc
+  -> sera utilisé pour initialiser une matrice de structure diamond (struct.hh)
+
+# modification pour les verif ligne et colone du verif.cc
+  -> pour colone : fi et li sont seulement en entré
+  -> pour ligne : fj et lj sont seulement en entré
+
+# mise en place d'echange, verif puis decalage
+
+# mise a jour de changeposition de change.cc
+  -> renvoie 1 lorsque l'echange s'est effectué
+
+# mise a jour decalebas de change.cc
+  -> prise en compte de NB_SIZE, cf const.hh
+
+# ajout d'une fonction verifavantdecale dans verif.cc
+
+
+= > ajouter des verif dans boucle principal permettant de verifié si compo
+
+# mise en place d'une variable int compo:
+  -> prend 1 en valeur aprés echange, destruction, decalage
+  -> prend ++ si il y a destruction decalage
+  -> sinon prend la valeur de 0
+
+
+********************************
+********** 03/11/2010 **********
+
+# mise en place d'une matrice de structure diamant dans struct.hh
+  -> mise a niveau generale de tout le programme
+  remarque: comme board est une structure, entré sortie n'est pas auto
+
+=> probleme a resoudre : reinitialiser la matrice aprés modif pour les lectures
+(résolu)
+
+=> probleme : avec selec 
+
+
+
+**********************************
+********** 04/12/2010 ************
+
+# creation d'un fichier action.cc qui regroupera toute action du type:
+  -> mettre le select, cross a 1 ou 0
+  -> fonction qui affiche la grille ( ou pas )
+-
+
+
+********************************
+********** 05/12/2010 **********
+
+# affichage du nom et icone de la fenetre
+
+
+********************************
+********** 06/12/2010 **********
+
+# correction du bug lié au combo
+  -> blem résolu : le cptcombo s'arrété a 1
+
+# mise en place du score du joeur
+
+
+********************************
+********** 07/12/2010 **********
+
+# ajout d'une fonction initialise dans action.cc
+  -> permet de initialiser la grille correctement avant la partie
+  -> permet de géré les combos
+
+[!] : idée : pour faire animation, introduire faire boucle avec afficher dans	
+      	     les decalages
+
+# insertion d'un gestionnaire de temps grace à SDL_GetTicks()
+  -> insertion dans action.cc
+  /!\ affiche tout les milisecondes
+
+
+[!] : faire gestion du TMP
+
+
+/!\ aprés avoir mis aniamtion chute, je me suis rendu compte que 
+    decalabecolone etait pas bon
+
+=> solution: probleme venant du solutioncolone de verif.cc
+   -> mauvaise affectation pour le fi
+
+
+********************************
+********** 08/12/2010 **********
+
+[!] : mettre dans structure board les quatres entiers de position
+      -> evite d'avoir a les remettre en paramatre
+      -> fi, fj, li, lj sont des entier integres dans la struct board
+
+=> mise a jour genenrale
+
+
+********************************
+********** 09/12/2010 **********
+
+# insertion du SDL_Flip(screen) et du pastesurface(wallpaper) 
+  dans la fonction affichegrille de action.cc
+
+[!] : mettre wallpaper, diamsprite, explosion dans la structure board
+
+# integration de toute les images dans la structure board
+  -> permet d'avoir seulement tab en parametre de fonction
+
+
+
+
+********************************
+********** 10/12/2010 **********
+
+# mise en place de l'entier score dans struct board
+  -> compteur de score
+
+# creation d'une verifchangement dans action.cc
+  -> verif aprés un echange si les diamants echangé engendre une destruction
+  -> fait l'animation de chute des diamants
+     * utiliser aussi pour les COMBO
+  => améne la suppresion de verifavantdecale de verif.cc
+
+# creation d'une verifinit dans verif.cc
+  -> basé sur le verifchangement mais sans animations
+  -> permet de verifié la bonne initialisation de la grille avant la partie
+
+# creation de destructionligne et destructioncolone dans action.cc
+  -> affiche l'animation de l'explosion
+
+# ajout d'une constante TIME dans const.hh
+  -> permet de definir le temps de jeu du joueur
+
+
+
+********************************
+********** 11/12/2010 **********
+
+# ajout d'un verifcombo dans action.cc :
+  car verifchangement et verifcombo ne verifie pas les memes choses
+
+# modification de verifchangement :
+  verifie seulement lignes et colone ou il y a eu echange de diamant
+
+
+
+********************************
+********** 12/12/2010 **********
+
+# creation de la fonction initpicture dans init.cc
+
+# insertion de gamepause dans action.cc
+
+
+
+********************************
+********** 14/12/2010 **********
+
+# mise en place de de recherche de solution possible
+  -> creation de verifgeneral dans verif.cc
+  -> creation de affichersanssoluce dans action.cc
+
+# mise en place de trois nivaeu de difficulté
+  -> creation de initsaveconf dans init.cc
+
+
+
+//////////////////////////////////////////////////
+
+ droit et auteur
+
+//////////////////////////////////////////////////
+
+
+ground.jpg - http://www.pawfal.org (licence libre)

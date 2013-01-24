@@ -1,0 +1,26 @@
+ 19 / 04 / 2011 :
+
+- difficulté recontré : dans le reajustement automatique des virus par rapport 
+  	     	      	au ajout et suppression des cellules
+-> il s'agit en fait de s'arangé pour que les virus appartienne a la meme
+   grille virtuelle qu'occupent les cellues : la grille depend du nombre de
+   cellule
+-> premiere approche : calculé un ecart type en fonction du nombre de cellule 
+   	    	       qu'il y a dans la grille, et ajoute ou enlever cette
+		       valeur a la position de chaque virus quand il y a une
+		       modif de la grille.
+		       le probleme vient que en fonction de la position qu'a
+		       un element sur cette grille, l'ecart du au changement
+		       ne sera pas du tout le meme : plus on s'eloigne de 
+		       l'origine, plus l'ecart est grand.
+-> deuxieme approche : ce qui nous améne a faire le calcule de l'ecart en 
+   	    	       fonction de la position des virus sur la grille. pour
+		       cela on se base sur le positionnement des cellules avec
+		       leur indices ( i & j ).
+
+
+25 / 04 / 2011 :
+
+remarque, il faut faire un equilibre entre les deux usleeps, car il y a deux 
+fenetre donc le usleep sera différent en fonction de si il y a une ou deux
+fenetre différent

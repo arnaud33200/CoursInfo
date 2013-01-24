@@ -1,0 +1,36 @@
+#include <iostream>
+
+
+using namespace std;
+
+const int taille=10;
+void afficheNom(char tab[taille]){}
+bool estPresent(int val){return true;}
+double racine(double valeur){return 3.4;}
+void racineRef(double & valeur){valeur=valeur*2;}
+void afficheDate(bool val){};
+
+int main()
+{
+   afficheNom("bonjour");
+   char bonjour[taille]="bonjour";
+   afficheNom(bonjour);
+   bool res;
+   estPresent(4);
+   //estPresent("4");
+   res=estPresent(4.0);
+
+   double val=racine(4.0);
+   double valRac=5.4;
+   racineRef(valRac);
+   //racineRef(2.3);
+   afficheDate(res);
+   //afficheDate(TRUE);
+   afficheDate(false);
+   //int a=afficheDate(false);
+cout << 4%2;
+cout << 0%3;
+return 1;
+}
+
+

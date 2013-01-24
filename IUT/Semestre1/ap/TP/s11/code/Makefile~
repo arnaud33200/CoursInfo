@@ -1,0 +1,7 @@
+CC= g++
+
+rechercher2: rechercher2.cc
+	$(CC) $< -o $@
+
+rechercher: rechercher1.cc
+	$(CC) $< -o $@

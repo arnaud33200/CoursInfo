@@ -1,0 +1,16 @@
+total 80
+drwxr-xr-x 2 aladouce grp30001 4096 oct.  24 15:47 .
+drwxr-xr-x 6 aladouce grp30001 4096 oct.  17 14:08 ..
+-rwxr-xr-x 1 aladouce grp30001 8189 oct.  17 15:05 faux-pipe
+-rw-r--r-- 1 aladouce grp30001  609 oct.  17 15:05 faux-pipe.c
+-rwxr-xr-x 1 aladouce grp30001 8400 oct.  24 15:08 log
+-rw-r--r-- 1 aladouce grp30001  631 oct.  24 15:24 log.c
+-rw-r--r-- 1 aladouce grp30001 1400 oct.  24 14:16 log.o
+-rwxr-xr-x 1 aladouce grp30001 7854 oct.  24 15:33 logwtee
+-rw-r--r-- 1 aladouce grp30001  537 oct.  24 15:33 logwtee.c
+-rwxr-xr-x 1 aladouce grp30001 7207 oct.  17 16:39 taille-pipe
+-rw-r--r-- 1 aladouce grp30001  423 oct.  17 16:36 taille-pipe.c
+-rw-r--r-- 1 aladouce grp30001  357 oct.  24 15:24 tee.c
+-rw-r--r-- 1 aladouce grp30001    0 oct.  24 15:47 testlog
+-rwxr-xr-x 1 aladouce grp30001 7816 oct.  17 15:59 vrai-pipe
+-rw-r--r-- 1 aladouce grp30001  513 oct.  17 15:59 vrai-pipe.c

@@ -1,0 +1,13 @@
+\\info\Etudiants\Home\aladouce\projetVS\draganddrop\draganddrop\obj\Debug\ResolveAssemblyReference.cache
+\\info\Etudiants\Home\aladouce\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.Form1.resources
+\\info\Etudiants\Home\aladouce\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.Properties.Resources.resources
+\\info\Etudiants\Home\aladouce\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.csproj.GenerateResource.Cache
+\\info\Etudiants\Home\aladouce\projetVS\draganddrop\draganddrop\bin\Debug\draganddrop.exe
+\\info\Etudiants\Home\aladouce\projetVS\draganddrop\draganddrop\bin\Debug\draganddrop.pdb
+\\info\Etudiants\Home\aladouce\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.exe
+\\info\Etudiants\Home\aladouce\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.pdb
+Z:\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.exe
+Z:\projetVS\draganddrop\draganddrop\obj\Debug\ResolveAssemblyReference.cache
+Z:\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.Form1.resources
+Z:\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.Properties.Resources.resources
+Z:\projetVS\draganddrop\draganddrop\obj\Debug\draganddrop.csproj.GenerateResource.Cache

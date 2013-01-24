@@ -1,0 +1,11 @@
+COMMENT COMPILER LE PROGRAMME JAVA ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Aprés avoir extrait le contenu de l'archive, dirigez vous à l'aide de la console dans le dossier "source/".
+lancer la commande : javac .*java
+
+COMMENT EXECUTER LE PROGRAMME JAVA ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Toujours situé dans le dossier "source/", 
+lancez la commande : java LabyrintheApp ../level/[level.txt]
