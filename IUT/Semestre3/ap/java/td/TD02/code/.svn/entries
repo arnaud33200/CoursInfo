@@ -1,40 +1,0 @@
-10
-
-dir
-777
-svn+ssh://pecher@ssh.labri.fr/usr/labri/pecher/svn/svnEnseignements/2011/L2IUT.AP3/TDs/TD02/code
-svn+ssh://pecher@ssh.labri.fr/usr/labri/pecher/svn
-
-
-
-2011-09-08T11:12:05.809140Z
-777
-pecher
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-e2578644-6c38-40bc-93b0-64e43e1cc680
-
-02-Shapes-interface
-dir
-
-01-Shapes
-dir
-
-04-Labyrinthe
-dir
-
-03-Aquarium
-dir
-

@@ -1,8 +1,0 @@
-\\info\Etudiants\Home\aladouce\projetVS\Projects2\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-\\info\Etudiants\Home\aladouce\projetVS\Projects2\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-\\info\Etudiants\Home\aladouce\projetVS\Projects2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\ResolveAssemblyReference.cache
-\\info\Etudiants\Home\aladouce\projetVS\Projects2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
-\\info\Etudiants\Home\aladouce\projetVS\Projects2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-\\info\Etudiants\Home\aladouce\projetVS\Projects2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
-\\info\Etudiants\Home\aladouce\projetVS\Projects2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-\\info\Etudiants\Home\aladouce\projetVS\Projects2\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb

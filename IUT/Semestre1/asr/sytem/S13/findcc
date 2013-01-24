@@ -1,5 +1,0 @@
-#!/bin/bash
-
-fichiercc=$(find $1 -name *.cc)
-save= $fichiercc
-cut -f 1 -d " " $save

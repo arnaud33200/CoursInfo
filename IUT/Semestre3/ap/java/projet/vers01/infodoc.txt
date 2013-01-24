@@ -1,8 +1,0 @@
-nom, prénom, groupe
-12 pt justifié
-format PDF
-figure : titré, référencé dans le texte
-
-s'envoyé le mail en copie : 
-	to : montassi@labri.fr
-	cc : arnaud.ladoucette@etu.u-bordeaux1.fr

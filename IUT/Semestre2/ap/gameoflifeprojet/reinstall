@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# ce script est un raccourci qui recompile tous les fichiers du programme qui se trouve dans le dossier source
-
-cd source/
-make clean
-make
-cd ../

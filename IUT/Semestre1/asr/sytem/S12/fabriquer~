@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if [g++ $1 -o $(1:.cc=)]
-    echo compilation réussite
-fi
-

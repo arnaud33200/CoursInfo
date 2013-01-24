@@ -1,4 +1,0 @@
-CREATE INDEX Index_NomClient ON Clients ( nom_client ASC );
-CREATE INDEX Index_NomProduit ON Produits ( nom_produit ASC );
-CREATE INDEX Index_NomMarque ON Marques ( nom_marque ASC );
-

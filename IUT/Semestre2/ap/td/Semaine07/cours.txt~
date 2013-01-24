@@ -1,8 +1,0 @@
-test 1 : F f;
-     Constructeur M()
-     Constructeur F()
-     Destructeur ~F()
-     Destructeur ~M()
-
-test 2 : F f(12);
-     

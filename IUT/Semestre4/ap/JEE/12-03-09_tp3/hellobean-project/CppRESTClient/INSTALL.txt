@@ -1,7 +1,0 @@
-Install QJson :
-
-mkdir build
-cd build/
-cmake .. -DCMAKE_INSTALL_PREFIX=../opt
-make -j 5
-make install

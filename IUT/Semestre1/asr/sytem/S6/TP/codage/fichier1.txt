@@ -1,9 +1,0 @@
-019abAB
-
-/* Ceci est un fichier ecrit en ascii. */ 
-
-Il ne contient pas de caracteres accentues parce ce que ce codage ne
-le permet pas.
-
-Si dans emacs vous essayez d'ajouter un caractere accentue alors
-l'editeur passera sous un autre codage. 

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if g++ $1
-then
-    echo "compilation réussite"
-else
-    echo "erreur"
-fi
-

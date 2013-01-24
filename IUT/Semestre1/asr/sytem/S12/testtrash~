@@ -1,4 +1,0 @@
-#!/bin/bash
-
-if test -d ~/.local/share/.Trash
-then

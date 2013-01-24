@@ -1,1 +1,0 @@
-gcc-3.4 -mcpu=604 -S -O3 foo.c
