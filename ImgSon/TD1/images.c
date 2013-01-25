@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
-
+#include <string.h>
 
 #define LARGEUR 256
 #define HAUTEUR 256
@@ -241,36 +240,51 @@ void RGBToGray(coulIm src, ndgIm dest)
 		}
 }
 
-//~ /**********************/
-//~ // Question 8.3
-//~ /**********************/
-//~ void histogramme_dat(char* hnom, histo h){ 
-  //~ FILE *hfile = NULL;
-  //~ ouvrirFichier (hnom, &hfile, "w");
-  //~ int i; 
-  //~ for (i = 0; i < VAL_MAX; i++) 
-    //~ fprintf(hfile,"%d %f \n", i,h[i]); 
-  //~ fclose(hfile);
-//~ } 
+void remplirHisto(ndgIm im, histo h)
+{
+	memset(&h,0,sizeof(histo));
+	int x, y;
+	
+	for (y=0; y < HAUTEUR; y++)
+		for (x=0; x < LARGEUR; x++)
+			h[im[x][y]]++;
+}
+
+
+/**********************/
+// Question 8.3
+/**********************/
+
+void histogramme_dat(char* hnom, histo h){ 
+  FILE *hfile = NULL;
+  ouvrirFichier (hnom, &hfile, "w");
+  int i; 
+  for (i = 0; i < VAL_MAX; i++) 
+    fprintf(hfile,"%d %f \n", i,h[i]); 
+  fclose(hfile);
+} 
 
 
 int 
 main ()
 {
-  coulIm im;
+  //~ coulIm im;
   ndgIm d;
+  histo h;
   
-  lireCoulImage ("fleur.ppm", im);
+  lireNdgImage ("image2.ppm", d);
+  remplirHisto(d,h);
+  histogramme_dat("test.dat", h);
   
    //~ ajout du pixel noir
   //~ im[128][128][0] = 0;
   //~ im[128][128][1] = 255;
   //~ im[128][128][2] = 0;
   
-  RGBToGray(im,d);
+  //~ RGBToGray(im,d);
 
-  
-  ecrireNdgImage ("test.ppm", d);
+  //~ 
+  //~ ecrireNdgImage ("test.ppm", d);
   degradeHorizontal("degrade.pgm", 75, 203);
 
 	imageUnie("gris.pgm", 50);
