@@ -1,0 +1,6 @@
+lex toto.l
+    --> lex.yy.c
+
+gcc lex.yy.c -lfl
+
+./a.out < test_toto
