@@ -4,6 +4,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+struct element_t
+{
+	void * value;
+	element * next;
+};
+
+struct list_t
+{
+	element * first;
+};
+
 struct stack_t
 {
 	list l;
@@ -27,17 +38,17 @@ stack stack_create(void)
 			//~ elements[i]->next = &elements[i+1];
 	//~ }
 	//~ s->list.first = &elements[0];
-	s->list.first = NULL;
+	s->l.first = NULL;
 	s->length = 0;
 	return s;
 }
 
 void stack_push(stack s, void *object)
 {
-	element * n = malloc(sizeof(element))
-	n->value = object
-	n.next = s->list.first;
-	s->list.first = &n;
+	element * n = malloc(sizeof(element));
+	n->value = object;
+	n->next = s->l.first;
+	s->l.first = n;
 	s->length++;
 }
 
@@ -49,7 +60,7 @@ int stack_empty(stack s)
 void * stack_top(stack s)
 {
 	if ( stack_empty(s) == 0 )
-		return s->array[s->last];
+		return s->l.first->value;
 	return NULL;
 }
 
@@ -57,8 +68,10 @@ void stack_pop(stack s)
 {
 	if ( stack_empty(s) == 0 )
 	{
-		s->array[s->last] = NULL;
-		s->last--;
+		element * n = s->l.first->next;
+		free(s->l.first);
+		s->l.first = n;
+		s->length--;
 		//~ if ( s->last-s->length > 2*BLOCK )
 			//~ stack_shrink(s);
 	}

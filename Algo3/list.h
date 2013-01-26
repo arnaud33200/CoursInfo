@@ -1,16 +1,9 @@
 #ifndef LIST_H
 #define LIST_H
 
-struct element_t
-{
-	void * value;
-	element * next;
-};
+struct element_t;
 
-struct list_t
-{
-	element * first;
-};
+struct list_t;
 
 typedef struct element_t element;
 typedef struct list_t list;
