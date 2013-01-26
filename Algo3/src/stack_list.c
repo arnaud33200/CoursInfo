@@ -4,15 +4,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-const int BLOCK = 10;
-void stack_grow(stack s);
-
-
 struct stack_t
 {
 	list l;
 	int length;
-	int last;
 };
 
 /* create an empty stack */
@@ -20,42 +15,35 @@ stack stack_create(void)
 {
 	stack s = malloc(sizeof(stack));
 	
-	element * f;
-	int i=0;
-	for (i; i<BLOCK; i++)
-	{
-		
-	}
-	
-	s->length = BLOCK;
-	s->last = -1;
+	//~ void ** values = malloc(sizeof(void*)*BLOCK);
+	//~ element * elements = malloc(sizeof(element)*BLOCK);
+	//~ int i=0;
+	//~ for (i; i<BLOCK; i++)
+	//~ {
+		//~ elements[i]->value = &values[i];
+		//~ if( i == BLOCK -1 )
+			//~ elements[i]->next = NULL;
+		//~ else
+			//~ elements[i]->next = &elements[i+1];
+	//~ }
+	//~ s->list.first = &elements[0];
+	s->list.first = NULL;
+	s->length = 0;
 	return s;
 }
 
 void stack_push(stack s, void *object)
 {
-	if(s->last == s->length - 1)
-		stack_grow(s);
-	s->last++;
-	s->array[s->last] = object;
-}
-
-void stack_grow(stack s)
-{
-	int i;
-	int ns = s->length * 2;
-	void ** na = malloc(sizeof(void*) * ns);
-	for(i=0; i<s->length; i++)
-		na[i] = s->array[i];
-	free(s->array);
-	
-	s->array = na;
-	s->length = ns;
+	element * n = malloc(sizeof(element))
+	n->value = object
+	n.next = s->list.first;
+	s->list.first = &n;
+	s->length++;
 }
 
 int stack_empty(stack s)
 {
-	return s->last<0? 1:0;
+	return s->length<=0? 1:0;
 }
 
 void * stack_top(stack s)
