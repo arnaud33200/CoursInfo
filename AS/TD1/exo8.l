@@ -18,11 +18,17 @@
 	}*/
 
 [[:digit:]]{4}/"-" { annee = atoi(yytext); }
-"-"[[:digit:]]{2}/"-" { mois = atoi(yytext); }
-"-"[[:digit:]]{2}/"-"/[ |\n|\t]+  
-	{ 
-		jours = atoi(yytext); 
+"-"[[:digit:]]{1,2}/"-" { mois = atoi(yytext+1); }
+"-"[[:digit:]]{1,2} { 
+		jours = atoi(yytext+1); 
 		printf("%i/%i/%i", jours, mois, annee);
+	}
+
+[[:digit:]]{1,2}/"/" { jours = atoi(yytext); }
+"/"[[:digit:]]{1,2}/"/" { mois = atoi(yytext+1); }
+"/"[[:digit:]]{4} { 
+		annee = atoi(yytext+1); 
+		printf("%i-%i-%i", annee, mois, jours);
 	}
 
 
