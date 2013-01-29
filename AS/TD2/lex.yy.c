@@ -366,8 +366,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 6
-#define YY_END_OF_BUFFER 7
+#define YY_NUM_RULES 2
+#define YY_END_OF_BUFFER 3
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -377,17 +377,17 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[13] =
     {   0,
-        0,    0,    0,    0,    7,    5,    1,    4,    6,    2,
-        3,    0
+        0,    0,    3,    2,    2,    0,    0,    0,    0,    0,
+        1,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    3,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    4,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    3,    1,    1,    1,    1,    4,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -415,31 +415,33 @@ static yyconst flex_int32_t yy_ec[256] =
 
 static yyconst flex_int32_t yy_meta[5] =
     {   0,
-        1,    1,    1,    1
+        1,    1,    2,    1
     } ;
 
-static yyconst flex_int16_t yy_base[13] =
+static yyconst flex_int16_t yy_base[15] =
     {   0,
-        0,    0,    4,    0,    9,   10,   10,   10,   10,   10,
-       10,   10
+       12,   11,   14,   17,    0,    0,    0,    0,    4,    6,
+       17,   17,   10,   11
     } ;
 
-static yyconst flex_int16_t yy_def[13] =
+static yyconst flex_int16_t yy_def[15] =
     {   0,
-       12,    1,   12,    3,   12,   12,   12,   12,   12,   12,
-       12,    0
+       13,   13,   12,   12,   14,   12,    6,    6,   12,   12,
+       12,    0,   12,   12
     } ;
 
-static yyconst flex_int16_t yy_nxt[15] =
+static yyconst flex_int16_t yy_nxt[22] =
     {   0,
-        6,    6,    7,    6,    8,    9,   10,   11,   12,    5,
-       12,   12,   12,   12
+        7,    8,    9,    7,    7,    7,   10,   11,   10,   11,
+        4,    4,    6,   12,    5,    5,    3,   12,   12,   12,
+       12
     } ;
 
-static yyconst flex_int16_t yy_chk[15] =
+static yyconst flex_int16_t yy_chk[22] =
     {   0,
-        1,    1,    1,    1,    3,    3,    3,    3,    5,   12,
-       12,   12,   12,   12
+        6,    6,    6,    6,    9,    9,    9,    9,   10,   10,
+       13,   13,   14,    3,    2,    1,   12,   12,   12,   12,
+       12
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -456,12 +458,10 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "exo2.l"
-
-#line 462 "lex.yy.c"
+#line 1 "testhub.l"
+#line 463 "lex.yy.c"
 
 #define INITIAL 0
-#define CHAR 1
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -646,7 +646,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 5 "exo2.l"
+#line 1 "testhub.l"
 
 
 #line 653 "lex.yy.c"
@@ -708,7 +708,7 @@ yy_match:
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 10 );
+		while ( yy_base[yy_current_state] != 17 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -733,42 +733,18 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
+/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 7 "exo2.l"
-{ BEGIN(CHAR); }
+#line 3 "testhub.l"
+
 	YY_BREAK
-
-
 case 2:
 YY_RULE_SETUP
-#line 10 "exo2.l"
-{ BEGIN(INITIAL); printf("\n"); }
-	YY_BREAK
-case 3:
-YY_RULE_SETUP
-#line 11 "exo2.l"
-{ printf(yytext); }
-	YY_BREAK
-case 4:
-YY_RULE_SETUP
-#line 12 "exo2.l"
-{ ECHO; }
-	YY_BREAK
-
-case 5:
-/* rule 5 can match eol */
-YY_RULE_SETUP
-#line 15 "exo2.l"
-{}
-	YY_BREAK
-case 6:
-YY_RULE_SETUP
-#line 16 "exo2.l"
+#line 5 "testhub.l"
 ECHO;
 	YY_BREAK
-#line 770 "lex.yy.c"
+#line 747 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
-case YY_STATE_EOF(CHAR):
 	yyterminate();
 
 	case YY_END_OF_BUFFER:
@@ -1765,4 +1741,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 16 "exo2.l"
+#line 5 "testhub.l"
