@@ -240,20 +240,41 @@ void RGBToGray(coulIm src, ndgIm dest)
 		}
 }
 
-void remplirHisto(ndgIm im, histo h)
-{
-	memset(&h,0,sizeof(histo));
-	int x, y;
+// void remplirHisto(ndgIm im, histo h)
+// {
+// 	memset(&h,0,sizeof(histo));
+// 	int x, y;
 	
-	for (y=0; y < HAUTEUR; y++)
-		for (x=0; x < LARGEUR; x++)
-			h[im[x][y]]++;
-}
+// 	for (y=0; y < HAUTEUR; y++)
+// 		for (x=0; x < LARGEUR; x++)
+// 			h[im[x][y]]++;
+// }
 
 
 /**********************/
 // Question 8.3
 /**********************/
+
+void remplirHisto(ndgIm hnom, histo h)
+{
+	int i,j;
+	for(i=0; i<256; i++)
+		h[i] = 0;
+	
+	for(i=0; i<256; i++)
+		for(j=0; j<256; j++)
+			h[hnom[i][j]]++;
+}
+
+void normalizeHisto(histo h)
+{
+  int i;
+  int nb = 0;
+  for(i=0; i<256; i++)
+    nb += h[i];
+  for(i=0; i<256; i++)
+    h[i] = h[i]/nb;
+}
 
 void histogramme_dat(char* hnom, histo h){ 
   FILE *hfile = NULL;
@@ -272,8 +293,9 @@ main ()
   ndgIm d;
   histo h;
   
-  lireNdgImage ("image2.ppm", d);
+  lireNdgImage ("image2.pgm", d);
   remplirHisto(d,h);
+  normalizeHisto(h);
   histogramme_dat("test.dat", h);
   
    //~ ajout du pixel noir
