@@ -14,6 +14,7 @@ struct element_t
 struct queue_t
 {
 	element first;
+	element last;
 	int lenght;
 };
 
@@ -21,6 +22,7 @@ struct queue_t
 queue queue_create(void)
 {
 	queue q = malloc(sizeof(queue));
+	q->last = NULL;
 	q->first = NULL;
 	q->lenght = 0;
 	return q;
@@ -53,18 +55,16 @@ void queue_push(queue s, void *object)
 	new->next = NULL;
 	
 	if ( queue_empty(s) == 1 )
+	{
+		s->last = new;
 		s->first = new;
+	}
 	else
 	{
-		element cur = s->first;
-		element nex = s->first->next;
-		while ( nex != NULL )
-		{
-			cur = nex;
-			nex = cur->next;
-		}
-		cur->next = new;
+		s->last->next = new;
+		s->last = new;
 	}
+	
 	s->lenght++;	
 }
 
