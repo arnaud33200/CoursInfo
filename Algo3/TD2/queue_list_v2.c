@@ -14,6 +14,7 @@ struct element_t
 struct queue_t
 {
 	element first;
+	element last;
 	element sentinelle;
 	int lenght;
 };
@@ -23,6 +24,7 @@ queue queue_create(void)
 {
 	queue q = malloc(sizeof(queue));
 	q->first = NULL;
+	q->last = NULL;
 	q->lenght = 0;
 	
 	q->sentinelle = malloc(sizeof(element));
