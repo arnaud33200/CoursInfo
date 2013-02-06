@@ -252,9 +252,56 @@ void rotation (ndgIm im, ndgIm dest, float angle)
 
 }
 
+void diffImage( ndgIm imA, ndgIm imB, ndgIm imC )
+{
+  for (int y = 0; y < 256; ++y)
+    for (int x = 0; x < 256; ++x)
+    {
+      imC[x][y] = imA[x][y] - imB[x][y];
+      if (imC[x][y] < 0)
+      {
+        imC[x][y] = 0;
+      }
+   }
+}
+
+void addImageColor( coulIm imA, coulIm imB, coulIm imC )
+{
+  for (int y = 0; y < 256; ++y)
+    for (int x = 0; x < 256; ++x)
+      for (int c = 0; c < 3; ++c)
+      {
+        imC[x][y][c] = imA[x][y][c] + imB[x][y][c];
+        if (imC[x][y][c] > 255)
+        {
+          imC[x][y][c] = 255;
+        }
+   }
+}
+
+void superpose( coulIm imA, coulIm imB, coulIm imC, float p )
+{
+  if ( p >= 1 || p <= 0 )
+  {
+    printf("ERREUR superpose : pourcentage melange entre 0 et 1\n");
+    exit(1);
+  }
+
+  for (int y = 0; y < 256; ++y)
+    for (int x = 0; x < 256; ++x)
+      for (int c = 0; c < 3; ++c)
+      {
+        imC[x][y][c] = (imA[x][y][c]*p) + (imB[x][y][c]*(1-p));
+        if (imC[x][y][c] > 255)
+          imC[x][y][c] = 255;
+        if (imC[x][y][c] < 0)
+          imC[x][y][c] = 0;
+   }
+}
+
 int main ()
 {
-  ndgIm im, dest;
+  coulIm ima, imb, dest;
   
 //   lireNdgImage ("baboon.pgm", im);
 
@@ -276,9 +323,15 @@ int main ()
   // ecrireNdgImage ("test.pgm", dest);
 
 
-    lireNdgImage ("brume.pgm", im);
-  rotation(im, dest, 60);
-  ecrireNdgImage ("test.pgm", dest);
+  //   lireNdgImage ("diffA.pgm", ima);
+  //   lireNdgImage ("diffB.pgm", imb);
+  //   diffImage(ima, imb, dest);
+  // ecrireNdgImage ("difftest.pgm", dest);
+
+  lireCoulImage("fond.ppm", ima);
+  lireCoulImage("guigui.ppm", imb);
+  superpose(ima, imb, dest, 0.3);
+  ecrireCoulImage("addtest.ppm", dest);
 
   // Question 5.1 
   // ndgIm im1,im2;
