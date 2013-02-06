@@ -21,7 +21,7 @@ struct queue_t
 /* create an empty queue */
 queue queue_create(void)
 {
-	queue q = malloc(sizeof(queue));
+	queue q = malloc(sizeof(struct queue_t));
 	q->last = NULL;
 	q->first = NULL;
 	q->lenght = 0;
@@ -50,7 +50,7 @@ int queue_empty(queue s)
 /* push an object on the back of the queue */
 void queue_push(queue s, void *object)
 {
-	element new = malloc(sizeof(element));
+	element new = malloc(sizeof(struct element_t));
 	new->value = object;
 	new->next = NULL;
 	
@@ -80,7 +80,13 @@ void * queue_front(queue s)
    The queue must not be empty (as reported by queue_empty()) */
 void queue_pop(queue s)
 {
-	element n = s->first->next;
-	free(s->first);
-	s->first = n;
+	if (queue_empty(s) == 0)
+	{
+		element n = s->first->next;
+		free(s->first);
+		s->first = n;
+		--s->lenght;
+	}
+	else
+		printf("~~ LISTE VIDE : supression impossible\n");
 }
