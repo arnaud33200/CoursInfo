@@ -4,7 +4,7 @@
 #include "sequence.h"
 
 const int BLOCK = 10;
-int first_empty_slot(sequence s);
+int first_empty_slot_after(sequence s, int pos);
 void grow_array(sequence s);
 
 
@@ -47,18 +47,17 @@ void sequence_insert(sequence s, void * object, int pos)
 	if ( sequence_length(s) >= s->size || pos >= s->size )
 		grow_array(s);
 
-	int nulpos = first_empty_slot(s);
-	if ( nulpos == pos)
+	if ( s->tab[pos] == NULL )
 		s->tab[pos] = object;
-	else if (nulpos < pos)
+	else
 	{
-		for (int i = nulpos; i < pos-1; ++i)
-			s->tab[i] = s->tab[i+1];
-		s->tab[pos-1] = object;
-	}
-	else if ( nulpos > pos)
-	{
-		for (int i = nulpos; i >= pos; --i)
+		int nulpos = first_empty_slot_after(s, pos);
+		if( nulpos == -1 )
+		{
+			nulpos = s->size;
+			grow_array(s);
+		}
+		for (int i = nulpos; i>pos; --i)
 			s->tab[i] = s->tab[i-1];
 		s->tab[pos] = object;
 	}
@@ -84,7 +83,7 @@ void sequence_dump(sequence s)
 		if ( s->tab[i] == NULL)
 			printf(" %d[]-", i);
 		else
-			printf(" %d[% s]-", i, s->tab[i]);
+			printf(" \033[01;34m%d[%s]\033[00m-", i, s->tab[i]);
 	}
 	printf("\n\n");
 }
@@ -92,16 +91,16 @@ void sequence_dump(sequence s)
 /* return the sequence length */
 int sequence_length(sequence s)
 {
-	int l = s->length;
 	return s->length;
 }
 
-
-int first_empty_slot(sequence s)
+// cherche la première case vide après une position
+// retourne -1 si aucune case vide
+int first_empty_slot_after(sequence s, int pos)
 {
 	int find = 0;
-	int nulpos = 0;
-	int i = 0;
+	int nulpos = -1;
+	int i = pos;
 	while ( find == 0 && i < s->size )
 	{
 		if ( s->tab[i] == NULL )
