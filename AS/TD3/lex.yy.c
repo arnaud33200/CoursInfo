@@ -462,24 +462,9 @@ char *yytext;
 #line 2 "exo2.l"
 	#include <stdlib.h>
 	int symbolAv;
-	
-	void regle0();
-	void regle1();
-	void regle2();
-	void regle3();
-	void regle4();
-	void regle5();
-	void regle6();
-	void regle7();
-	void regle8();
-
-	int S(void);
-	int E(void);
-	int Ep(void);
-	int T(void);
-	int Tp(void);
-	int F(void);
-#line 483 "lex.yy.c"
+	void regle0(); void regle1(); void regle2(); void regle3(); void regle4(); void regle5(); void regle6(); void regle7(); void regle8();
+ 	int S(void); int E(void); int Ep(void); int T(void); int Tp(void); int F(void);
+#line 468 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -666,10 +651,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 23 "exo2.l"
+#line 8 "exo2.l"
 
 
-#line 673 "lex.yy.c"
+#line 658 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -754,40 +739,40 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 25 "exo2.l"
+#line 10 "exo2.l"
 { return '$'; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 26 "exo2.l"
+#line 11 "exo2.l"
 { return '+'; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 27 "exo2.l"
+#line 12 "exo2.l"
 { return '('; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 28 "exo2.l"
+#line 13 "exo2.l"
 { return ')'; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 29 "exo2.l"
+#line 14 "exo2.l"
 { return '*'; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 30 "exo2.l"
-{ return atoi(yytext); }
+#line 15 "exo2.l"
+{ return 'n'; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 33 "exo2.l"
+#line 17 "exo2.l"
 ECHO;
 	YY_BREAK
-#line 791 "lex.yy.c"
+#line 776 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1785,9 +1770,25 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 33 "exo2.l"
+#line 17 "exo2.l"
 
 
+
+void syntaxErr()
+{
+	printf("%c : ERROR !!! \n", symbolAv);
+}
+
+void consom(int c)
+{
+	if(c == symbolAv)
+	{
+		symbolAv = yylex();
+		printf("symbole avancé : %c\n", symbolAv);
+	}
+	else
+		syntaxErr();
+}
 
 void regle0()
 {
@@ -1810,7 +1811,6 @@ void regle2()
 
 void regle3()
 {
-	consom('');
 }
 
 void regle4()
@@ -1821,7 +1821,7 @@ void regle4()
 
 void regle5()
 {
-	consom('nb');
+	consom('n');
 }
 
 void regle6()
@@ -1840,7 +1840,6 @@ void regle7()
 
 void regle8()
 {
-	consom('');
 }
 
 int S(void)
@@ -1848,13 +1847,11 @@ int S(void)
 	switch(symbolAv)
 	{
 		case '(':
-			regle0();
-			break;
-		case 'nb':
+		case 'n':
 			regle0();
 			break;
 		default:
-			syntaxErr();
+			break;
 	}
 }
 
@@ -1863,13 +1860,11 @@ int E(void)
 	switch(symbolAv)
 	{
 		case '(':
-			regle1();
-			break;
-		case 'nb':
+		case 'n':
 			regle1();
 			break;
 		default:
-			syntaxErr();
+			break;
 	}
 }
 
@@ -1887,7 +1882,7 @@ int Ep(void)
 			regle3();
 			break;
 		default:
-			syntaxErr();
+			break;
 	}
 }
 
@@ -1898,11 +1893,11 @@ int T(void)
 		case '(':
 			regle4();
 			break;
-		case 'nb':
+		case 'n':
 			regle4();
 			break;
 		default:
-			syntaxErr();
+			break;
 	}
 }
 
@@ -1923,7 +1918,7 @@ int Tp(void)
 			regle7();
 			break;
 		default:
-			syntaxErr();
+			break;
 	}
 }
 
@@ -1934,11 +1929,18 @@ int F(void)
 		case '(':
 			regle6();
 			break;
-		case 'nb':
+		case 'n':
 			regle5();
 			break;
 		default:
-			syntaxErr();
+			break;
 	}
+}
+
+int main()
+{
+	symbolAv = yylex();
+	printf("symbole avancé : %c\n", symbolAv);
+	S();
 }
 

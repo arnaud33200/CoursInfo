@@ -12,20 +12,22 @@
 "(" { return '('; }
 ")" { return ')'; }
 "*" { return '*'; }
-[[:digit:]]+ { return atoi(yytext); }
-
+[[:digit:]]+ { return 'n'; }
 
 %%
 
 void syntaxErr()
 {
-	printf("ERRRROORRRRR !!! \n");
+	printf("%c : ERROR !!! \n", symbolAv);
 }
 
 void consom(int c)
 {
 	if(c == symbolAv)
+	{
 		symbolAv = yylex();
+		printf("symbole avancé : %c\n", symbolAv);
+	}
 	else
 		syntaxErr();
 }
@@ -61,7 +63,7 @@ void regle4()
 
 void regle5()
 {
-	consom('nb');
+	consom('n');
 }
 
 void regle6()
@@ -87,7 +89,7 @@ int S(void)
 	switch(symbolAv)
 	{
 		case '(':
-		case 'nb':
+		case 'n':
 			regle0();
 			break;
 		default:
@@ -100,7 +102,7 @@ int E(void)
 	switch(symbolAv)
 	{
 		case '(':
-		case 'nb':
+		case 'n':
 			regle1();
 			break;
 		default:
@@ -133,7 +135,7 @@ int T(void)
 		case '(':
 			regle4();
 			break;
-		case 'nb':
+		case 'n':
 			regle4();
 			break;
 		default:
@@ -169,7 +171,7 @@ int F(void)
 		case '(':
 			regle6();
 			break;
-		case 'nb':
+		case 'n':
 			regle5();
 			break;
 		default:
@@ -180,5 +182,6 @@ int F(void)
 int main()
 {
 	symbolAv = yylex();
+	printf("symbole avancé : %c\n", symbolAv);
 	S();
 }
