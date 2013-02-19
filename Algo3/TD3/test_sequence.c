@@ -17,7 +17,7 @@ void main (int argc, char* argv[])
     char * c = malloc(sizeof(char));
     *c = getc(stdin);
     if(*c == '\n') continue;
-    pos = (int) (20 * (rand() / (RAND_MAX + 1.0)));
+    pos = (int) (length * (rand() / (RAND_MAX + 1.0)));
     // system("clear");
     printf("try to insert \033[01;35m%s\033[00m at pos \033[01;35m%d\033[00m...\n",c,pos);
     sequence_insert(s,c,pos);
