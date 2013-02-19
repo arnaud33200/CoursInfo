@@ -1,7 +1,12 @@
 %{
 	#include <stdlib.h>
+	#include <unistd.h>
+
 	int symbolAv;
-	void regle0(); void regle1(); void regle2(); void regle3(); void regle4(); void regle5(); void regle6(); void regle7(); void regle8();
+	int lastNum;
+	int resultat;
+
+	int regle0(); int regle1(); int regle2(); int regle3(); int regle4(); int regle5(); int regle6(); int regle7(); int regle8();
  	int S(void); int E(void); int Ep(void); int T(void); int Tp(void); int F(void);
 %}
 
@@ -12,85 +17,97 @@
 "(" { return '('; }
 ")" { return ')'; }
 "*" { return '*'; }
-[[:digit:]]+ { return 'n'; }
+[[:digit:]]+ { lastNum = atoi(yytext); return 'n'; }
 
 %%
 
 void syntaxErr()
 {
 	printf("%c : ERROR !!! \n", symbolAv);
+	exit(1);
 }
 
-void consom(int c)
+int consom(int c)
 {
 	if(c == symbolAv)
 	{
 		symbolAv = yylex();
-		printf("symbole avancé : %c\n", symbolAv);
+		printf("symbole avancé : %c", symbolAv);
+		if ( symbolAv == 'n')
+			printf(" : %d", lastNum);
+		printf("\n");
 	}
 	else
 		syntaxErr();
 }
 
-void regle0()
+int regle0()
 {
-	E(); 
+	int n = E(); 
 	consom('$');
+	return n;
 }
 
-void regle1()
+int regle1()
 {
-	T();
-	Ep(); 
-}
-
-void regle2()
-{
-	consom('+');
-	T();
+	int n = T();
 	Ep();
+	return n;
 }
 
-void regle3()
+int regle2()
 {
+	int l = lastNum;
+	consom('+');
+	int n = T();
+	Ep();
+	printf("adition : %d + %d\n", l, lastNum);
+	return (l+lastNum);
 }
 
-void regle4()
+int regle3(){ return 0; }
+
+int regle4()
 {
-	F();
+	int n = F();
 	Tp();
+	return n;
 }
 
-void regle5()
+int regle5()
 {
 	consom('n');
+	return lastNum;
 }
 
-void regle6()
+int regle6()
 {
 	consom('(');
-	E();
+	int n = E();
 	consom(')');
+	return n;
 }
 
-void regle7()
+int regle7()
 {
+	int l = lastNum;
 	consom('*');
-	F();
+	int n = F();
 	Tp();
+	return l*n;
 }
 
-void regle8()
-{
-}
+int regle8(){ return 1; }
 
 int S(void)
 {
 	switch(symbolAv)
 	{
 		case '(':
+			return regle0();
+			break;
 		case 'n':
-			regle0();
+			return regle0();
 			break;
 		default:
 			syntaxErr();
@@ -102,8 +119,10 @@ int E(void)
 	switch(symbolAv)
 	{
 		case '(':
+			return regle1();
+			break;
 		case 'n':
-			regle1();
+			return regle1();
 			break;
 		default:
 			syntaxErr();
@@ -115,13 +134,13 @@ int Ep(void)
 	switch(symbolAv)
 	{
 		case '$':
-			regle3();
+			return regle3();
 			break;
 		case '+':
-			regle2();
+			return regle2();
 			break;
 		case ')':
-			regle3();
+			return regle3();
 			break;
 		default:
 			syntaxErr();
@@ -133,10 +152,10 @@ int T(void)
 	switch(symbolAv)
 	{
 		case '(':
-			regle4();
+			return regle4();
 			break;
 		case 'n':
-			regle4();
+			return regle4();
 			break;
 		default:
 			syntaxErr();
@@ -148,16 +167,16 @@ int Tp(void)
 	switch(symbolAv)
 	{
 		case '$':
-			regle8();
+			return regle8();
 			break;
 		case '+':
-			regle8();
+			return regle8();
 			break;
 		case ')':
-			regle8();
+			return regle8();
 			break;
 		case '*':
-			regle7();
+			return regle7();
 			break;
 		default:
 			syntaxErr();
@@ -169,10 +188,10 @@ int F(void)
 	switch(symbolAv)
 	{
 		case '(':
-			regle6();
+			return regle6();
 			break;
 		case 'n':
-			regle5();
+			return regle5();
 			break;
 		default:
 			syntaxErr();
@@ -181,7 +200,9 @@ int F(void)
 
 int main()
 {
+	resultat = 0;
 	symbolAv = yylex();
 	printf("symbole avancé : %c\n", symbolAv);
-	S();
+	int resultat = S();
+	printf("\nRESULTAT FINAL = %d\n", resultat);
 }
