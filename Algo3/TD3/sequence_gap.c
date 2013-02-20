@@ -6,6 +6,7 @@
 const int BLOCK = 10;
 void grow_array(sequence s);
 int real_position(sequence s, int pos);
+int real_position_insert(sequence s, int pos);
 
 
 struct sequence_t
@@ -20,9 +21,10 @@ struct sequence_t
 /* create an empty sequence */
 sequence sequence_create()
 {
+	int i;
 	sequence new = malloc( sizeof(struct sequence_t));
 	new->tab = malloc(sizeof(void *) * BLOCK);
-	for (int i = 0; i < new->size; ++i)
+	for (i = 0; i < new->size; i++)
 		new->tab[i] = NULL;
 	new->length = 0;
 	new->size = BLOCK;
@@ -41,7 +43,11 @@ void sequence_destroy(sequence s)
    found */
 void * sequence_find(sequence s, int pos)
 {
-	return s->tab[pos+(s->f-s->d+1)];
+	int rp = real_position(pos);
+	if(rp >= 0 && rp < s->size)
+		return s->tab[pos+(s->f-s->d+1)];
+	else
+		return NULL;
 }
 
 /* insert an object between objects at position pos-1 and pos */
@@ -49,15 +55,15 @@ void sequence_insert(sequence s, void * object, int pos)
 {
 	if( s->size <= sequence_length(s) )
 		grow_array(s);
-	int rp = real_position(s, pos);
+
+	int rp = real_position_insert(s, pos);
 
 	if (sequence_length(s) <= 0)
 	{
 		rp = 0;
 		s->d = 1;
 	}
-
-	else if( s->f <= rp )
+	else if( s->f < rp )
 	{
 		for (int i = s->f+1; i <= rp; ++i)
 		{
@@ -89,6 +95,11 @@ void sequence_delete(sequence s, int pos)
 {
 	if( sequence_length(s) <= 0 )
 		return;
+	if(pos <= 0)
+	{
+		printf("Curseur en debut ligne\n");
+		return;
+	}
 
 	int rp = real_position(s, pos);
 	if(rp < s->d)
@@ -123,14 +134,21 @@ void sequence_delete(sequence s, int pos)
 /* dump the sequence as integer object */
 void sequence_dump(sequence s)
 {
+	int pos = 0;
 	for (int i = 0; i < s->size; ++i)
 	{
 		if( i >= s->d && i <= s->f)
-			printf(" \033[01;32m%d[-]\033[00m-", i);
+			printf(" \033[01;32m[#]\033[00m-");
 		else if ( s->tab[i] == NULL)
-			printf(" %d[]-", i);
+		{
+			printf(" %d[-]-", pos);
+			pos++;
+		}
 		else
-			printf(" \033[01;34m%d[%s]\033[00m-", i, s->tab[i]);
+		{
+			printf(" \033[01;34m%d[%s]\033[00m-", pos, s->tab[i]);
+				pos++;
+		}
 	}
 	// printf(" | d:%d et f:%d\n\n", s->d, s->f);
 	printf("\n\n");
@@ -160,13 +178,22 @@ void grow_array(sequence s)
 	s->f = ns-1;
 	s->size = ns;
 
-	printf("~~ The table has been grow !\n");
+	// printf("~~ The table has been grow !\n");
 }
 
 int real_position(sequence s, int pos)
 {
 	int ecart = s->f - s->d + 1;
 	if(pos < s->d)
+		return pos;
+	else
+		return pos+ecart;
+}
+
+int real_position_insert(sequence s, int pos)
+{
+	int ecart = s->f - s->d + 1;
+	if(pos <= s->d)
 		return pos;
 	else
 		return pos+ecart;
