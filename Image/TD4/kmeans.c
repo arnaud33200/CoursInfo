@@ -279,22 +279,24 @@ void kmeansK (ndgIm src, ndgIm dest, int k)
 
 void kmeansPos (ndgIm src, ndgIm dest, int k)
 {
-  int x, y, i;
+  int x, y, i, j;
   int hasChanged = 1;
 
-  int lxy[k][3];
-   // int ck[6] = {0, 50, 100, 150, 200, 255};
-  int mean[k];
+  int ck[k][3];
+  int mean[k][3];
   int n[k];
 
   for (i = 0; i < k; ++i)
   {
-    ck[i] = my_rand() / 10000000;
-    if (ck[i] > 255) ck[i] = 255;
-    if (ck[i] < 0) ck[i] = 0;
-    printf("%d - ", ck[i] );
-
-    mean[i] = 0;
+    for(j = 0; j < 3; ++j)
+    {
+      ck[i][j] = my_rand() / 10000000;
+      if (ck[i][j] > 255) ck[i][j] = 255;
+      if (ck[i][j] < 0) ck[i][j] = 0;
+      printf("%d - ", ck[i][j] );
+      mean[i][j] = 0;
+    }
+    printf("\n");
     n[i] = 0;
   }
   printf("\n");
@@ -307,19 +309,30 @@ void kmeansPos (ndgIm src, ndgIm dest, int k)
       {
       	int c = src[x][y];
         int mini = 0;
-        int mindist = distance (c, ck[0]);
+        int mindist[3]; 
+        mindist[0] = distance (c, ck[0][0]);
+        mindist[1] = distance (x, ck[0][1]);
+        mindist[2] = distance (y, ck[0][2]);
 
         for (i = 0; i < k; ++i)
         {
-          if (distance (c, ck[i]) <= mindist)
+    // vérifer les distances Y avant les X distances fait un gros changement dans le résultat final
+          int mc, mx, my;
+          if ( (mc = distance(c,ck[i][0])) <= mindist[0] || 
+              ((mx = distance(y,ck[i][2])) <= mindist[2] && 
+                (my = distance(x,ck[i][1])) <= mindist[1]) )
           {
-            mindist = distance (c, ck[i]);
+            mindist[0] = mc;
+            mindist[1] = mx;
+            mindist[2] = my;
             mini = i;
           }
         }
-        mean[mini] += c;
+        mean[mini][0] += c;
+        mean[mini][1] += x;
+        mean[mini][2] += y;
         n[mini]++;
-        dest[x][y] = ck[mini];
+        dest[x][y] = ck[mini][0];
       }
     }
 
@@ -327,15 +340,22 @@ void kmeansPos (ndgIm src, ndgIm dest, int k)
 
     for (i = 0; i < k; ++i)
     {
-      if (n[i]!=0) mean[i] /= n[i];
-      if (mean[i] != ck[i]) hasChanged = 1;
+      if (n[i]!=0) 
+        for (j = 0; j < 3; ++j)
+          mean[i][j] /= n[i];
+
+      if (mean[i][0] != ck[i][0] || mean[i][1] != ck[i][1] || mean[i][1] != ck[i][1] ) 
+        hasChanged = 1;
     }
 
     for (i = 0; i < k; ++i)
     {
       if( hasChanged == 1 )
-        ck[i] = mean[i];
-      mean[i] = 0;
+        for (int j = 0; j < 3; ++j)
+          ck[i][j] = mean[i][j];
+      
+      for (int j = 0; j < 3; ++j)
+        mean[i][j] = 0;
       n[i] = 0;
     }
     // ecrireNdgImageTurn("res-boats", dest);
@@ -350,8 +370,8 @@ int main ()
   turn = 0;
   ndgIm im, res;
   lireNdgImage ("camera.pgm", im);
-  kmeansK(im, res, 4);
-  ecrireNdgImageTurn("res-boats", res);
+  kmeansPos(im, res, 2);
+  ecrireNdgImageTurn("res-boats-POS", res);
 
   return EXIT_SUCCESS;
 }
