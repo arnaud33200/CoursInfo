@@ -240,6 +240,71 @@ void kmeansK (ndgIm src, ndgIm dest, int k)
     {
       for (x = 0; x < LARGEUR; x++)
       {
+        int c = src[x][y];
+        int mini = 0;
+        int mindist = distance (c, ck[0]);
+
+        for (i = 0; i < k; ++i)
+        {
+          if (distance (c, ck[i]) <= mindist)
+          {
+            mindist = distance (c, ck[i]);
+            mini = i;
+          }
+        }
+        mean[mini] += c;
+        n[mini]++;
+        dest[x][y] = ck[mini];
+      }
+    }
+
+    hasChanged = 0;
+
+    for (i = 0; i < k; ++i)
+    {
+      if (n[i]!=0) mean[i] /= n[i];
+      if (mean[i] != ck[i]) hasChanged = 1;
+    }
+
+    for (i = 0; i < k; ++i)
+    {
+      if( hasChanged == 1 )
+        ck[i] = mean[i];
+      mean[i] = 0;
+      n[i] = 0;
+    }
+    // ecrireNdgImageTurn("res-boats", dest);
+  }
+}
+
+void kmeansPos (ndgIm src, ndgIm dest, int k)
+{
+  int x, y, i;
+  int hasChanged = 1;
+
+  int lxy[k][3];
+   // int ck[6] = {0, 50, 100, 150, 200, 255};
+  int mean[k];
+  int n[k];
+
+  for (i = 0; i < k; ++i)
+  {
+    ck[i] = my_rand() / 10000000;
+    if (ck[i] > 255) ck[i] = 255;
+    if (ck[i] < 0) ck[i] = 0;
+    printf("%d - ", ck[i] );
+
+    mean[i] = 0;
+    n[i] = 0;
+  }
+  printf("\n");
+
+  while (hasChanged == 1)
+  {
+    for (y = 0; y < HAUTEUR; y++)
+    {
+      for (x = 0; x < LARGEUR; x++)
+      {
       	int c = src[x][y];
         int mini = 0;
         int mindist = distance (c, ck[0]);
