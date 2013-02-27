@@ -1,0 +1,1 @@
+int main(int argc, char const *argv[]){char * a = "int main(int argc, char const *argv[]){char * a = \"\";printf(\"%s\",a);return 0;}";printf("%s",a);return 0;}

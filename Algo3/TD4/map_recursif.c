@@ -6,51 +6,151 @@
 #include <assert.h>
 
 typedef struct tree_t * tree;
-struct tree_t{
+struct tree_t
+{
   tree left;
   tree right;
   void * object;
 };
 
-struct map_t{
+struct map_t
+{
   keyfunc f;
   tree root;
+  int height;
 };
 
-int max(int x, int y){
-  if(x<y)
-    return y;
-  else
-    return x;
+int max(int x, int y)
+{
+  if(x<y) return y;
+  else return x;
+}
+
+int isLeaf(tree t)
+{
+  return t->left == NULL && t->right == NULL ? 1 : 0;
 }
 
 /* create an empty map */
-map map_create(keyfunc f){
-  return NULL;
+map map_create(keyfunc f)
+{
+  map new = malloc(sizeof(struct map_t));
+  new->f = f;
+  new->height = 0;
+  return new;
+}
+
+void destroy_recur(tree t)
+{
+  if(isLeaf(t))
+    free(t);
+  else
+  {
+    destroy_recur(t->left);
+    destroy_recur(t->right);
+    free(t);
+  }
 }
 
 /* destroy a map */
-void map_destroy(map f){
+void map_destroy(map f)
+{
+  destroy_recur(f->root);
+  free(f);
+}
+
+int height_recur(tree t)
+{
+  if(isLeaf(t))
+    return 1;
+  else
+    return ( max(height_recur(t->left), height_recur(t->right)) + 1 );
 }
 
 /* return the height of a map */
-int map_height(map f){
-  return 0;
+int map_height(map f)
+{
+  return height_recur(f->root) - 1;
 }
 
+
+void * find_recur(tree t, int k, keyfunc f)
+{
+  if( f(t->object) == k )
+    return t->object;
+  else if( isLeaf(t) )
+    return NULL;
+  else if( f(t->object) < k )
+    return find_recur(t->left, k, f);
+  else
+    return find_recur(t->right, k, f);
+}
 /* find an object in the map and return it or NULL if not found */
-void * map_find(map m, int key){
-  return NULL;
+void * map_find(map m, int key)
+{
+  return find_recur(m->root, key, m->f);
 }
 
 /* insert an object in a map and return it or NULL in case of
    failure (NULL object or object already inside the map) */
-void * map_insert(map m, void * object){
-  return NULL;
+void * insert_recur(tree t, void * o, keyfunc f)
+{
+  if( isLeaf(t) )
+  {
+    if( f(o) == f(t->object) )
+      return NULL;    // cas d'égalité 
+    tree n = malloc(sizeof(struct tree_t));
+    n->object = o;
+    if( f(o) > f(t->object) )
+      t->right = n;
+    else
+      t->left = n;
+    return o;
+  }
+  else if( f(o) < f(t->object) )
+  {
+    if ( t->left == NULL )
+    {
+      tree n = malloc(sizeof(struct tree_t));
+      n->object = o;
+      t->left = n;
+      return o;
+    }
+    else
+    return insert_recur(t->left, o, f);
+  }
+  else if( f(o) > f(t->object) )
+  {
+    if ( t->right == NULL )
+    {
+      tree n = malloc(sizeof(struct tree_t));
+      n->object = o;
+      t->right = n;
+      return o;
+    }
+    else
+    return insert_recur(t->right, o, f);
+  }
+  else
+    return NULL; // cas d'égalité 
+}
+
+void * map_insert(map m, void * object)
+{
+  if( m->root == NULL )
+  {
+    tree n = malloc(sizeof(struct tree_t));
+    n->object = object;
+    m->root = n;
+    return object;
+  }
+  else
+    return insert_recur(m->root, object, m->f);
 }
 
 /* delete an object from a map and return it or NULL in not found */
-void * map_delete(map m, int key){
+void * map_delete(map m, int key)
+{
   return NULL;
 }
 
@@ -103,19 +203,19 @@ void map_dump(map m)
   for(j = 0 ; j < height ; j++)
     for(i = 0 ; i < width ; i++) 
       array[j][i] = -1;
-  
+
   // traverse tree and mark nodes
-  if(m->root != NULL) 
-    tree_traverse_and_mark(m,m->root,height,(int*)array,0,0);
-  
+    if(m->root != NULL) 
+      tree_traverse_and_mark(m,m->root,height,(int*)array,0,0);
+
   // dump array
-  for(j = 0 ; j < height ; j++) {    
-    printf("|");
-    for(i = 0 ; i < width ; i++) {
-      if(array[j][i] < 0) printf("  ");
-      else printf("%.2d",array[j][i]);
+    for(j = 0 ; j < height ; j++) {    
+      printf("|");
+      for(i = 0 ; i < width ; i++) {
+        if(array[j][i] < 0) printf("  ");
+        else printf("%.2d",array[j][i]);
+      }
+      printf("|\n");
     }
-    printf("|\n");
+
   }
-  
-}
