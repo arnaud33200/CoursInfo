@@ -22,13 +22,13 @@ int main (int argc, char* argv[])
   printf("find %d: %s\n", b, (fb != NULL)?"true":"false");
 
   /* delete a leaf */
-  // map_delete(m,f); 
+  map_delete(m,g); 
   /* delete a node with a single child */
   // ???
 
   /* delete a node with two children */
   // map_delete(m,d); 
-  map_delete(m,c); 
+  // map_delete(m,c); 
 
   /* delete the root node */
   // map_delete(m,a); 

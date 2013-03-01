@@ -74,21 +74,30 @@ int map_height(map f)
 }
 
 
-void * find_recur(tree t, int k, keyfunc f)
+tree find_recur(tree t, int k, keyfunc f)
 {
   if( f(t->object) == k )
-    return t->object;
+  {
+    return t;
+  }
   else if( isLeaf(t) )
+  { 
     return NULL;
-  else if( f(t->object) < k )
+  }
+  else if( f(t->object) > k )
+  {
     return find_recur(t->left, k, f);
+  }
   else
+  {
     return find_recur(t->right, k, f);
+  }
 }
 /* find an object in the map and return it or NULL if not found */
 void * map_find(map m, int key)
 {
-  return find_recur(m->root, key, m->f);
+  tree f = find_recur(m->root, key, m->f); 
+  return f != NULL ? f->object : NULL;
 }
 
 /* insert an object in a map and return it or NULL in case of
@@ -117,7 +126,7 @@ void * insert_recur(tree t, void * o, keyfunc f)
       return o;
     }
     else
-    return insert_recur(t->left, o, f);
+      return insert_recur(t->left, o, f);
   }
   else if( f(o) > f(t->object) )
   {
@@ -129,7 +138,7 @@ void * insert_recur(tree t, void * o, keyfunc f)
       return o;
     }
     else
-    return insert_recur(t->right, o, f);
+      return insert_recur(t->right, o, f);
   }
   else
     return NULL; // cas d'égalité 
@@ -151,6 +160,23 @@ void * map_insert(map m, void * object)
 /* delete an object from a map and return it or NULL in not found */
 void * map_delete(map m, int key)
 {
+  tree t = find_recur(m->root, key, m->f);
+  if ( t == NULL )
+    return NULL;
+
+  void * o = t->object;
+  if ( isLeaf(t) )
+  {
+    puts("c'estune feuille");
+    int nb = 12;
+    t->object = &nb;
+    free(t);
+    t = find_recur(m->root, key, m->f);
+    if( t == NULL) puts("feuille bien effacé");
+    else
+      printf("val = %d\n", m->f(t->object));
+    return o;
+  }
   return NULL;
 }
 
