@@ -1,7 +1,7 @@
 %{
 	#include <stdio.h>
 	extern int yylineno;
-	int p, c, a;
+	int p, c, a, d;
 %}
 
 %token OPENP OPENC OPENA 
@@ -12,9 +12,9 @@
 
 %%
 
-E: OPENP { ++p; printf("P%d -", p); } E CLOSEP { --p; printf("P%d -", p); } E
-	| OPENA { ++a; printf("A%d -", a); } E CLOSEA { --p; printf("A%d -", a); } E
-	| OPENC { ++c; printf("C%d -", c); } E CLOSEC { --p; printf("C%d -", c); } E
+E: OPENP { ++p; ++d; printf("%d ", d); } E CLOSEP { --p; --d; printf("%d ", d); } E
+	| OPENA { ++a; ++d; printf("%d ", d); } E CLOSEA { --p; --d; printf("%d ", d); } E
+	| OPENC { ++c; ++d; printf("%d ", d); } E CLOSEC { --p; --d; printf("%d ", d); } E
 	| IGN E
 	| 
 	;
@@ -29,7 +29,7 @@ int yyerror(char * s)
 
 int main()
 {
-	p = c = a = 0;
+	p = c = a = d = 0;
 	yyparse();
 	puts("SYNTHAXE CORRECT :)");
 }

@@ -70,7 +70,7 @@
 
 	#include <stdio.h>
 	extern int yylineno;
-	int p, c, a;
+	int p, c, a, d;
 
 
 /* Line 268 of yacc.c  */
@@ -1352,42 +1352,42 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 15 "exo1.y"
-    { ++p; printf("P%d -", p); }
+    { ++p; ++d; printf("%d ", d); }
     break;
 
   case 3:
 
 /* Line 1806 of yacc.c  */
 #line 15 "exo1.y"
-    { --p; printf("P%d -", p); }
+    { --p; --d; printf("%d ", d); }
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
 #line 16 "exo1.y"
-    { ++a; printf("A%d -", a); }
+    { ++a; ++d; printf("%d ", d); }
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
 #line 16 "exo1.y"
-    { --p; printf("A%d -", a); }
+    { --p; --d; printf("%d ", d); }
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
 #line 17 "exo1.y"
-    { ++c; printf("C%d -", c); }
+    { ++c; ++d; printf("%d ", d); }
     break;
 
   case 9:
 
 /* Line 1806 of yacc.c  */
 #line 17 "exo1.y"
-    { --p; printf("C%d -", c); }
+    { --p; --d; printf("%d ", d); }
     break;
 
 
@@ -1635,7 +1635,7 @@ int yyerror(char * s)
 
 int main()
 {
-	p = c = a = 0;
+	p = c = a = d = 0;
 	yyparse();
 	puts("SYNTHAXE CORRECT :)");
 }
