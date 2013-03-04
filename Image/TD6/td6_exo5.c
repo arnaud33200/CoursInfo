@@ -87,16 +87,11 @@ GLuint setShaders() {
   // 3 - link the program. For this step, the shaders must be compiled.
   glLinkProgram(shaderProgram);
 
-
- 
   //FREE 
   free(vertexSource);
   free(fragmentSource);
   return shaderProgram;
 }
-
-
-
 
 float a = 0;
 
@@ -174,11 +169,17 @@ displayFunc (void)
   if ( loc == -1 || errorState != GL_NO_ERROR )
     fprintf(stderr,"Erreur (%d) lors de la récupération de l'id de la variable 'translate'\n",errorState);
   
-  glUniform1f(loc, 1.0);
-  drawPlane(1.0);
+
 
   glUseProgram(0);
   
+  glUniform1f(loc, 1.0);
+  drawPlane(1.0);
+  glUniform1f(loc, 1.0);
+  glTranslatef (2,0,0); 
+  drawPlane(1.0);
+
+  glUseProgram(shaderProg);
   
   glutSwapBuffers ();
 }
