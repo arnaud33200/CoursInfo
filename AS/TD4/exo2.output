@@ -1,0 +1,239 @@
+Grammaire
+
+    0 $accept: B $end
+
+    1 $@1: /* vide */
+
+    2 B: C $@1 '$' B
+    3  | C
+    4  | /* vide */
+
+    5 C: C '+' C
+    6  | C '-' C
+    7  | C '*' C
+    8  | C '/' C
+    9  | '(' C ')'
+   10  | S
+
+
+Terminaux, suivis des règles où ils apparaissent
+
+$end (0) 0
+'$' (36) 2
+'(' (40) 9
+')' (41) 9
+'*' (42) 7
+'+' (43) 5
+'-' (45) 6
+'/' (47) 8
+error (256)
+S (258) 10
+
+
+Non-terminaux, suivis des règles où ils apparaissent
+
+$accept (11)
+    à gauche: 0
+B (12)
+    à gauche: 2 3 4, à droite: 0 2
+$@1 (13)
+    à gauche: 1, à droite: 2
+C (14)
+    à gauche: 5 6 7 8 9 10, à droite: 2 3 5 6 7 8 9
+
+
+état 0
+
+    0 $accept: . B $end
+
+    S    décalage et aller à l'état 1
+    '('  décalage et aller à l'état 2
+
+    $défaut  réduction par utilisation de la règle 4 (B)
+
+    B  aller à l'état 3
+    C  aller à l'état 4
+
+
+état 1
+
+   10 C: S .
+
+    $défaut  réduction par utilisation de la règle 10 (C)
+
+
+état 2
+
+    9 C: '(' . C ')'
+
+    S    décalage et aller à l'état 1
+    '('  décalage et aller à l'état 2
+
+    C  aller à l'état 5
+
+
+état 3
+
+    0 $accept: B . $end
+
+    $end  décalage et aller à l'état 6
+
+
+état 4
+
+    2 B: C . $@1 '$' B
+    3  | C .
+    5 C: C . '+' C
+    6  | C . '-' C
+    7  | C . '*' C
+    8  | C . '/' C
+
+    '-'  décalage et aller à l'état 7
+    '+'  décalage et aller à l'état 8
+    '*'  décalage et aller à l'état 9
+    '/'  décalage et aller à l'état 10
+
+    $end      réduction par utilisation de la règle 3 (B)
+    $défaut  réduction par utilisation de la règle 1 ($@1)
+
+    $@1  aller à l'état 11
+
+
+état 5
+
+    5 C: C . '+' C
+    6  | C . '-' C
+    7  | C . '*' C
+    8  | C . '/' C
+    9  | '(' C . ')'
+
+    '-'  décalage et aller à l'état 7
+    '+'  décalage et aller à l'état 8
+    '*'  décalage et aller à l'état 9
+    '/'  décalage et aller à l'état 10
+    ')'  décalage et aller à l'état 12
+
+
+état 6
+
+    0 $accept: B $end .
+
+    $défaut  accepter
+
+
+état 7
+
+    6 C: C '-' . C
+
+    S    décalage et aller à l'état 1
+    '('  décalage et aller à l'état 2
+
+    C  aller à l'état 13
+
+
+état 8
+
+    5 C: C '+' . C
+
+    S    décalage et aller à l'état 1
+    '('  décalage et aller à l'état 2
+
+    C  aller à l'état 14
+
+
+état 9
+
+    7 C: C '*' . C
+
+    S    décalage et aller à l'état 1
+    '('  décalage et aller à l'état 2
+
+    C  aller à l'état 15
+
+
+état 10
+
+    8 C: C '/' . C
+
+    S    décalage et aller à l'état 1
+    '('  décalage et aller à l'état 2
+
+    C  aller à l'état 16
+
+
+état 11
+
+    2 B: C $@1 . '$' B
+
+    '$'  décalage et aller à l'état 17
+
+
+état 12
+
+    9 C: '(' C ')' .
+
+    $défaut  réduction par utilisation de la règle 9 (C)
+
+
+état 13
+
+    5 C: C . '+' C
+    6  | C . '-' C
+    6  | C '-' C .
+    7  | C . '*' C
+    8  | C . '/' C
+
+    $défaut  réduction par utilisation de la règle 6 (C)
+
+
+état 14
+
+    5 C: C . '+' C
+    5  | C '+' C .
+    6  | C . '-' C
+    7  | C . '*' C
+    8  | C . '/' C
+
+    $défaut  réduction par utilisation de la règle 5 (C)
+
+
+état 15
+
+    5 C: C . '+' C
+    6  | C . '-' C
+    7  | C . '*' C
+    7  | C '*' C .
+    8  | C . '/' C
+
+    $défaut  réduction par utilisation de la règle 7 (C)
+
+
+état 16
+
+    5 C: C . '+' C
+    6  | C . '-' C
+    7  | C . '*' C
+    8  | C . '/' C
+    8  | C '/' C .
+
+    $défaut  réduction par utilisation de la règle 8 (C)
+
+
+état 17
+
+    2 B: C $@1 '$' . B
+
+    S    décalage et aller à l'état 1
+    '('  décalage et aller à l'état 2
+
+    $défaut  réduction par utilisation de la règle 4 (B)
+
+    B  aller à l'état 18
+    C  aller à l'état 4
+
+
+état 18
+
+    2 B: C $@1 '$' B .
+
+    $défaut  réduction par utilisation de la règle 2 (B)

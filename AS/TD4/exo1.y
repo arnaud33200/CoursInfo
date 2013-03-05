@@ -12,9 +12,9 @@
 
 %%
 
-E: OPENP { ++p; ++d; printf("%d ", d); } E CLOSEP { --p; --d; printf("%d ", d); } E
-	| OPENA { ++a; ++d; printf("%d ", d); } E CLOSEA { --p; --d; printf("%d ", d); } E
-	| OPENC { ++c; ++d; printf("%d ", d); } E CLOSEC { --p; --d; printf("%d ", d); } E
+E: OPENP { ++p; ++d; printf("%d ", d); } E CLOSEP { --p; --d;  } E
+	| OPENA { ++a; ++d; printf("%d ", d); } E CLOSEA { --p; --d;  } E
+	| OPENC { ++c; ++d; printf("%d ", d); } E CLOSEC { --p; --d;  } E
 	| IGN E
 	| 
 	;
@@ -31,5 +31,5 @@ int main()
 {
 	p = c = a = d = 0;
 	yyparse();
-	puts("SYNTHAXE CORRECT :)");
+	puts("\nSYNTHAXE CORRECT :)");
 }
