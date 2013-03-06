@@ -8,6 +8,7 @@
 typedef struct tree_t * tree;
 struct tree_t
 {
+  tree father;
   tree left;
   tree right;
   void * object;
@@ -34,20 +35,23 @@ int isLeaf(tree t)
 /* create an empty map */
 map map_create(keyfunc f)
 {
-  map new = malloc(sizeof(struct map_t));
-  new->f = f;
-  new->height = 0;
-  return new;
+  map nm = malloc(sizeof(struct map_t));
+  nm->f = f;
+  nm->height = 0;
+  nm->root = NULL;
+  return nm;
 }
 
 void destroy_recur(tree t)
 {
-  if(isLeaf(t))
+  if(t == NULL)
+    return;
+  else if(isLeaf(t))
     free(t);
   else
   {
-    destroy_recur(t->left);
-    destroy_recur(t->right);
+    if ( t->left != NULL ) destroy_recur(t->left);
+    if ( t->right != NULL ) destroy_recur(t->right);
     free(t);
   }
 }
@@ -55,7 +59,8 @@ void destroy_recur(tree t)
 /* destroy a map */
 void map_destroy(map f)
 {
-  destroy_recur(f->root);
+  if( f->root != NULL)
+    destroy_recur(f->root);
   free(f);
 }
 
@@ -76,28 +81,32 @@ int map_height(map f)
 
 tree find_recur(tree t, int k, keyfunc f)
 {
-  if( f(t->object) == k )
-  {
-    return t;
-  }
-  else if( isLeaf(t) )
-  { 
+  if ( t == NULL)
     return NULL;
-  }
+  else if( f(t->object) == k )
+    return t;
+  else if( isLeaf(t) )
+    return NULL;
   else if( f(t->object) > k )
-  {
-    return find_recur(t->left, k, f);
-  }
+      return t->left != NULL ? find_recur(t->left, k, f) : NULL;
   else
-  {
-    return find_recur(t->right, k, f);
-  }
+    return t->right != NULL ? find_recur(t->right, k, f) : NULL;
 }
 /* find an object in the map and return it or NULL if not found */
 void * map_find(map m, int key)
 {
   tree f = find_recur(m->root, key, m->f); 
   return f != NULL ? f->object : NULL;
+}
+
+tree create_tree(void * object, tree f)
+{
+    tree n = malloc(sizeof(struct tree_t));
+    n->object = object;
+    n->left = NULL;
+    n->right = NULL;
+    n->father = f;
+    return n;
 }
 
 /* insert an object in a map and return it or NULL in case of
@@ -108,8 +117,7 @@ void * insert_recur(tree t, void * o, keyfunc f)
   {
     if( f(o) == f(t->object) )
       return NULL;    // cas d'égalité 
-    tree n = malloc(sizeof(struct tree_t));
-    n->object = o;
+    tree n = create_tree(o, t);
     if( f(o) > f(t->object) )
       t->right = n;
     else
@@ -120,8 +128,7 @@ void * insert_recur(tree t, void * o, keyfunc f)
   {
     if ( t->left == NULL )
     {
-      tree n = malloc(sizeof(struct tree_t));
-      n->object = o;
+      tree n = create_tree(o, t);
       t->left = n;
       return o;
     }
@@ -132,8 +139,7 @@ void * insert_recur(tree t, void * o, keyfunc f)
   {
     if ( t->right == NULL )
     {
-      tree n = malloc(sizeof(struct tree_t));
-      n->object = o;
+      tree n = create_tree(o, t);
       t->right = n;
       return o;
     }
@@ -141,15 +147,14 @@ void * insert_recur(tree t, void * o, keyfunc f)
       return insert_recur(t->right, o, f);
   }
   else
-    return NULL; // cas d'égalité 
+    return NULL; 
 }
 
 void * map_insert(map m, void * object)
 {
   if( m->root == NULL )
   {
-    tree n = malloc(sizeof(struct tree_t));
-    n->object = object;
+    tree n = create_tree(object, NULL);
     m->root = n;
     return object;
   }
@@ -157,25 +162,67 @@ void * map_insert(map m, void * object)
     return insert_recur(m->root, object, m->f);
 }
 
+tree find_smaller(tree t)
+{
+  if(isLeaf(t))
+    return t;
+  if( t->left != NULL)
+    return find_smaller(t->left);
+  else
+    return t;
+}
+
+tree find_bigger(tree t)
+{
+  if(isLeaf(t))
+    return t;
+  if( t->right != NULL)
+    return find_smaller(t->right);
+  else
+    return t;
+}
+
+void delete
+
 /* delete an object from a map and return it or NULL in not found */
 void * map_delete(map m, int key)
 {
+  if (m->root == NULL)return NULL;
+
   tree t = find_recur(m->root, key, m->f);
-  if ( t == NULL )
-    return NULL;
+  if ( t == NULL ) return NULL;
 
   void * o = t->object;
+
   if ( isLeaf(t) )
   {
-    puts("c'estune feuille");
-    int nb = 12;
-    t->object = &nb;
+    if ( t->father->left == t ) t->father->left = NULL; 
+    else t->father->right = NULL;
     free(t);
-    t = find_recur(m->root, key, m->f);
-    if( t == NULL) puts("feuille bien effacé");
-    else
-      printf("val = %d\n", m->f(t->object));
     return o;
+  }
+  else if (t->right == NULL)
+  {
+    t->left->father = t->father;
+    if ( t->father->left == t ) t->father->left = t->left; 
+    else t->father->right = t->left;
+    free(t);
+    return o;
+  }
+  else if (t->left == NULL)
+  {
+    t->right->father = t->father;
+    if ( t->father->left == t ) t->father->left = t->right; 
+    else t->father->right = t->right;
+    free(t);
+    return o;
+  }
+  else    // cas des deux fils non vide
+  {
+    if( map_height(t->left) >= map_height(t->right))
+    {
+      tree b = find_bigger(t);
+    }
   }
   return NULL;
 }

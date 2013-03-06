@@ -27,13 +27,16 @@ int main (int argc, char* argv[])
   // ???
 
   /* delete a node with two children */
-  // map_delete(m,d); 
+  map_delete(m,e); 
+  map_delete(m,d); 
   // map_delete(m,c); 
 
   /* delete the root node */
   // map_delete(m,a); 
 
   map_dump(m);
+
+  map_destroy(m);
   
   return 0;
   
