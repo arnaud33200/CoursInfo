@@ -14,6 +14,9 @@
 "/" { return '/';}
 "(" { return '(';}
 ")" { return ')';}
+"<" { return '<';}
+">" { return '>';}
+"=" { return '=';}
 
 \n { return '$'; }
 
