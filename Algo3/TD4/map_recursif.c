@@ -69,7 +69,15 @@ int height_recur(tree t)
   if(isLeaf(t))
     return 1;
   else
-    return ( max(height_recur(t->left), height_recur(t->right)) + 1 );
+  {
+    int l, r;
+    l = r = 0;
+    if(t->left != NULL)
+      l = height_recur(t->left);
+    if(t->right != NULL)
+      r = height_recur(t->right);
+    return max(l,r) + 1;
+  }
 }
 
 /* return the height of a map */
@@ -177,12 +185,10 @@ tree find_bigger(tree t)
   if(isLeaf(t))
     return t;
   if( t->right != NULL)
-    return find_smaller(t->right);
+    return find_bigger(t->right);
   else
     return t;
 }
-
-void delete
 
 /* delete an object from a map and return it or NULL in not found */
 void * map_delete(map m, int key)
@@ -219,10 +225,32 @@ void * map_delete(map m, int key)
   }
   else    // cas des deux fils non vide
   {
-    if( map_height(t->left) >= map_height(t->right))
+    tree replace;
+    if( height_recur(t->left) >= height_recur(t->right))
     {
-      tree b = find_bigger(t);
+      replace = find_bigger(t->left);
+      if ( replace->left != NULL)
+        replace->father->right = replace->left;
+      else
+        replace->father->right = NULL;
     }
+    else
+    {
+      replace = find_smaller(t->right);
+      if ( replace->right != NULL)
+        replace->father->left = replace->right;
+      else
+        replace->father->left = NULL;
+    }
+
+    replace->father = t->father;
+    if ( t->father->left == t ) t->father->left = replace;
+    else t->father->right = replace;
+
+      replace->right = t->right;
+      replace->left = t->left;
+    free(t);
+    return o;
   }
   return NULL;
 }
@@ -235,6 +263,18 @@ int tree_height(tree node)
 {
   if(node == NULL) return 0;   /* the height of a void tree is 0. */
   return 1 + max(tree_height(node->left),tree_height(node->right));
+  // if(isLeaf(node))
+  //   return 1;
+  // else
+  // {
+  //   int l, r;
+  //   l = r = 0;
+  //   if(node->left != NULL)
+  //     l = tree_height(node->left);
+  //   if(node->right != NULL)
+  //     r = tree_height(node->right);
+  //   return max(l,r) + 1;
+  // }
 }
 
 void tree_traverse_and_mark(map m,

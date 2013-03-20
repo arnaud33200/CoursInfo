@@ -1,5 +1,10 @@
 /* map.c */
 
+#define DEBUG 1
+#define print_debug(fmt,...)\
+  do { if(DEBUG) fprintf(stderr, "%s;%d:%s " fmt, __FILE__, __LINE__,\
+   __func__, __VA_ARGS__ );} while(0)
+
 #include "map.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -15,6 +20,7 @@ struct tree_t{
 struct map_t{
   keyfunc f;
   tree root;
+  int height;
 };
 
 int max(int x, int y){
@@ -24,28 +30,114 @@ int max(int x, int y){
     return x;
 }
 
+int isLeaf(tree t)
+{
+  return t->left == NULL && t->right == NULL ? 1 : 0;
+}
+
 /* create an empty map */
-map map_create(keyfunc f){
-  return NULL;
+map map_create(keyfunc f)
+{
+  map nm = malloc(sizeof(struct map_t));
+  nm->f = f;
+  nm->height = 0;
+  nm->root = NULL;
+  return nm;
 }
 
 /* destroy a map */
-void map_destroy(map f){
+void map_destroy(map f)
+{
+
 }
 
 /* return the height of a map */
-int map_height(map f){
+int map_height(map f)
+{
   return 0;
 }
 
 /* find an object in the map and return it or NULL if not found */
-void * map_find(map m, int key){
+void * map_find(map m, int key)
+{
+  tree t = m->root;
+  while( t != NULL )
+  {
+    if (key == m->f(t->object))
+      return t->object;
+    else if(key < m->f(t->object))
+      t = (t->left != NULL ? t->left : NULL);
+    else if(key > m->f(t->object))
+      t = (t->right != NULL ? t->left : NULL);
+    else
+      return NULL;
+  }
   return NULL;
+}
+
+tree create_tree(void * object, tree f)
+{
+  tree n = malloc(sizeof(struct tree_t));
+  n->object = object;
+  n->left = NULL;
+  n->right = NULL;
+  return n;
 }
 
 /* insert an object in a map and return it or NULL in case of
    failure (NULL object or object already inside the map) */
-void * map_insert(map m, void * object){
+void * map_insert(map m, void * object)
+{
+  
+  tree t = m->root;
+
+  if(t == NULL)
+  {
+    m->root = create_tree(object, t);
+    return object;
+  }
+
+  // print_debug("test");
+
+  while( t != NULL )
+  {
+    if( m->f(t) == m->f(object) )
+      return NULL;
+    else if (isLeaf(t))
+    {
+      tree n = create_tree(object, t);
+      if( m->f(object) < m->f(t) )
+        t->left = n;
+      else t->right = n;
+      return object;
+    }
+    else if( m->f(object) < m->f(t) )
+    {
+      printf("cle objet inf\n");
+      if( t->left == NULL )
+      {
+        tree n = create_tree(object, t);
+        t->left = n;
+        return object;
+      }
+      else
+        t = t->right;
+    }
+    else if( m->f(object) > m->f(t) )
+    {
+      printf("cle objet sup\n");
+      if( t->right == NULL )
+      {
+        tree n = create_tree(object, t);
+        t->right = n;
+        return object;
+      }
+      else
+        t = t->left;
+    }
+    else
+      return NULL;
+  }
   return NULL;
 }
 
@@ -103,19 +195,19 @@ void map_dump(map m)
   for(j = 0 ; j < height ; j++)
     for(i = 0 ; i < width ; i++) 
       array[j][i] = -1;
-  
+
   // traverse tree and mark nodes
-  if(m->root != NULL) 
-    tree_traverse_and_mark(m,m->root,height,(int*)array,0,0);
-  
+    if(m->root != NULL) 
+      tree_traverse_and_mark(m,m->root,height,(int*)array,0,0);
+
   // dump array
-  for(j = 0 ; j < height ; j++) {    
-    printf("|");
-    for(i = 0 ; i < width ; i++) {
-      if(array[j][i] < 0) printf("  ");
-      else printf("%.2d",array[j][i]);
+    for(j = 0 ; j < height ; j++) {    
+      printf("|");
+      for(i = 0 ; i < width ; i++) {
+        if(array[j][i] < 0) printf("  ");
+        else printf("%.2d",array[j][i]);
+      }
+      printf("|\n");
     }
-    printf("|\n");
+
   }
-  
-}
