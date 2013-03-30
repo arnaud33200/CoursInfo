@@ -6,7 +6,7 @@
 #define CHANNELS_NUMBER 1
 // #define N 512
 #define N 1024
-#define NE 10000
+#define NE 100000
 
 char *RAW_FILE = "tmp-in.raw";
 
@@ -58,11 +58,13 @@ double autocorrelation( double * s, int n, int t)
 {
   int i;
   double c = 0;
+  double j = 0;
   for (i = 0; i+t < n; ++i)
   {
     c += s[i] * s[i+t];
+    ++j;
   }
-  return c/n;
+  return c/j;
 }
 
 int main (int argc, char *argv[])
@@ -102,26 +104,27 @@ int main (int argc, char *argv[])
 
   int t;
   int i = 0;
+  double totalmax = 0;
   double autocor[NE];
-  while(n = sound_file_read (input, sound) && i < NE )
+  while(n = sound_file_read (input, sound) )
   {
     double max = 0;
     for (t = 0; t < N; ++t)
     {
       double tmp = autocorrelation( sound, n, t);
-      if ( n > 1 && tmp > max)
+      if ( tmp > max )
+      {
         max = tmp;
+        if ( max > totalmax)
+          totalmax = max;
+      }
     }
-    printf("max = %d\n", max );
     autocor[i++] = max;
   }
 
-  for (n = 0; n < 10; ++n)
-  {
-    printf("[%d] - ", autocor[n] );
-  }
+    printf("MAX : %f - ", totalmax);
 
-  gnuplot_plot_x(histo, autocor, t, "Wave !");
+  gnuplot_plot_x(histo, autocor, i, "Wave !");
   sleep(10);
   
   sound_file_close_read (input);
