@@ -5,8 +5,8 @@
 
 #define FE 44100
 #define DUREE 1
-#define N DUREE*FE
-// #define N 5000
+// #define N DUREE*FE
+#define N 5000
 
 int g = 2;
 
@@ -62,9 +62,11 @@ note_shepard(double* s, double f, FILE* output)
   {
     s[i] = a * sin(g*M_PI*f*i*1.0/FE);
     s[i] += a * sin(g*M_PI*(2*f)*i*1.0/FE);
+    s[i] += a * sin(g*M_PI*(4*f)*i*1.0/FE);
     s[i] += (1-a) * sin(g*M_PI*(f/2)*i*1.0/FE);
     s[i] += (1-a) * sin(g*M_PI*f*i*1.0/FE);
-    s[i] /= 4;
+    s[i] += (1-a) * sin(g*M_PI*(2*f)*i*1.0/FE);
+    s[i] /= 6;
   }
 
   sound_file_write (s, output);
