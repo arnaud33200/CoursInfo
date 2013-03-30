@@ -80,12 +80,19 @@ void adsr(double * s)
 {
   int i;
   int frame = N/16;
-  double hd
-  for (i=0; i<2*frame; i++)
-    s[i] = s[i]*(1/N/2*frame);
+  for (i=0; i<(2*frame); i++)
+    {
+      s[i] = s[i]*(i/(2*frame*1.0));
+    }
 
   for (i=2*frame; i<4*frame; i++)
-    s[i] = s[i]*(1/N/2*frame);
+    s[i] = s[i]/(i*-1.5/(4*frame*1.0));
+
+  for (i=4*frame; i<10*frame; i++)
+    s[i] = s[i]*0.5;
+
+  for (i=10*frame; i<16*frame; i++)
+    s[i] = s[i]/(i*-1/(6*frame*1.0));
 }
 
 int
@@ -106,6 +113,7 @@ main (int argc, char *argv[])
   // oscillateur(s, 1.0, 666);
   // mod_amp(s, 0.5, 440, 0.5, 660);
   mod_freq(s, 1.0, 0.5, 0.5, 660);
+  adsr(s);
 
   sound_file_write (s, output);
   sound_file_close_write (output);
