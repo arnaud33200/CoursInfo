@@ -34,6 +34,17 @@ int isLeaf(tree t)
   return t->left == NULL && t->right == NULL ? 1 : 0;
 }
 
+tree create_tree(void * object, tree f)
+{
+  tree n = malloc(sizeof(struct tree_t));
+  n->object = object;
+  n->left = NULL;
+  n->right = NULL;
+  n->father = f;
+  n->weight = (f == NULL ? 1 : f->weight+1);
+  return n;
+}
+
 void add_weight_recur(tree t, int a)
 {
   if(t == NULL) return;
@@ -44,21 +55,15 @@ void add_weight_recur(tree t, int a)
 
 void left_rotate(tree t)
 {
+  puts("left rotate ask !");
   if(t->right == NULL)
     return;
 
   tree nr = create_tree(t->right->object, t->father);
   nr->right = t->right->right;
   nr->left = t;
-  
-
-  tree oldroot = t;
-  t = oldroot->right;
-  oldroot->right = t->left;
-  t->left = oldroot;
-  t->father = oldroot->father;
-  if ( t->father->left == oldroot ) t->father->left = t; 
-  else t->father->right = t;
+  nr->left = t->right;
+  t = nr;
 // mise à jours hauteur
   t->weight--;
   add_weight_recur(t->right, -1);
@@ -198,16 +203,6 @@ void check_balance(tree t)
   }
 }
 
-tree create_tree(void * object, tree f)
-{
-  tree n = malloc(sizeof(struct tree_t));
-  n->object = object;
-  n->left = NULL;
-  n->right = NULL;
-  n->father = f;
-  n->weight = (f == NULL ? 1 : f->weight+1);
-  return n;
-}
 
 void * insert_recur(tree t, void * o, keyfunc f)
 {
