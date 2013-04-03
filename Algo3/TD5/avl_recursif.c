@@ -34,6 +34,24 @@ int isLeaf(tree t)
   return t->left == NULL && t->right == NULL ? 1 : 0;
 }
 
+int height_recur(tree t)
+{
+  if(t == NULL) 
+    return 0;
+  else if(isLeaf(t))
+    return 1;
+  else
+  {
+    int l, r;
+    l = r = 0;
+    if(t->left != NULL)
+      l = height_recur(t->left);
+    if(t->right != NULL)
+      r = height_recur(t->right);
+    return max(l,r) + 1;
+  }
+}
+
 tree create_tree(void * object, tree f)
 {
   tree n = malloc(sizeof(struct tree_t));
@@ -53,39 +71,42 @@ void add_weight_recur(tree t, int a)
   if(t->right != NULL) add_weight_recur(t->right, a);
 }
 
-void left_rotate(tree t)
+tree left_rotate(tree t)
 {
   puts("left rotate ask !");
   if(t->right == NULL)
-    return;
+    return t;
 
-  tree nr = create_tree(t->right->object, t->father);
-  nr->right = t->right->right;
+  tree nr = t->right;
+  t->right = t->right->left;
   nr->left = t;
-  nr->left = t->right;
   t = nr;
+
 // mise à jours hauteur
   t->weight--;
   add_weight_recur(t->right, -1);
   t->left->weight++;
   add_weight_recur(t->left->left, 1);
+
+  return t;
 }
 
-void right_rotate(tree t)
+tree right_rotate(tree t)
 {
   if(t->left == NULL)
-    return;
-  tree oldroot = t;
-  t = oldroot->left;
-  oldroot->left = t->right;
-  t->right = oldroot;
-  t->father = oldroot->father;
-  if ( t->father->left == oldroot ) t->father->left = t; 
-  else t->father->right = t;
+    return t;
+  
+  tree nr = t->left;
+  t->left = nr->right;
+  nr->right = t;
+  t = nr;
+
   t->weight--;
   add_weight_recur(t->left, -1);
   t->right->weight++;
   add_weight_recur(t->right->right, 1);
+
+  return t;
 }
 
 /* create an empty avl */
@@ -121,24 +142,6 @@ void avl_destroy(avl f)
 
 /* return the height of a avl */
 
-int height_recur(tree t)
-{
-  if(t == NULL) 
-    return 0;
-  else if(isLeaf(t))
-    return 1;
-  else
-  {
-    int l, r;
-    l = r = 0;
-    if(t->left != NULL)
-      l = height_recur(t->left);
-    if(t->right != NULL)
-      r = height_recur(t->right);
-    return max(l,r) + 1;
-  }
-}
-
 int avl_height(avl f)
 {
   return 0;
@@ -169,38 +172,39 @@ void * avl_find(avl m, int key)
 /* insert an object in a avl and return it or NULL in case of
    failure (NULL object or object already inside the avl) */
 
-void check_balance(tree t)
+tree check_balance(tree t)
 {
-  puts("enter check");
-  if( t == NULL ) return;
+  // puts("enter check");
+  if( t == NULL ) return NULL;
+  if( height_recur(t) < 2 ) return t;
   int hl = height_recur(t->left);
   int hr = height_recur(t->right);
-  if ( abs(hl-hr) > 1 )
+
+  if( hl - hr <= -2  )
   {
-    puts("need balance !");
-    if( hl - hr == -2  )
+    puts("need balance  inf!");
+    int bfr = height_recur(t->right->left)-height_recur(t->right->right);
+    if( bfr <= -1 )
+      return left_rotate(t);
+    else if ( bfr >= 1)
     {
-      int bfr = height_recur(t->right->left)-height_recur(t->right->right);
-      if( bfr == -1 )
-        left_rotate(t);
-      else if ( bfr == 1)
-      {
-        right_rotate(t->right);
-        left_rotate(t);
-      }
-    }
-    else
-    {
-      int bfl = height_recur(t->left->left)-height_recur(t->left->right);
-      if( bfl == -1 )
-        right_rotate(t);
-      else if ( bfl == 1)
-      {
-        left_rotate(t->left);
-        right_rotate(t);
-      }
+      t->right = right_rotate(t->right);
+      return left_rotate(t);
     }
   }
+  else if( hl - hr >= 2  )
+  {
+    puts("need balance sup!");
+    int bfl = height_recur(t->left->left)-height_recur(t->left->right);
+    if( bfl == -1 )
+      return right_rotate(t);
+    else if ( bfl == 1)
+    {
+      t->left = left_rotate(t->left);
+      return right_rotate(t);
+    }
+  }
+  return t;
 }
 
 
@@ -242,7 +246,8 @@ void * insert_recur(tree t, void * o, keyfunc f)
   }
   else
     rtn = NULL;
-  check_balance(t);
+  t->right = check_balance(t->right);
+  t->left = check_balance(t->left);
   return rtn;
 }
 
@@ -255,13 +260,40 @@ void * avl_insert(avl m, void * object)
     return object;
   }
   else
-    return insert_recur(m->root, object, m->f);
+  {
+    void * rtn =  insert_recur(m->root, object, m->f);
+    m->root = check_balance(m->root);
+    return rtn;
+  }
 }
 
 /* delete an object from a avl and return it or NULL in not found */
 void * avl_delete(avl m, int key)
 {
-  return NULL;
+  tree f = avl_find(m->root, key);
+  if(f == NULL)
+    return NULL;
+  if(isLeaf(f))
+  { 
+    if(f->father->left = f) f->father->left = NULL;
+    else f->father->right = f;
+  }
+  else if(f->left == NULL)
+  {
+    if(f->father->left = f) f->father->left = f->right;
+    else f->father->right = f->right;
+  }
+  else if(f->right == NULL)
+  {
+    if(f->father->left = f) f->father->left = f->left;
+    else f->father->right = f->left;
+  }
+  else
+  {
+    
+  }
+
+  free(f);
 }
 
 
