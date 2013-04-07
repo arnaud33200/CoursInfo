@@ -255,7 +255,7 @@ void * avl_insert(avl m, void * object)
 {
   if( m->root == NULL )
   {
-    tree n = create_tree(object, m->root);
+    tree n = create_tree(object, NULL);
     m->root = n;
     return object;
   }
@@ -267,33 +267,55 @@ void * avl_insert(avl m, void * object)
   }
 }
 
+
 /* delete an object from a avl and return it or NULL in not found */
+
+tree largest_left(tree t)
+{
+  tree rtn;
+  if( t == NULL )
+    rtn =  NULL;
+  else if( isLeaf(t) || t->right == NULL )
+    rtn =  t;
+  else
+    rtn =  largest_left(t->right);
+  check_balance(t);
+  return rtn;
+}
+
 void * avl_delete(avl m, int key)
 {
-  tree f = avl_find(m->root, key);
+  tree f = find_recur(m->root, key, m->f);
   if(f == NULL)
     return NULL;
   if(isLeaf(f))
   { 
-    if(f->father->left = f) f->father->left = NULL;
+    if(f->father->left == f) f->father->left = NULL;
     else f->father->right = f;
   }
   else if(f->left == NULL)
   {
-    if(f->father->left = f) f->father->left = f->right;
+    if(f->father == NULL) m->root = f->right;
+    else if(f->father->left == f) f->father->left = f->right;
     else f->father->right = f->right;
   }
   else if(f->right == NULL)
   {
-    if(f->father->left = f) f->father->left = f->left;
+    if(f->father == NULL) m->root = f->left;
+    else if(f->father->left == f) f->father->left = f->left;
     else f->father->right = f->left;
   }
   else
   {
-    
+    tree g = largest_left(f->left);
+    g->father = f->father;
+    if(f->father == NULL) m->root = g;
+    else if(f->father->left == f) f->father->left = g;
+    else f->father->right = g;
   }
-
+  void * rtn = f->object;
   free(f);
+  return rtn;
 }
 
 
