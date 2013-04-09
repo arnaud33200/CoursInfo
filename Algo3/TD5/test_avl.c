@@ -27,12 +27,14 @@ int main (int argc, char* argv[])
   printf("find %d: %s\n", c, (fb != NULL)?"true":"false");
 
   /* delete a leaf */
-  // avl_delete(m,f); 
+  avl_delete(m,f); printf("suppr de %d\n", f);
+  avl_dump(m);
   /* delete a node with a single child */
   // ???
 
   /* delete a node with two children */
-  // avl_delete(m,d); 
+  avl_delete(m,d); 
+  avl_dump(m);
   avl_delete(m,c); 
 
   /* delete the root node */
