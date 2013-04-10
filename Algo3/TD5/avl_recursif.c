@@ -73,14 +73,18 @@ void add_weight_recur(tree t, int a)
 
 tree left_rotate(tree t)
 {
-  puts("left rotate ask !");
+  printf("left rotate %d : %p\n", *((int*)t->object), t);
   if(t->right == NULL)
     return t;
 
-  tree nr = t->right;
-  t->right = t->right->left;
-  nr->left = t;
-  t = nr;
+  tree newroot = t->right;
+  if(newroot->left != NULL)
+    newroot->left->father = t;
+  t->right = newroot->left;
+  newroot->left = t;
+  newroot->father = t->father;
+  t->father = newroot;
+  t = newroot;
 
 // mise à jours hauteur
   t->weight--;
@@ -93,13 +97,18 @@ tree left_rotate(tree t)
 
 tree right_rotate(tree t)
 {
+  printf("right rotate %d : %p\n", *((int*)t->object), t);
   if(t->left == NULL)
     return t;
   
-  tree nr = t->left;
-  t->left = nr->right;
-  nr->right = t;
-  t = nr;
+  tree newroot = t->left;
+  if( newroot->right != NULL)
+    newroot->right->father = t;
+  t->left = newroot->right;
+  newroot->right = t;
+  newroot->father = t->father;
+  t->father = newroot;
+  t = newroot;
 
   t->weight--;
   add_weight_recur(t->left, -1);
@@ -176,6 +185,7 @@ tree check_balance(tree t)
 {
   // puts("enter check");
   if( t == NULL ) return NULL;
+  // printf("check_balance %d : %p\n", *((int*)t->object), t);
   if( height_recur(t) < 2 ) return t;
   int hl = height_recur(t->left);
   int hr = height_recur(t->right);
@@ -215,11 +225,11 @@ void * insert_recur(tree t, void * o, keyfunc f)
   {
     if( f(o) == f(t->object) )
       rtn = NULL;    // cas d'égalité 
-    tree n = create_tree(o, t);
+    tree newnode = create_tree(o, t);
     if( f(o) > f(t->object) )
-      t->right = n;
+      t->right = newnode;
     else
-      t->left = n;
+      t->left = newnode;
     rtn = o;
   }
   else if( f(o) < f(t->object) )
@@ -275,23 +285,51 @@ tree largest_left(tree t)
   tree rtn;
   if( t == NULL )
     rtn =  NULL;
-  else if( isLeaf(t) || t->right == NULL )
+  else if( isLeaf(t) )
+  {
     rtn =  t;
+    t->father->right = t->left;
+  }
+  else if( t->right == NULL )
+  {
+    rtn =  t;
+    t->left->father = t->father->right;
+    t->father->right = t->left;
+  }
   else
+  {
     rtn =  largest_left(t->right);
-  check_balance(t);
+    t->left = check_balance(t->left);
+    t->right = check_balance(t->right);
+  }
   return rtn;
+}
+
+void check_to_root(tree t)
+{
+  if( t != NULL )
+  {
+    t->left = check_balance(t->left);
+    t->right = check_balance(t->right);
+    check_to_root(t->father);
+  }
 }
 
 void * avl_delete(avl m, int key)
 {
   tree f = find_recur(m->root, key, m->f);
+  // printf("delete : trouvé %d : %p\n", *((int*)f->object), f );
+  // printf("     fils gauche %p \n", f->left);
+  // printf("     fils droit %p \n", f->right);
+  // printf("     père %d : %p \n", *((int*)f->father->object), f->father);
   if(f == NULL)
     return NULL;
   if(isLeaf(f))
   { 
-    if(f->father->left == f) f->father->left = NULL;
-    else f->father->right = f;
+    puts("delete : is leaf");
+    if(f->father == NULL) m->root = NULL;
+    else if(f->father->left == f) f->father->left = NULL;
+    else f->father->right = NULL;
   }
   else if(f->left == NULL)
   {
@@ -308,13 +346,23 @@ void * avl_delete(avl m, int key)
   else
   {
     tree g = largest_left(f->left);
+    if(f->left != g)
+    {
+      f->left->father = g;
+      g->left = f->left;
+    }
+    // f->right->father = g;
+    g->right = f->right;
+
     g->father = f->father;
     if(f->father == NULL) m->root = g;
     else if(f->father->left == f) f->father->left = g;
     else f->father->right = g;
   }
   void * rtn = f->object;
-  free(f);
+  // free(f);
+  check_to_root(f);
+  m->root = check_balance(m->root);
   return rtn;
 }
 
@@ -323,9 +371,12 @@ void * avl_delete(avl m, int key)
 //------------------AFFICHAGE D'ARBRE BINAIRE--------------
 
 int tree_height(tree node)
-
 {
   if(node == NULL) return 0;   /* the height of a void tree is 0. */
+  printf("entre dans noeud %d : %p\n", *((int*)node->object), node );
+  printf("     fils gauche %p \n", node->left);
+  printf("     fils droit %p \n", node->right);
+  printf("     père %d : %p \n", (node->father == NULL? NULL : *((int*)node->father->object) ),  node->father);
   return 1 + max(tree_height(node->left),tree_height(node->right));
 }
 
