@@ -1,0 +1,6 @@
+Tempo
+pitch
+attack
+volume
+noise
+resonance
