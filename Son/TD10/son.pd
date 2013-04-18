@@ -1,4 +1,4 @@
-#N canvas 43 59 928 534 10;
+#N canvas 42 59 651 702 10;
 #X obj 429 255 dac~;
 #X msg 375 154 seq1 mute;
 #X msg 364 127 seq1 unmute;

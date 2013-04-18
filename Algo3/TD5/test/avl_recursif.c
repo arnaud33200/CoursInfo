@@ -11,7 +11,7 @@ struct tree_t
   tree left;
   tree right;
   tree father;
-  int height;
+  int weight;
   void * object;
 };
 
@@ -34,17 +34,21 @@ int isLeaf(tree t)
   return t->left == NULL && t->right == NULL ? 1 : 0;
 }
 
-int calc_heigh(tree t)
+int height_recur(tree t)
 {
   if(t == NULL) 
     return 0;
+  else if(isLeaf(t))
+    return 1;
   else
   {
-    int l = 0;
-    if( t->left != NULL ) l = t->left->height;
-    int r = 0;
-    if( t->right != NULL) r = t->right->height;
-    return max(l, r) + 1;
+    int l, r;
+    l = r = 0;
+    if(t->left != NULL)
+      l = height_recur(t->left);
+    if(t->right != NULL)
+      r = height_recur(t->right);
+    return max(l,r) + 1;
   }
 }
 
@@ -55,20 +59,16 @@ tree create_tree(void * object, tree f)
   n->left = NULL;
   n->right = NULL;
   n->father = f;
-  n->height = 1;
+  n->weight = (f == NULL ? 1 : f->weight+1);
   return n;
 }
 
-void update_height_recur(tree node)
+void add_weight_recur(tree t, int a)
 {
-  if( node != NULL )
-  {
-    printf("noeud %d : %d\n", *((int*)node->object), node->height );
-    int oh = node->height;
-    node->height = calc_heigh(node);
-    //if( oh != node->height)
-      update_height_recur(node->father);
-  }
+  if(t == NULL) return;
+  t->weight += a;
+  if(t->left != NULL) add_weight_recur(t->left, a);
+  if(t->right != NULL) add_weight_recur(t->right, a);
 }
 
 tree left_rotate(tree t)
@@ -84,9 +84,14 @@ tree left_rotate(tree t)
   newroot->left = t;
   newroot->father = t->father;
   t->father = newroot;
-  
-  update_height_recur(t);
   t = newroot;
+
+// mise à jours hauteur
+  t->weight--;
+  add_weight_recur(t->right, -1);
+  t->left->weight++;
+  add_weight_recur(t->left->left, 1);
+
   return t;
 }
 
@@ -103,9 +108,13 @@ tree right_rotate(tree t)
   newroot->right = t;
   newroot->father = t->father;
   t->father = newroot;
-
-  update_height_recur(t);
   t = newroot;
+
+  t->weight--;
+  add_weight_recur(t->left, -1);
+  t->right->weight++;
+  add_weight_recur(t->right->right, 1);
+
   return t;
 }
 
@@ -114,6 +123,7 @@ avl avl_create(keyfunc f)
 {
   avl na = malloc(sizeof(struct avl_t));
   na->f = f;
+  // na->height = 0;
   na->root = NULL;
   return na;
 }
@@ -143,7 +153,7 @@ void avl_destroy(avl f)
 
 int avl_height(avl f)
 {
-  return f->root->height;
+  return 0;
 }
 
 /* find an object in the avl and return it or NULL if not found */
@@ -176,14 +186,14 @@ tree check_balance(tree t)
   // puts("enter check");
   if( t == NULL ) return NULL;
   // printf("check_balance %d : %p\n", *((int*)t->object), t);
-  if( t->height < 2 ) return t;
-  int hl = t->left->height;
-  int hr = t->right->height;
+  if( height_recur(t) < 2 ) return t;
+  int hl = height_recur(t->left);
+  int hr = height_recur(t->right);
 
   if( hl - hr <= -2  )
   {
     puts("need balance  inf!");
-    int bfr = t->right->left->height - t->right->right->height;
+    int bfr = height_recur(t->right->left)-height_recur(t->right->right);
     if( bfr <= -1 )
       return left_rotate(t);
     else if ( bfr >= 1)
@@ -195,7 +205,7 @@ tree check_balance(tree t)
   else if( hl - hr >= 2  )
   {
     puts("need balance sup!");
-    int bfl = t->left->left->height - t->left->right->height;
+    int bfl = height_recur(t->left->left)-height_recur(t->left->right);
     if( bfl == -1 )
       return right_rotate(t);
     else if ( bfl == 1)
@@ -220,7 +230,6 @@ void * insert_recur(tree t, void * o, keyfunc f)
       t->right = newnode;
     else
       t->left = newnode;
-    update_height_recur(newnode);
     rtn = o;
   }
   else if( f(o) < f(t->object) )
@@ -229,7 +238,6 @@ void * insert_recur(tree t, void * o, keyfunc f)
     {
       tree n = create_tree(o, t);
       t->left = n;
-      update_height_recur(n);
       rtn = o;
     }
     else
@@ -241,7 +249,6 @@ void * insert_recur(tree t, void * o, keyfunc f)
     {
       tree n = create_tree(o, t);
       t->right = n;
-      update_height_recur(n);
       rtn = o;
     }
     else
@@ -260,7 +267,6 @@ void * avl_insert(avl m, void * object)
   {
     tree n = create_tree(object, NULL);
     m->root = n;
-    update_height_recur(m->root);
     return object;
   }
   else
@@ -367,10 +373,10 @@ void * avl_delete(avl m, int key)
 int tree_height(tree node)
 {
   if(node == NULL) return 0;   /* the height of a void tree is 0. */
-  // printf("entre dans noeud %d : %p\n", *((int*)node->object), node );
-  // printf("     fils gauche %p \n", node->left);
-  // printf("     fils droit %p \n", node->right);
-  // printf("     père %d : %p \n", (node->father == NULL? NULL : *((int*)node->father->object) ),  node->father);
+  printf("entre dans noeud %d : %p\n", *((int*)node->object), node );
+  printf("     fils gauche %p \n", node->left);
+  printf("     fils droit %p \n", node->right);
+  printf("     père %d : %p \n", (node->father == NULL? NULL : *((int*)node->father->object) ),  node->father);
   return 1 + max(tree_height(node->left),tree_height(node->right));
 }
 

@@ -1,4 +1,4 @@
-#N canvas 985 77 928 534 10;
+#N canvas 707 65 652 318 10;
 #X obj 227 268 *~;
 #X obj 352 251 line~;
 #X obj 226 199 osc~;
@@ -23,6 +23,7 @@
 #X obj 102 100 route mute unmute frequency bpm;
 #X obj 298 159 noise~;
 #X obj 292 187 +~;
+#X floatatom 235 134 5 0 0 0 - - -;
 #X connect 0 0 18 0;
 #X connect 1 0 0 1;
 #X connect 2 0 15 0;
@@ -48,3 +49,4 @@
 #X connect 19 3 10 0;
 #X connect 20 0 21 0;
 #X connect 21 0 2 0;
+#X connect 22 0 17 0;
