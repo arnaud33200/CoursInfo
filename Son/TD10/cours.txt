@@ -1,0 +1,12 @@
+http://hitmuri.net/index.php/Teaching/EnseirbIS1213
+
+3 types de gest:
+	- Excitation
+	- Modification
+	- Selection
+
+retour primaire : capteur
+retour secondaire : sur le mapping (affichage sur monitor)
+retour visuel, auditif, haptiques
+
+Complexiter en sortie / Complexité en entré
